@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+</body>
+	<script type="text/javascript">
+		function client(){
+			if (window.innerHTML != null) //  ie9+ 和其他新版本的浏览器
+			{
+				return {
+					width : window.innerWidth,
+					height : window.innerHeight
+				}
+			}
+			else if (document.compatMode==="CSS1Compat")	// 标准浏览器
+			{
+				return {
+					width : document.documentElement.clientWidth,
+					height : document.documentElement.clientHeight
+				}
+			}
+			return {   // 怪异浏览器
+	            width: document.body.clientWidth,
+	            height: document.body.clientHeight
+
+	        }
+		} 
+
+		resize();	// 一打开网页就执行一次，修复空白期
+		window.onresize = resize;	// 如果函数后面加括号，就只能调用一次！！！
+
+		function resize(){
+			var clientWidth = client().width; 
+			if (clientWidth > 960) 
+			{
+				document.body.style.background = "red";
+			}
+			else if (clientWidth > 640)
+			{
+				document.body.style.background = "green";
+			}
+			else
+			{
+				document.body.style.background = "blue";
+			}
+		}
+
+	</script>
+</html>

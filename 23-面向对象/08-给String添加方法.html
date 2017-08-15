@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		String.prototype.trim = function(){
+			return this.replace(/^\s+|\+$/g,"");// 这条正则的意思是去掉前面的空格
+		};
+
+		var str = "  asdf asdf sdfa fasd ";
+
+		alert("("+str.trim()+")");	//(asdf asdf sdfa fasd )
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		var str = "abcdef";
+		
+		// 正则的perl风格写法
+		var re = /a/;	//等价于 var re = new RegExp("a");
+
+		var re2 = /A/i;	//等价于 var re2 = new RegExp("A","i");
+
+		alert(re.test(str));
+		alert(re2.test(str));
+	</script>
+</head>
+<body>
+
+</body>
+</html>

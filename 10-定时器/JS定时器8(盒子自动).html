@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#div1{
+			width: 70px;height: 70px;background: red;position: absolute;top: 60px;left: 10px;
+			transition: all 50ms ease;
+		}
+		body{
+			padding: 0;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oBtn1=document.getElementById('btn1');
+			var oDiv=document.getElementById('div1');
+
+			oBtn1.onclick=function(){
+				doMove(oDiv,'left',20,900,
+					function(){doMove(oDiv,'top',100,500);});	//回调函数~~
+			}
+
+			function doMove(obj,attr,dir,target,endFn){	//obj代表需要移动的对象，attr代表方向，dir代表步长（不用分正负了~~），target代表目的地，endFn代表回调函数
+
+			clearInterval(obj.timer);
+			
+			dir = parseInt(getStyle( obj, attr )) < target ? dir : -dir;	//比较当前位置与目标点的大小，来判断dir的正负！！！
+
+			obj.timer=setInterval(function (){
+				var speed = parseInt(getStyle( obj, attr )) + dir;	
+			
+				if ( speed < target && dir < 0 || speed > target && dir > 0 ) {		
+					speed = target;
+				}
+				obj.style[attr] = speed + 'px';	
+
+				if (speed == target) {
+				clearInterval(obj.timer);
+
+				//写法一：
+				/*
+				if (endFn) {
+					endFn();
+				}
+				*/
+				//写法二：
+				endFn && endFn();	//判断是否有回调函数，如果有就执行~~
+			}
+			},50);
+			
+		}
+
+		function getStyle(obj,attr){
+			return obj.currentStyle ? obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+		}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="走你" id="btn1">
+	<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#pic {
+			filter: alpha(opacity:30);
+			opacity: 0.3;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oImg = document.getElementById("pic");
+			oImg.onmouseover = function(){
+				startMove(100);
+			}
+			oImg.onmouseout = function(){
+				startMove(30);
+			}
+		}
+		var timer = null;
+		var alpha = 30;
+		function startMove(iTarget){
+			var oImg = document.getElementById("pic");
+			clearInterval(timer);
+			timer = setInterval(function(){
+				var iSpeed = 0;
+				if (alpha<iTarget) {
+					iSpeed = 10;
+				}
+				else {
+					iSpeed = -10;
+				}
+
+				if (alpha == iTarget) {
+					clearInterval(timer);
+				}
+				else {
+					alpha += iSpeed;
+					oImg.style.filter = "alpha(opacity:"+alpha+")";
+					document.title = alpha;
+				}
+			},30)
+		}
+	</script>
+</head>
+<body>
+	<img id="pic" src="../img/12-1.jpg" alt="" />
+</body>
+</html>

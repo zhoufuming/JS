@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#div1{
+			height: 100px;
+			width: 100px;
+			background: red;
+			position: absolute;
+		}
+		#div2{
+			height: 100px;
+			width: 100px;
+			background: yellow;
+			position: absolute;
+		}
+	</style>
+	<script type="text/javascript" src="Drag.js"></script>
+	<script type="text/javascript" src="LimitDrag.js"></script>
+	<script type="text/javascript">
+	// 利用面向对象继承的特点，先继承父级的属性和方法，在添加自己的属性和方法
+		window.onload=function(){
+			new LimitDrag("div1");
+			new Drag("div2");
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+</body>
+</html>

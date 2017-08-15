@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var arr = ['c','a','e','d'];		//想要数组按顺序排列？
+			arr.sort();	
+			//alert(arr);
+
+			var arr1 = [4,3,5,76,0,8];
+			arr1.sort();						
+			//sort排序会按照字符串的比较来排序 --> 0,3,4,5,76,8 (字符串'76'<'8')
+			alert(arr1);
+
+			var arr2 = [4,3,5,76,0,8];
+			arr2.sort(function(a,b){			//可以更改sort的比较函数，得到想要的结果
+				return a-b;						//从小到大排列 --> 0,3,4,5,8,76    
+				//return b-a;					//从大到小排列  --> 76,8,5,4,3,0		
+			});
+			alert(arr2);
+
+			var arrWidth = ['234px','23px','10px','1000px'];
+			arrWidth.sort(function(a,b){
+				return parseInt(a)-parseInt(b);		// --> 10px,23px,234px,1000px
+			});
+			alert(arrWidth);
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

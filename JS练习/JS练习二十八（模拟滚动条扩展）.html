@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#div1{
+			height: 500px;
+			width: 20px;
+			background: red;
+			position: absolute;
+			top: 10px;
+			left: 10px;
+		}
+		#div2{
+			/*height: 20px;*/
+			width: 20px;
+			background: black;
+			position: absolute;
+		}
+		#div3{
+			height: 498px;
+			width: 298px;
+			border: 1px solid #ddd;		
+			position: absolute;
+			top: 10px;
+			left: 40px;
+			overflow: hidden;
+		}
+		#div4{
+			width: 298px;
+			position: absolute;
+
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oDiv1 = document.getElementById('div1');
+			var oDiv2 = document.getElementById('div2');
+			var oDiv3 = document.getElementById('div3');
+			var oDiv4 = document.getElementById('div4');
+
+			// 模拟滚动条 - 如果内容没有溢出就没有滚动条，当内容高度大于可视高度的时候才出现，拖拽的滚动条根据内容多少动态变化，内容越多滚动条高度越短
+			
+			if (oDiv3.offsetHeight < oDiv4.offsetHeight) {
+				oDiv2.style.height = oDiv3.offsetHeight/oDiv4.offsetHeight*oDiv1.offsetHeight+'px';
+			}
+			
+
+			oDiv2.onmousedown = function(ev){
+
+				var ev = ev || event;
+				var disY = ev.clientY - this.offsetTop;
+				var iMaxTop = oDiv1.offsetHeight - oDiv2.offsetHeight;
+
+				if (oDiv2.setCapture) {
+					oDiv2.setCapture();
+				}
+
+				document.onmousemove = function(ev){
+					var ev = ev || event;
+					var T = ev.clientY - disY;
+
+					if (T < 0) {
+						T = 0;
+					}else if (T > iMaxTop) {
+						T = iMaxTop;
+					}
+
+					oDiv2.style.top = T + 'px';
+
+					// 利用比率来求oDiv3的height值
+					var iScale = T / iMaxTop;	
+
+					//document.title = iScale;
+					oDiv4.style.marginTop = - (oDiv4.offsetHeight-oDiv3.offsetHeight)*iScale +'px'; 
+				}
+
+				document.onmouseup = function(){
+					document.onmousemove = document.onmouseup = null;
+
+					if (oDiv2.releaseCapture) {
+						oDiv2.releaseCapture();
+					}
+				}
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2"></div>
+	</div>
+	<div id="div3">
+		<div id="div4">jQuery 第三天知识点大纲
+一、复习
+
+第一天
+jQuery优点
+jQuery入口函数
+jQuery 选择器
+第二天
+jQuery CSS操作
+jQuery 动画
+jQuery Dom操作
+二、jQuery的元素操作
+
+2.1 jQuery获取元素的高和宽
+
+height ： $(selector).height(); //带参数设置，不带参数获取,参数是number类型
+width ： $(selector).width(200); //带参数设置，不带参数获取
+
+innerHeight //只能获取：内边距+内容的高度
+
+innerWidth //同上.........宽度
+
+outerHeight
+
+outerWidth //获取：左右内边距+内容+左右边框
+    案例： 01 元素宽高.html
+2.2 jQuery元素坐标操作
+
+offset() 获取或设置元素相对于文档位置的方法
+
+返回一个object，包含left和top属性，值是相对于document的位置。
+如果传入一个参数，则是对元素重新设置相对于document的位置。
+
+传入参数必须包括：left和top属性。比如： {left：100，top：150}
+例如：$(selector).offset({left:100, top: 150});
+
+position() 获取相对于其最近的定位的父元素的位置。
+
+只能获取，不能设置。
+相对与其最近的定位元素
+返回一个object，包含left和top属性
+例如： $(selector).position();
+
+元素的滚动
+
+scrollLeft() 获取或者设置元素水平方向滚动的位置
+scrollTop() 获取或者设置窗口垂直方向的滚动的位置
+例如： 
+$(selector).scrollLeft(100);
+
+scroll() 事件触发或者绑定滚动事件
+
+scroll(hander) 绑定滚动事件
+scroll() 触发滚动事件 $(selector).scroll(function(){ //当选择的元素发生滚动的时候触发 });
+    案例：    
+    02 元素滚动案例.html
+    03图片滚动跟随案例.html
+    04滚动固定定位案例.html
+三、jQuery事件绑定机制
+
+3.1 简单事件绑定方法
+
+.click(hander) .click() //绑定事件 或者触发 click事件
+.blur() //失去焦点事件，同上
+.hover(mousein, mouseleave) //鼠标移入，移出
+
+mouseout： 当鼠标离开元素及它的子元素的时都会触发。
+
+mouseleave: 当鼠标离开自己时才会触发，子元素不触发。
+
+.dbclick() 双击
+
+change 改变,比如：文本框发送改变，下来列表发生改变等...
+focus 获得焦点
+keyup, keydown, keypress : 键盘 键被按下。
+mousedown, mouseover
+
+其他参考：http://www.w3school.com.cn/jquery/jquery_ref_events.asp
+
+案例：
+    05图片跟随鼠标.html
+3.2 绑定事件的方式 bind方式（不推荐，1.7以后的jQuery版本被on取代）
+
+语法格式：.bind( eventType [, eventData ], handler )
+参数说明
+第一个参数：事件类型
+第二个参数：传递给事件响应方法的数据对象，可以省略。
+事件响应方法中获取数据方式： e.data
+第三个参数：事件响应方法
+第二个参数可以省略。
+    例如：    
+    $("p").bind("click", function(e){
+        //事件响应方法
+    });
+3.3 delegate方式（推荐，性能高，支持动态创建的元素）
+
+语法格式：$(selector).delegate( selector, eventType, handler )
+语法说明：
+第一个参数:selector， 子选择器
+第二个参数：事件类型
+第三个参数：事件响应方法
+    例如：   
+    $(".parentBox").delegate("p", "click", function(){
+        //为 .parentBox下面的所有的p标签绑定事件
+    });
+优势：效率较高
+
+3.4 on方式（最现代的方式，兼容zepto，强烈建议使用的方式）
+
+jQuery1.7版本后，jQuery用on统一了所有的事件处理的方法
+语法格式：$(selector).on( events [, selector ] [, data ], handler )
+参数介绍：
+第一个参数：events，事件名
+第二个参数：selector,类似delegate
+第三个参数: 传递给事件响应方法的参数
+第四个参数：handler，事件处理方法
+    例如：
+    //绑定一个方法
+    $( "#dataTable tbody tr" ).on( "click", function() {
+      console.log( $( this ).text() );
+    });
+
+    //给子元素绑定事件
+    $( "#dataTable tbody" ).on( "click", "tr", function() {
+      console.log( $( this ).text() );
+    });
+
+    //绑定多个事件的方式
+    $( "div.test" ).on({
+      click: function() {
+        $( this ).toggleClass( "active" );
+      }, mouseenter: function() {
+        $( this ).addClass( "inside" );
+      }, mouseleave: function() {
+        $( this ).removeClass( "inside" );
+      }
+    });
+3.5 one绑定一次事件的方式
+
+.one( events [, data ], handler )
+    例如：
+    $( "p" ).one( "click", function() {
+      alert( $( this ).text() );
+    });
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		//return返回值
+		//数字、字符串、布尔、函数、对象（元素、[]、{}、null）、未定义
+		//1）函数名+括号：fn1() ==> return后面的值;
+		//2）所有函数默认返回值：未定义;
+		//3）return后面任何代码都不执行了;
+		//fn(); => 100
+		alert(fn1());
+		function fn1(){
+			return 123;
+		}
+
+		alert(fn2().length);
+		alert(typeof fn2());
+		function fn2(){
+			return 'zhou';
+		}
+
+		fn3()();			//扩展函数套函数的参数传递-->JS函数传参数5.html
+		function fn3(){
+			return function(){
+				alert(1);	//嘻嘻，我是注释
+			}
+		}
+		
+		fn4().onload=function(){			//fn4() => window
+			document.body.innerHTML=123;
+		}
+		function fn4(){
+			return window;
+		}	
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

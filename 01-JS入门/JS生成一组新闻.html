@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload=function(){
+		var arr=[
+		['马来西亚交通部长廖中莱表示,计划本阶段在南印度洋搜寻失踪马航MH370客机的工作结束后,将暂时停止相关工作。'],
+		['16日,山西省吕梁市,锣鼓喧天,人声鼎沸,558名吕梁山护工登上大巴车,将走出大山,前往太原、北京、呼和浩特等地闯荡。'],
+		['在希拉里的丈夫、美国前总统克林顿·克林顿看来,她之所以失去选民支持是因为对民众的真实心声充耳不闻。'],
+		['省、市、县政府要及时出台有关规定，对废弃水井也要进行巡查、建档、登记，采取填埋、加盖、设置安全警示标志等措施。'],
+		['美国财政部8月公布的最新数据显示，中国拥有的美国国债高达11850亿美元。']
+		];
+		var oUl=document.getElementById('list');
+		var aLi=oUl.getElementsByTagName('li');
+		var oBtn=document.getElementById('btn');
+		var len=arr.length;
+		var onOff=true;
+		/* 
+		让按钮效果只显示一次的解决思路：
+			1.找按钮的麻烦;(点击后将按钮隐藏起来；dispaly:none;。点击后将按钮设为不可点击状态;disabled=true;.缺点：用户体验不太好！！！)
+			2.先清空，再生成；
+			3.设置开关，只让按钮点一次；（建议使用~~）
+		 */
+		oBtn.onclick=function(){
+			//oBtn.disabled=true;
+			//oUl.innerHTML='';
+			if (onOff) {
+			//直接写if（onOff），不用写成if（onOff==true）,这是ture和false的特点				
+				for (var i = 0; i < len; i++) {
+				// 方法一：  oUl.innerHTML+='<li></li>';
+				 //   		 aLi[i].innerHTML=arr[i];     //注意书写格式
+				 // 方法二：
+				 	oUl.innerHTML+='<li>'+arr[i]+'</li>'; //注意书写格式
+			}
+				onOff=false;
+		}
+		}
+	}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="自动生成五组新闻" id="btn">
+	<ul id="list">
+	</ul>
+</body>
+</html>

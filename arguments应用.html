@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	fn1(1,2,3);			//实参--实际传递的参数
+	//function fn1(a,b,c){	//形参--形式上，abc这些名代表123
+	function fn1(){
+		//arguments => [1,2,3]--实参的集合
+		//alert(arguments.length);
+		//alert(arguments[0]);	//输出第一个实参
+	}
+
+	//当函数的参数个数无法确定的时候：用arguments
+	//alert(sum(1,2,3));		//6
+	//alert(sum(1,2,3,4));		//10
+	function sum(){
+		var n=0;
+		for (var i = 0; i < arguments.length; i++) {
+			n+=arguments[i];
+		}
+		return n;
+	}
+
+	alert(sum1(1,2,3,'+'));	//1+2+3 = 6;
+	alert(sum1(10,2,3,4,'-'));	//12-2-3-4 = 1;
+	
+	function sum1(){
+		var sum=arguments[0];
+		var yun=arguments[arguments.length-1];
+		
+			//sum=sum"+yun+"arguments[i];
+			switch(yun){
+				case "+":
+				for (var i = 1; i < arguments.length-1; i++) {
+					sum+=arguments[i];
+				}
+					break;
+				case "-":
+				for (var i = 1; i < arguments.length-1; i++) {					
+					sum-=arguments[i];
+				}
+				break;
+			}		
+		return sum;
+	}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

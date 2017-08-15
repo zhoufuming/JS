@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>无标题文档</title>
+	<style type="text/css">
+		body {margin:0;}
+		img {
+			width:640px; height:378px; position:absolute; left:50%; top:50%;
+			margin-top:-189px; margin-left:-320px;
+		}
+		#bg {
+			width:100%; height:100%; position:absolute; left:0; top:0;
+			filter:alpha(opacity:60); opacity:0.6; background:black; 
+			z-index:1;
+		}
+		#prog {
+			width:324px; height:40px; background:url(img/bar.png) no-repeat 0 bottom;
+			position:absolute; z-index:2; top:50%; left:50%; 
+			margin:-20px 0 0 -162px; font-family:arial; font-size:12px; 
+			color:#fff; text-align:center;
+		}
+		#prog span {
+			font-family:"宋体";
+		}
+		#bar {
+			width:0%; height:16px; background:url(img/bar_line.gif) repeat-x;
+			overflow:hidden; position:absolute; bottom:2px; left:2px;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var x = 0;
+			var oImg = document.getElementById("img1");
+			var aImg = document.getElementsByTagName("img");
+			var oLastImg = oImg;	// 用来记录上一张图片
+			var lastX = 0;	// 用来记录上一个点
+			var timer = null;
+			var iSpeed = 0;
+			var i = 0;
+
+			// 如果拖动的时候直接切换src图片路径的话，这样是很消耗性能的，可以通过生成一堆图片，来进行图片的切换，这样效果会更好一点喔~
+			for (var i = 1; i < 77; i++) {
+				// 在ie9中和网络不好的情况下，会看到第一轮图片一闪一闪的，因为动态创建的图片还没有加载好，这时候要预加载图片！！！
+				(function(oNewImg){
+					var oImg = new Image();
+					
+					oImg.onload = function(){
+						oNewImg.src = this.src;
+					}
+
+					oImg.src = "img/miaov ("+i+").jpg";
+					//oNewImg.src = "img/miaov ("+i+").jpg";
+					oNewImg.style.display = "none";
+					document.body.appendChild(oNewImg);
+				})(document.createElement("img"));
+
+			}
+
+			document.onmousedown=function (ev){
+				var oEvent=ev||event;
+				var disX=oEvent.clientX-x;
+				
+				clearInterval(timer);
+				
+				document.onmousemove=function (ev){
+					var oEvent=ev||event;
+					
+					x=oEvent.clientX-disX;
+					
+					move();
+					
+					iSpeed=x-lastX;
+					lastX=x;
+					
+					return false;
+				};
+				
+				document.onmouseup=function (){
+					document.onmousemove=null;
+					document.onmouseup=null;
+					
+					document.title=iSpeed;
+					
+					timer=setInterval(function (){
+						x+=iSpeed;
+						
+						move();
+					}, 30);
+				};
+				
+				function move(){
+
+					if(iSpeed>0){
+						iSpeed--;
+					}
+					else{
+						iSpeed++;
+					}
+					
+					if(iSpeed==0){
+						clearInterval(timer);
+					}
+					
+					// 每拖10px才走一张图
+					var l=parseInt(-x/10);
+					
+					if(l>0){
+						l=l%77;
+					}
+					else{
+						l=l+-Math.floor(l/77)*77;
+					}
+					
+					document.title=iSpeed;
+					
+					// 只有l值变换的时候才切换图片，大大的优化了性能喔~
+					if(oLastImg!=aImg[l]){
+						oLastImg.style.display='none';
+						aImg[l].style.display='block';
+						oLastImg=aImg[l];
+					}
+				}
+				
+				return false;
+			};
+
+		}
+	</script>
+</head>
+
+<body>
+	<img id="img1" src="img/miaov (0).jpg" />
+</body>
+</html>

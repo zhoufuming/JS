@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oForm = document.getElementById('form1');
+			// 表单特性，可以通过name值来选择标签
+
+			//alert(oForm.text1.value);
+
+			// onchange : 当值发生改变的时候触发
+			/*
+				text : 当光标离开的时候如果内容有变化就触发
+				radio/checkbox : 标准下点击的时候只要值变了就触发
+						非标准下焦点离开的时候如果值变了就会触发
+			*/
+			oForm.text1.onchange = function(){
+				alert(this.value);
+			}
+
+			//alert(oForm.sex.value);	// 获取到的是一个数组
+			oForm.sex[0].onchange = function(){
+				alert(this.value);
+			}
+
+			// alert(oForm.a);	 //也是获取一个数组
+			oForm.a[0].onchange = function(){
+				alert(this.value);
+			}
+
+			// alert(oForm.city);	//是一个对象
+			oForm.city.onchange = function(){
+				alert(this.value);
+			}
+
+			oForm.btn.onclick = function(){
+				// 检查radio/checkbox元素是否被选中
+				// alert( oForm.sex[0].checked);
+
+				for (var i = 0; i < oForm.sex.length; i++) {
+					if (oForm.sex[i].checked) {
+						alert(oForm.sex[i].value + '是选中状态');
+					}else{
+						alert(oForm.sex[i].value + '是非选中状态');
+					}
+				}
+
+				for (var i = 0; i < oForm.a.length; i++) {
+					if (oForm.a[i].checked) {
+						alert(oForm.a[i].value + '是选中状态');
+					}else{
+						alert(oForm.a[i].value + '是非选中状态');
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<form id="form1">
+		<input type="text" name="text1" value="内容">
+
+		<input type="radio" name="sex" value="1" checked>男
+		<input type="radio" name="sex" value="0">女
+
+		<input type="checkbox" name="a" value="html">html
+		<input type="checkbox" name="a" value="css">css
+		<input type="checkbox" name="a" value="javascript">javascript
+
+		<select name="city" value="">
+			<option>请选择城市</option>
+			<option value="上海">上海</option>
+			<option value="北京" selected>北京</option>
+		</select>
+
+		<input type="button" name="btn" value="确定">
+	</form>
+</body>
+</html>

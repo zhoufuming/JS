@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div{
+			width: 100px;height: 100px;background: #aaa;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var oText1=document.getElementById('text1');
+			var oText2=document.getElementById('text2');
+			var oBtn1=document.getElementById('btn1');
+			var oDiv1=document.getElementById('div1');
+			oBtn1.onclick=function(){
+				//oDiv1.style.otext1.value=oText2.value; 是错误的写法 后面的值是无法改变的
+				//会变的属性（全局的变量）用[]括起来，[]里面的值可以随便写！！！
+				//JS里面的“.”可以替换成“['']”
+				oDiv1.style[oText1.value]=oText2.value;
+			}
+		}
+	</script>
+</head>
+<body>
+	请输入属性名称：<input type="text" name="" id="text1"></br>
+	请输入属性值：<input type="text" name="" id="text2"></br>
+	<input type="button" name="" id="btn1" value="确定">
+	<div id="div1"></div>
+</body>
+</html>

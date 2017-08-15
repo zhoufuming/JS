@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.red{
+			width: 200px;background: red;color: yellow;padding: 10px;border: 10px solid black;
+		}
+		.blue{
+			width: 200px;background: blue;color: yellow;padding: 10px;border: 10px solid black;
+		
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oBtn1 = document.getElementById('btn1');
+		var oBtn2 = document.getElementById('btn2');
+		var oBtn3 = document.getElementById('btn3');
+		var oBtn4 = document.getElementById('btn4');
+		var oP1 = document.getElementById('p1');
+		var num = 15;
+		oBtn1.onclick=function(){
+			if (num>12) {
+			   num --;
+			// num=num-1;
+			// num-=num;  
+			// 这三种写法都是一样的意思
+				oP1.style.fontSize=num+'px';
+				alert(num);
+			// JS中不允许出现“-”所以 font-size 要写成 fontSize
+		 	}
+		 	//if语句设置字体不能小于12
+		}
+		oBtn2.onclick=function(){
+			if (num<22){
+				num ++;
+				oP1.style.fontSize=num+'px';
+				alert(num);
+			}
+			//if语句设置字体不能大于22
+		}
+		oBtn3.onclick=function(){
+			oP1.className='red';
+			// 当要设置的样式太长时，就在style里面设置，再在通过JS添加class来引入
+			// 不能直接用class='red' 因为从在JS中class为保留字 所以要写成className 
+			// var function 为关键字 
+		}
+		oBtn4.onclick=function(){
+			oP1.className='blue';
+		}
+	}
+	</script>
+</head>
+<body>
+	<input type="button" name="" id="btn1" value="-">
+	<input type="button" name="" id="btn2" value="+">
+	<input type="button" name="" id="btn3" value="红">
+	<input type="button" name="" id="btn4" value="蓝">
+	<p id="p1">12日，有网友在一家餐馆偶遇窦唯，当天他戴着黑框眼镜坐在餐桌前安静的吃饭，如此接地气的窦唯视若无物，完全沉浸在美食的世界中。为此有网友表示:对于他，这样太舒服了，比荧幕前那些作秀的男人强多了，他本来就不羁放纵。不过也有人调侃:还以为傅国生出狱了呢。</p>
+
+</body>
+</html>

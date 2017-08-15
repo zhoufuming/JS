@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oBtn = document.getElementById('btn1');
+		var oText = document.getElementById('text1');
+		var oSelect = document.getElementById('select1');
+		oBtn.onclick=btn;
+		function btn(){
+			// alert(oBtn.value);
+			// alert(oText.value);
+			//alert(oSelect.value);
+			//alert(oText.value+'在'+oSelect.value);
+			// 以上为属性的读操作   元素.属性
+			// 
+		   // oText.value='Button';
+		   // oBtn.value='按钮';
+		   // 以上为属性的替换操作
+			   oText.value = oSelect.value;
+		};
+	};
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="text1" value="">
+	<select id="select1">
+		<option value="北京">北京</option>
+		<option value="上海">上海</option>
+		<option value="杭州">杭州</option>
+	</select>
+	<input type="button" id="btn1" name="" value="确定">
+</body>
+</html>

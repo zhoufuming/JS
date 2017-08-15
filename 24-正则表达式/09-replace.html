@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		var str = "abcdaAbcd";
+
+		alert(str.replace("a","T"));	//TbcdaAbcd 只会替换一个a
+		alert(str.replace(/a/gi,"T"));	//TbcdTTbcd 会替换所有的a和A
+	</script>
+</head>
+<body>
+
+</body>
+</html>

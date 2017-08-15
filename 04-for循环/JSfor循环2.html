@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		li{
+			border-bottom: 1px solid black;height: 30px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl=document.getElementById('list');
+			var aLi=oUl.getElementsByTagName('li');
+			var arr=['星期一','星期二','星期三','星期四','星期五','星期六','星期日']; //注意数组的格式，别敲错了喔~~
+			// for (var i=0;i<aLi.length;i++){
+			// 	aLi[i].innerHTML=arr[i];
+			// };
+			var len=aLi.length;
+			for (var i=0;i<len;i++){
+				aLi[i].innerHTML=arr[i];
+			};
+			//和上面方法的结果是一样的，区别是第二个方法比第一个加载速度快，因为如果先定于一个变量数组储存起来，就不用每次循环都计算一次；--优化性能
+		};
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

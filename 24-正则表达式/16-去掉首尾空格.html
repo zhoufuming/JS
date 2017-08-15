@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	// 去掉首尾的空格，保留其他空格
+		var str = "  asd sadf   ";
+		//var re = /^\s+/;	// 行首空格
+		//var re = /\s+$/;	// 行尾空格
+		var re = /^\s+|\s+$/g;	// 行首行尾空格
+
+		alert("("+str.replace(re,"")+")");
+	</script>
+</head>
+<body>
+
+</body>
+</html>

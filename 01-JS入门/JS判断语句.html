@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oText1=document.getElementById('text1');
+			var oButton1=document.getElementById('button1');
+			
+			oButton1.onclick=function(){
+			if(oText1.value==''){
+				alert('口令不能为空');
+			}
+			 else if (oText1.value=='CSS') {
+				alert('你输入的口令是CSS，恭喜通过')
+			}
+			else if (oText1.value=='HTML') {
+				alert('你输入的口令是HTML，恭喜通过')
+			}
+			else if (oText1.value=='JS') {
+				alert('你输入的口令是JS，恭喜通过')
+			}
+			else {
+				alert('不好意思，你输入的口令是'+oText1.value+'不能通过！！！')
+			}
+			}
+		}
+	</script>
+</head>
+<body>
+	请输入口令：<input type="text" name="" id="text1">
+	<input type="button" name="" id="button1" value="验证">
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oText1=document.getElementById('text1');
+			var oButton1=document.getElementById('button1');
+			var oImg=document.getElementById('img1');
+			var oText2=document.getElementById('text2');
+			var oButton2=document.getElementById('button2');
+			var oP1=document.getElementById('p1');
+			oButton1.onclick=changeBg;	
+			oButton2.onclick=changeText;
+			function changeBg(){
+				oImg.src=oText1.value;
+			}
+			function changeText(){
+				oP1.innerHTML=oText2.value;
+				oText2.value='';
+				// innerHTML 该标签内部的HTML代码 也可以在里面加上任何内容，如加上标签：<img src="img/1-1.jpg">
+				// oText2.value=''; 清空文本框的文字
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="text1">
+	<input type="button" name="" id="button1" value="替换">
+	<br/>
+	<img src="../img/1-1.jpg" width="200px" id="img1">
+	<br/>
+	<input type="text" name="" id="text2">
+	<input type="button" name="" id="button2" value="按钮">
+	<p id="p1">这是一段文字···</p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl=document.getElementById('list');
+			var aUl=oUl.getElementsByTagName('ul');
+			var aLi='';
+			for (var i = 0; i < aUl.length; i++) {
+				aLi=aUl[i].getElementsByTagName('li');
+				for (var j = 0; j < aLi.length; j++) {
+			//for循环套for循环，如果中间没有函数包着，就要换一个变量了~~
+					aLi[j].style.color='red';
+					aLi[j].style.borderBottom='1px solid red';//注意格式的书写
+				}
+			}	
+			//通过JS的二维数组方法找到ul中的ul的li~~~		
+		}
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li>
+			<h2>我的好友</h2>
+			<ul>
+				<li>张三</li>
+				<li>李四</li>
+			</ul>
+		</li>
+		<li>
+			<h2>我的亲人</h2>
+			<ul>
+				<li>张小三</li>
+				<li>李小四</li>
+			</ul>
+		</li>
+		<li>
+			<h2>我的黑名单</h2>
+			<ul>
+				<li>死张三</li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background: url(../img/timerBg1.jpg) no-repeat center 0;
+		}
+		img{
+			width: 350px;height: 300px;border: 10px solid #ccc;margin-top:100px;
+			margin-left: 400px;display: none; transition: all 500ms ease;
+
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oImg=document.getElementsByTagName('img')[0];
+		var timer1=null;
+		var timer2=null;
+		var onOff=true;
+
+		function fn1(){
+			oImg.style.display='block';		//1s后显示
+			setTimeout(function(){			//3s后隐藏
+				oImg.style.display='none';
+			},3000);
+		}
+		
+		function fn2(){
+			if (onOff) {
+				oImg.style.cssText='width:450px;margin-left:375px;height:350px;margin-top:75px;';
+				onOff=false;
+			}
+			else{
+				oImg.style.cssText='';
+				onOff=true;
+			}
+		}
+		//
+		timer1=setTimeout(fn1,1000);		//好像两个有冲突呢~~
+		//timer2=setInterval(fn2,100);
+
+	}
+	</script>
+</head>
+<body>
+	<img src="../img/timerPic1.jpg">
+</body>
+</html>

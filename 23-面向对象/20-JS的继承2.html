@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	//	继承：先执行父级的构造函数，然后再添加子类的属性
+		function Person(name,sex){
+			this.name = name;
+			this.sex = sex;
+		}
+
+		Person.prototype.showName = function(){
+			alert(this.name);
+		}
+
+		Person.prototype.showSex = function(){
+			alert(this.sex);
+		}
+
+		function Worker(name,sex,job){
+			// 调用父级的构造函数（构造函数伪装）--为了继承属性
+			Person.call(this,name,sex);// call的作用是让这里面的this指向Worker
+			
+			this.job = job;
+		}
+
+		// 原型链 通过原型来继承父级的方法
+		//Worker.prototype = Person.prototype;//这样写是有问题的，涉及到引用的概念，子级改变，父级也会变了
+		for (var i in Person.prototype){
+			Worker.prototype[i] = Person.prototype[i];
+		}
+
+		Worker.prototype.showJob = function(){
+			alert(this.job);
+		}
+
+		var oW1 = new Worker("zhou","男","打杂的");
+		oW1.showName();
+		oW1.showJob();
+	</script>
+</head>
+<body>
+
+</body>
+</html>

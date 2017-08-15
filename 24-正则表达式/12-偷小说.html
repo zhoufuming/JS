@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.addEventListener("load",function(){
+			var oText1 = document.getElementById("text1");
+			var oText2 = document.getElementById("text2");
+			var oBtn = document.getElementById("btn1");
+
+			oBtn.addEventListener("click",function(){
+				//var re = /<.+>/g;	// 匹配所有的<>对的字符串,不过这样写会有问题，正则是很贪婪的，会匹配的“ <div><p></p></div> ”,所以，要把<>里面的<>的排除掉
+				var re = /<[^<>]+>/g;
+
+				oText2.value = oText1.value.replace(re,"");
+
+			});
+		});
+	</script>
+</head>
+<body>
+	<textarea id="text1" rows="10" cols="40"></textarea><br/>
+	<input id="btn1" type="button" name="" value="过滤"><br/>
+	<textarea id="text2" rows="10" cols="40"></textarea>
+</body>
+</html>

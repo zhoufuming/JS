@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		ul{
+			padding: 0;margin: 0;
+		}
+		a{
+			text-decoration: none;color: #fff;
+		}
+		li{
+			list-style: none;
+		}
+		ul li{
+			height: 20px;width: 100px;background: red;text-align: center;border: 1px solid #000;float: left;color: #fff;
+		}
+		#ul li{
+			background: #f0f;
+		}
+		#li1 ul{
+			display: none;
+		}
+	</style>
+	<script>
+		// window.onload=function(){}  载入页面完成后再执行该函数
+		// document.getElementById('link') 在文档中找到某个id为link的元素
+		// var ul=document.getElementById('ul') 声明变量ul是文档中id=ul的元素
+		// 
+		   window.onload=function(){
+		    var ul=document.getElementById('ul');
+		   	var li1 = document.getElementById('li1');
+		   	li1.onmouseover=show;
+		   	li1.onmouseout=hide;
+		   	function show(){
+		   		ul.style.display = 'block';
+		   		li1.style.background = '#f0f';
+		   	}
+		   	function hide(){
+		   		ul.style.display = 'none';
+		   		li1.style.background = 'red';
+		   	}
+		   }
+	</script>
+</head>
+<body>
+	<ul>
+		<li id="li1">
+		<a href="" id="link">商品分类</a>
+			<ul id="ul">
+				<li><a href="">男装女装</a></li>
+				<li><a href="">鞋子箱包</a></li>
+				<li><a href="">母婴用品</a></li>
+				<li><a href="">珠宝配饰</a></li>
+			</ul>
+		</li>
+		<li>用户登录</li>
+		<li>联系客服</li>
+	</ul>
+
+	<!-- /*
+	JS中如何获取元素：
+		1、通过ID名称来获取元素：
+				document get element by id 'link'
+				docuemnt.getElementById('link');
+		2
+		……
+	
+	事件：鼠标事件、键盘事件、系统事件、表单事件、自定义事件……
+	
+		onclick
+		onmouseover
+		onmouseout
+		onmousedown
+		onmouseup
+		onmousemove		就像是鼠标抚摸一样的事件
+		……
+		
+		onload				加载完以后执行……
+		window.onload = 事情
+		img.onload
+		body.onload
+		……
+		
+	如何添加事件：
+		元素.onmouseover
+		
+	函数：可以理解为-命令，做一些事~~
+		function abc(){		// 肯定不会主动执行的！
+			……
+		}
+		1、直接调用：abc();
+		2、事件调用：元素.事件 = 函数名 oDiv.onclick = abc;
+		
+		function (){}		匿名函数
+		元素.事件 = function (){};
+		
+	
+	测试：
+		alert(1);		带一个确定按钮的警告框
+		alert('ok');	'ok' 字符串
+		alert("ok");
+		
+	变量：
+		var li = document.getElementById('lis');
+		var num = 123;
+		var name = 'leo';
+*/ -->
+</body>
+
+</html>

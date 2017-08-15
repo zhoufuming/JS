@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div{
+			height: 200px;
+			width: 100px;
+			border: 1px solid red;
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+
+			/*
+				阻止冒泡：当前要阻止冒泡的事件函数调用
+				IE浏览器 : event.cancelBubble = true;
+				w3c的方法是	: event.stopPropagation();
+			*/
+
+			var oBtn = document.getElementById('btn');
+			var oBox = document.getElementById('div1');
+
+			oBtn.onclick = function(ev){
+				
+				// 兼容写法
+				var ev = ev || event;
+
+				if(ev && event.stopPropagation)
+				{
+					ev.stopPropagation();
+				}
+				else
+				{
+					event.cancelBubble = true;
+				}
+
+				//阻止当前对象的当前事件的冒泡（而当前对象的其他事件的冒泡还会进行）
+
+				oBox.style.display = 'block';
+			}
+
+			document.onclick = function(){
+
+				/*setTimeout(function(){
+					oBox.style.display = 'none';
+				},1000);*/
+
+				oBox.style.display = 'none';
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="按钮" id="btn">
+	<div id="div1"></div>
+	<p>ppp</p>
+	<p>ppp</p>
+	<p>ppp</p>
+	<p>ppp</p>
+</body>
+</html>

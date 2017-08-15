@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		var str = "abc 321 asdf465 46a8sfd5";
+		var re1 = /\d/g;	// g -> global 全局，找出所有的数字
+
+		alert(str.match(re1));// 返回一个数组 3,2,1,4,6,5,46,8,5
+
+		var re2 = /\d\d/g;	// 找出连在一起的两个数字
+		alert(str.match(re2));// 也是返回一个数组 32,46,46
+
+		var re3 = /\d+/g;	// + 表示量词 找出所有数字，并且连在一起的会划分到同一项中
+		alert(str.match(re3));// 也是返回一个数组 321,465,46,8,5
+	</script>
+</head>
+<body>
+
+</body>
+</html>

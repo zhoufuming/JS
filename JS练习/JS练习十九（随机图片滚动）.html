@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		ul{
+			width: 210px;margin: 0 auto;background: #ccc;height: 220px;
+			padding: 5px;
+		}
+		li{
+			width: 100px;height: 50px;overflow: hidden;float: left;
+			margin-bottom: 5px;	/*position: relative;*/
+			list-style:none;
+		}
+		/* 给单数的li加上右外边距 */
+		li:nth-of-type(2n+1){		
+			margin-right: 10px;
+		}
+		figure{
+			width: 100px;height: 50px;position: relative;top:0px; 
+			/* 会有18px的偏差？？？ */
+			margin: 0;padding: 0;transition: top 1s ease;
+		}
+		figure img{
+			width: 100px;height: 50px;float: left;
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl = document.getElementById('list');
+			var aLi = oUl.getElementsByTagName('li');
+			var aFig = 	oUl.getElementsByTagName('figure');
+
+			setInterval(function(){
+				fn1();
+			},1000);
+
+			setInterval(function(){
+				fn1();
+			},600);
+
+			function fn1(){
+				var num1 = Math.round(Math.random()*7);
+				var num2 = Math.round(Math.random()*5);
+				
+				aFig[num1].style.top = -(num2*50) + 'px';
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li>
+			<figure>
+				<img src="./img/8-1.png">
+				<img src="./img/8-2.png">
+				<img src="./img/8-10.png">
+				<img src="./img/8-1.png">
+				<img src="./img/8-2.png">
+				<img src="./img/8-10.png">
+			</figure>
+		</li>
+		<li>
+			<figure>
+				<img src="./img/8-3.png">
+				<img src="./img/8-4.png">
+				<img src="./img/8-1.png">
+				<img src="./img/8-3.png">
+				<img src="./img/8-4.png">
+				<img src="./img/8-1.png">
+			</figure>
+		</li>
+		<li>
+			<figure>
+				<img src="./img/8-5.png">
+				<img src="./img/8-6.png">
+				<img src="./img/8-15.png">
+				<img src="./img/8-5.png">
+				<img src="./img/8-6.png">
+				<img src="./img/8-15.png">
+			</figure>
+		</li>
+		<li>
+			<figure>
+				<img src="./img/8-7.png">
+				<img src="./img/8-8.png">
+				<img src="./img/8-16.png">
+				<img src="./img/8-7.png">
+				<img src="./img/8-8.png">
+				<img src="./img/8-16.png">
+			</figure>
+		</li>
+		<li>
+			<figure>
+				<img src="./img/8-9.png">
+				<img src="./img/8-10.png">
+				<img src="./img/8-5.png">
+				<img src="./img/8-9.png">
+				<img src="./img/8-10.png">
+				<img src="./img/8-5.png">
+			</figure>
+		</li>
+		<li>
+			<figure>
+				<img src="./img/8-11.png">
+				<img src="./img/8-12.png">
+				<img src="./img/8-2.png">
+				<img src="./img/8-11.png">
+				<img src="./img/8-12.png">
+				<img src="./img/8-2.png">
+			</figure>
+		</li>
+		<li>
+			<figure>
+				<img src="./img/8-13.png">
+				<img src="./img/8-14.png">
+				<img src="./img/8-7.png">
+				<img src="./img/8-13.png">
+				<img src="./img/8-14.png">
+				<img src="./img/8-7.png">
+			</figure>
+		</li>
+		<li>
+			<figure>
+				<img src="./img/8-15.png">
+				<img src="./img/8-16.png">
+				<img src="./img/8-1.png">
+				<img src="./img/8-15.png">
+				<img src="./img/8-16.png">
+				<img src="./img/8-1.png">
+			</figure>
+		</li>	
+	</ul>
+</body>
+</html>

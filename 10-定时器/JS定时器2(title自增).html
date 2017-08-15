@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	var i=0;
+	var timer=null;
+
+	function fn1(){		
+		document.title=i;
+		i++;
+		if (i===10) {			//当i=10,就清除定时器
+			clearInterval(timer);
+		}
+	}
+	
+	timer=setInterval(fn1,1000);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#div1{
+			width: 100px;height: 100px;background: red;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+	// 	getId('btn1').onclick=function(){	//将函数传参与return结合起来，简化获取id的代码~~
+	// 		alert(getId('div1').innerHTML);
+	// 	}
+	// }
+	// 	function getId(id){
+	// 		return document.getElementById(id);
+	// 	}
+		
+
+		$('btn1').onclick=function(){			//将getId => $ 也可以，只是一个命名而已~~
+			alert($('div1').innerHTML);
+		}
+	}
+	
+		function $(id){
+			return document.getElementById(id);
+		}
+	
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="确定" id="btn1">
+	<div id="div1">123</div>
+</body>
+</html>

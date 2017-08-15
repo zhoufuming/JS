@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	</style>
+	<script type="text/javascript">
+		var zoomLevel = 0; 
+		var currentWidth = 0; 
+		var currentHeight = 0; 
+		var originalWidth = 0; 
+		var originalHeight = 0; 
+		function initial(){ 
+		    currentWidth = document.myImage.width; 
+		    currentHeight = document.myImage.height; 
+		    originalWidth = currentWidth; 
+		    originalHeight = currentHeight; 
+		    update(); 
+		} 
+		function zoomIn(){ 
+		    document.myImage.width = currentWidth*1.2; 
+		    document.myImage.height = currentHeight*1.2; 
+		    zoomLevel = zoomLevel + 1; 
+		    update(); 
+		} 
+		function zoomOut(){ 
+		    document.myImage.width = currentWidth/1.2; 
+		    document.myImage.height = currentHeight/1.2; 
+		    zoomLevel = zoomLevel - 1; 
+		    update(); 
+		} 
+		// function resetImage(){ 
+		//     document.myImage.width = originalWidth; 
+		//     document.myImage.height = originalHeight; 
+		//     zoomLevel = 0; 
+		//     update(); 
+		// } 
+		function update(){ 
+		    currentWidth = document.myImage.width; 
+		    currentHeight = document.myImage.height; 
+		    zoomsize.innerText = zoomLevel; 
+		    imgsize.innerText = currentWidth + "X" + currentHeight; 
+		}
+	</script>
+</head>
+<body onload="initial()"> 
+
+<input type="button" value="放大图片" onclick="zoomIn()"> 
+<input type="button" value="缩小图片" onclick="zoomOut()"> 
+<!-- <input type="button" value="重置图片" onclick="resetImage()">  -->
+<span id="zoomsize"></span> <span id="imgsize"></span></p> 
+
+<div id="biankuang" data-orient="center"> 
+<img name="myImage" src="img/1-1.jpg" alt="pic" height="500px;" />     //引入本地图片 
+</div> 
+
+<p> 
+
+</body>
+</html>

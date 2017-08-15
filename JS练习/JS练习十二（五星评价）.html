@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#wrap{
+			width: 500px;height: 40px;padding-top: 18px;background: url(./img/list7.png) 250px 10px #fff no-repeat;
+		}
+		img{
+			width: 20px;height: 22px;cursor: pointer;
+		}
+		span{
+			color: #ef7300;font-weight: bold;padding-left:5px;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oWrap=document.getElementById('wrap');
+		var aImg=oWrap.getElementsByTagName('img');
+		var oSpan=oWrap.getElementsByTagName('span')[0];
+		var arrUrl=['./img/list5.png','./img/list6.png','./img/list4.png'];
+		var arrText=['很差','较差','还行','很好','非常好'];
+		oWrap.onmouseover=function(){
+			oWrap.style.background='#fff';
+		}
+		for (var i = 0; i < aImg.length; i++) {
+			aImg[i].index=i;
+			aImg[i].onclick=function(){
+				for (var i = 0; i < aImg.length; i++) {
+					aImg[i].src=arrUrl[2];
+				}
+				oSpan.innerHTML=arrText[this.index];			
+				if (this.index<2) {
+					for (var j = 0; j < this.index+1; j++) {
+						aImg[j].src=arrUrl[1];
+					};
+				}else{
+					for (var j = 0; j < this.index+1; j++) {
+						aImg[j].src=arrUrl[0];
+					};
+				}
+			}
+		}
+		//alert(aImg.length);
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<b>总体评价：</b>
+		<img src="./img/list4.png">
+		<img src="./img/list4.png">
+		<img src="./img/list4.png">
+		<img src="./img/list4.png">
+		<img src="./img/list4.png">
+		<span></span>
+	</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		var txt = "what are you 弄啥咧";
+		console.log(txt.length);	// 输出为16,但其实汉字是占两个字节的 应该输出19
+
+		 function getStringLength(str) {
+		 	var len = 0;	// 存储总长度
+		 	var c = 0;		// 存储每一个编码
+		 	for (var i = 0; i < str.length; i++) {
+		 		c = str.charCodeAt(i);
+
+		 		// unicode编码中，超过127的都是占两个字节的！！！
+		 		if (c >= 0 && c <= 127) {
+		 			len++;
+		 		}
+		 		else {
+		 			len += 2;
+		 		} 	
+		 	}
+		 	return len;
+		 }
+		 console.log(getStringLength(txt));
+	</script>
+</head>
+<body>
+
+</body>
+</html>

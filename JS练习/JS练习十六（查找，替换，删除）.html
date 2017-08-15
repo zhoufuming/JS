@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background: #ccc;
+		}
+		#wrap{
+			height: 600px; width: 500px;margin: 0 auto;position: relative;
+		}
+		p{
+			border: 10px solid #aaa;width: 480px;height: 300px;margin: 0;
+		}
+		form{
+			width: 440px;border: 10px solid #5fada2;height: 100px;
+			padding: 20px;display: none;
+		}
+		ul{
+			padding: 0;position: absolute;top: -16px;right: -80px;
+			cursor: pointer;height: 50px;transition: all 500ms ease;
+			overflow: hidden;
+		}
+		li{
+			list-style: none;width: 80px;height: 40px;font-size: 18px;
+			text-align: center;background: #767692;line-height: 40px;
+			margin-top:2px; 
+		}
+		li:hover{
+			background: #3d3dab;
+		}
+		ul:hover{
+			height: 140px;
+		}
+		h2{
+			margin: 0;height: 50px;line-height: 50px;font-size: 20px;
+			text-align: center;width: 80px;background: #888;color: #fff;
+		}
+		#box1{
+			clear: both;width: 440px;height: 60px;display: none;
+		}
+		#box2{
+			clear: both;width: 440px;height: 60px;display: none;
+		}
+		#box1,#box2{
+			border-top: 1px solid #229e5f;padding-top: 10px;
+		}
+		h3{
+			width: 60px;height: 25px;line-height: 25px;text-align: center;float: left;
+			margin: 0;background: #6b9e84;cursor: pointer;/*border-right:1px solid #cccccc;
+			border-left:1px solid #cccccc;*/
+		}
+		hr{
+			clear: both;
+		}
+		input{
+			height: 30px;
+		}
+		span{
+			position: absolute;top: 340px;right: 20px;font-size: 25px;cursor:pointer;
+		}
+		strong{
+			background: #229e5f;
+		}
+		.active{
+			background: #229e5f;border: none;border: 1px solid #ccc;color: #fff;
+			border-bottom: none;
+		}
+		/*input~button{
+
+		}*/
+	</style>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			var oWrap = document.getElementById('wrap');
+			var oP = oWrap.getElementsByTagName('p')[0];
+			var oSpan = oWrap.getElementsByTagName('span')[0];
+			var oForm = oWrap.getElementsByTagName('form')[0];
+			var aH3 = oWrap.getElementsByTagName('h3');
+			var aLi = oWrap.getElementsByTagName('li');
+			var oBox1 = document.getElementById('box1');
+			var oBox2 = document.getElementById('box2');
+			var aInp1 = oBox1.getElementsByTagName('input');
+			var aInp2 = oBox2.getElementsByTagName('input');
+			var oPstr = oP.innerHTML;
+
+			aLi[0].onclick=function(){
+				show(oBox1,oBox2,aH3[0],aH3[1]);
+			}
+
+			aLi[1].onclick=function(){
+				show(oBox2,oBox1,aH3[1],aH3[0]);
+			}
+
+			aH3[0].onclick=function(){
+				show(oBox1,oBox2,aH3[0],aH3[1]);
+			}
+
+			aH3[1].onclick=function(){
+				show(oBox2,oBox1,aH3[1],aH3[0]);
+			}
+
+			function show(a,b,c,d){
+				oForm.style.display = 'block';
+				a.style.display = 'block';
+				b.style.display = 'none';
+				c.className = 'active';
+				d.className = '';
+			}
+
+			oSpan.onclick=function(){
+				oForm.style.display = 'none';
+			}
+
+			aInp1[1].onclick=function(){
+				oP.innerHTML = oPstr;
+				var str = aInp1[0].value;
+				//var onOff =true;
+
+				if (!str) {
+					alert('请输入要查找的内容！！！');
+					return;
+					//如果输入空值就弹出提示并跳出这条函数外！！！
+				}	
+
+				if (oPstr.indexOf(str)==-1) {
+					alert('您输入的内容不存在，请重新输入！！！');
+					return;
+				}
+
+				oP.innerHTML = oP.innerHTML.split(str).join('<strong>'+str+'</strong>');
+				//先通过关键字将p标签分割成数组，再用strong标签加关键字补到数组里面，最后再转会字符串！！！
+				aInp1[0].value = '';
+			}
+
+			aInp2[2].onclick=function(){
+				oP.innerHTML = oPstr;
+				var str = aInp2[0].value;
+				var Newstr = aInp2[1].value;
+
+				if (!str) {
+					alert('请输入要替换的文本！！！');
+					return;
+				}
+
+				if (!Newstr) {
+					//alert('你确定要删除“'+str+'”吗？');
+					var re = confirm('你确定要删除“'+str+'”吗？');
+
+					if (re) {
+						oP.innerHTML = oP.innerHTML.split(str).join('');
+						oPstr = oP.innerHTML;
+					}else{
+						return;
+					}
+
+				}else{
+					oP.innerHTML = oP.innerHTML.split(str).join('<strong>'+Newstr+'</strong>');
+				}
+
+				aInp2[0].value = '';
+				aInp2[1].value = '';
+			}	
+		}
+	</script>
+</head>
+<body>
+
+	<div id="wrap">
+
+		<p>有“翻版舒淇”之称的模特陈育嬬，因2001年参选华裔小姐为大众所熟知，08年却意外卷入不雅照风波，据媒体透露，早在2001年，陈冠希参与华裔小姐外景拍摄时曾大赞她样貌和身材正点，还曾在推特晒过两人的亲密合影，从而被媒体认定其便是艳照门的女主角之一，艳照门爆发后，陈育嬬不知所踪.有“翻版舒淇”之称的模特陈育嬬，因2001年参选华裔小姐为大众所熟知，08年却意外卷入不雅照风波，据媒体透露，早在2001年，陈冠希参与华裔小姐外景拍摄时曾大赞她样貌和身材正点，还曾在推特晒过两人的亲密合影，从而被媒体认定其便是艳照门的女主角之一，艳照门爆发后，陈育嬬不知所踪.有“翻版舒淇”之称的模特陈育嬬，因2001年参选华裔小姐为大众所熟知，08年却意外卷入不雅照风波，据媒体透露，早在2001年，陈冠希参与华裔小姐外景拍摄时曾大赞她样貌和身材正点，还曾在推特晒过两人的亲密合影，从而被媒体认定其便是艳照门的女主角之一，艳照门爆发后，陈育嬬不知所踪.
+		</p>
+
+		<form>
+			<span>☆</span>
+			<h3>查找</h3><h3>替换</h3>
+			<!-- <hr /> -->
+
+			<div id="box2">
+				<input type="" name="">
+				<input type="" name="">
+				<input type="button" name="" value="替换" style="background: #34af70;">
+			</div>
+
+			<div id="box1">
+				<input type="" name="">
+				<input type="button" name="" value="查找" style="background: #34af70;">
+			</div>
+		</form>
+
+		<ul>
+			<h2>展开</h2>
+			<li>查找</li>
+			<li>替换</li>
+		</ul>
+	</div>
+</body>
+</html>

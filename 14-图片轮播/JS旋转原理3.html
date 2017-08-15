@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="icon" href="../img/ico3.ico" />		<!-- 插入标题图片 -->
+	<link rel="short icon" href="../img/ico3.ico" />
+	<title></title>
+	<style>
+		a{
+			position: absolute;top: 250px;z-index:4;width: 80px;height: 40px;/*background-color: #fff;*/
+			text-align: center;text-decoration: none;font-size: 20px;color: aqua;opacity: 0.9;
+			font-weight: bolder;
+		}
+		img{
+			position: absolute;transition: all 500ms ease;/*box-shadow: 00px 10px 10px #ccc;*/
+			-webkit-box-reflect:below 10px -webkit-linear-gradient(bottom, rgba(0,0,0,0.2) 20%,rgba(210,200,100,0)70%);
+		}
+		.pic1{
+			top: 200px;left: 900px;width: 200px;height: 150px;z-index: 1;opacity: 0.7;
+		}
+		.pic2{
+			top: 180px;left: 730px;width: 300px;height: 200px;z-index: 2;opacity: 0.9;
+		}
+		.pic3{
+			top: 140px;left: 550px;width: 400px;height: 280px;z-index: 3;opacity: 1;
+		}
+		.pic4{
+			top: 180px;left: 460px;width: 300px;height: 200px;z-index: 2;opacity: 0.9;
+		}
+		.pic5{
+			top: 200px;left: 380px;width: 200px;height: 150px;z-index: 1;opacity: 0.7;
+		}
+	</style>
+	<script type="text/javascript" src="../zhou.js"></script>
+	<script type="text/javascript">
+	window.onload = function(){
+		var aBtn = document.getElementsByTagName('a');
+		var aPic = document.getElementsByTagName('img');
+		var arr = [];
+
+		for (var i = 0; i < aPic.length; i++) {
+			arr.push([getStyle(aPic[i],'left'),getStyle(aPic[i],'top'),getStyle(aPic[i],'width'),getStyle(aPic[i],'height'),getStyle(aPic[i],'opacity'),getStyle(aPic[i],'z-index')]);
+		}
+
+		aBtn[0].onclick=function(){
+			arr.push(arr.shift());		
+			arrStyle();
+		}
+
+		aBtn[1].onclick=function(){
+			arr.unshift(arr.pop());
+			arrStyle();
+		}
+
+		function arrStyle(){
+			for (var i = 0; i < aPic.length; i++){
+				aPic[i].style.left = arr[i][0];
+				aPic[i].style.top = arr[i][1];
+				aPic[i].style.width = arr[i][2];
+				aPic[i].style.height = arr[i][3];
+				aPic[i].style.opacity = arr[i][4];
+				aPic[i].style.zIndex = arr[i][5];
+				}
+			}
+
+	}
+	</script>
+</head>
+<body>
+	<a href="javascript:;" style="left:550px;"><上一张</a>
+	<a href="javascript:;" style="left:870px;">下一张></a>
+	<img class="pic1" src="../img/4-3.jpg" />
+	<img class="pic2" src="../img/4-5.jpg" />
+	<img class="pic3" src="../img/4-6.jpg" />
+	<img class="pic4" src="../img/4-7.jpg" />
+	<img class="pic5" src="../img/4-9.jpg" />
+</body>
+</html>

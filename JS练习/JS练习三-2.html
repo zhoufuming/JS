@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div{
+			width: 50px;height: 50px;font-size: 30px;line-height: 50px;color: #fff;background: red;text-align: center;
+			border: 1px solid #fff;float: left;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var aDiv=document.getElementsByTagName('div');
+			var arr='';
+			var l=[i-1]%10;
+			for (var i = 0; i < 100; i++) {
+				arr+='<div>'+i+'</div>';
+				if ([i+1]%10===0) {
+					arr+='</br>'+'</br>'+'</br>';
+				}
+
+			}
+			document.body.innerHTML=arr;
+		};
+	</script>
+</head>
+<body>
+
+</body>
+</html>

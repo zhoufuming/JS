@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+<style type="text/css">
+	body {
+		font-size: 14px;
+	}
+	body ul {
+		margin: 0; padding: 0;
+	}
+	li {
+		list-style:none;
+	}
+
+	#container {
+		margin: 100px auto 0;
+		width: 1000px;
+	}
+
+	#header {
+		height: 35px; border-bottom: 2px solid #EE7510;
+	}
+	#header li {
+		float: left; padding: 0 10px; margin-right: 5px;
+		height: 35px;
+		line-height: 35px; font-size: 18px; cursor: pointer;
+	}
+	#header li.focus {
+		background-color: #EE7510;
+		color: white; font-weight: bold;
+	}
+
+	.list {
+		margin-top: 5px;
+	}
+	.list li {
+		position: relative;
+		height: 35px;
+		line-height: 35px; font-size: 16px;
+	}
+	.list li a {
+		display : inline-block;
+		height: 35px;
+	}
+	.list .date {
+		position: absolute; right: 0;
+		line-height: 35px;
+	}
+
+	#tips {
+		padding: 5px; position: absolute; left: 300px; top: 0px;
+		width: 400px; height: 200px; display: none;
+		border: 2px solid #FF7700; background-color: white;
+	}
+	#tips li.col {
+		width: 180px; height: 30px; float: left;
+		line-height: 30px; border-bottom: 1px solid #CCC;
+	}
+	#arrow {
+		position: absolute; left: -11px; top: 120px;
+		width: 11px; height: 17px; background: url("./img/arrow.png") no-repeat;
+	}
+</style>
+<script src="data.js"></script>
+<script type="text/javascript">
+	window.onload=function(){
+		var oHeader = document.getElementById('header');
+		var oListC = document.getElementById('listContent');
+		var aLi = oHeader.getElementsByTagName('li');
+		var aListCUl = oListC.getElementsByTagName('ul');
+		//var aListCLi = oListC.getElementsByTagName('li');
+		var oTips = document.getElementById('tips');
+		var oTipsContent = document.getElementById('tipsContent');
+
+		/* 初始化（数据生成） */
+
+		for (var i = 0; i < data.length; i++) {
+			//alert(data[i]['list']);
+			var oLi = document.createElement('li');
+			oLi.innerHTML = data[i]['name'];
+			oHeader.appendChild(oLi);
+
+			var oListCUl = document.createElement('ul');
+			oListCUl.className = 'list';
+			oListC.appendChild(oListCUl);
+
+		}
+
+		for (var i = 0; i < aListCUl.length; i++) {
+			for (var j = 0; j < data[i]['list'].length; j++) {
+				//alert(data[i]['list'][j]);
+				var oListCLi = document.createElement('li');
+				oListCLi.innerHTML = data[i]['list'][j]['title'];
+				aListCUl[i].appendChild(oListCLi);
+			}
+		}
+
+		/* 设置显示/隐藏 */
+
+		for (var i = 0; i < aLi.length; i++) {
+
+			aLi[i].index = i;
+			aLi[0].className = 'focus';
+			aListCUl[1].style.display = 'none';
+
+			aLi[i].onmouseover = function(){
+
+				for (var i = 0; i < aLi.length; i++) {
+					aLi[i].className = '';
+					aListCUl[i].style.display = 'none';
+				}
+			    this.className = 'focus';
+			   aListCUl[this.index].style.display = 'block';
+		    }
+		}
+
+		for (var i = 0; i < aListCUl.length; i++) {
+			
+			var aListCLi = aListCUl[i].getElementsByTagName('li');
+			//aListCUl[i].index = i;
+		   	
+		   	for (var j = 0; j < aListCLi.length; j++) {
+
+		   		aListCLi[j].num = i;
+		   		aListCLi[j].index = j;
+
+		   		aListCLi[j].onmouseover = function(){
+
+		   			oTips.style.display = 'block';
+		   			oTips.style.top = 35*(this.index)+30+'px';
+
+		   			oTipsContent.innerHTML = null;
+
+		   			/* 即时数据读取（等事件触发了才读取） */
+
+		   			var oH3 = document.createElement('h3');
+		   			oH3.innerHTML = data[0]['list'][this.index]['company'];
+		   			//alert(oH3.innerHTML);
+		   			oTipsContent.appendChild(oH3);
+
+		   			var oTipsUl = document.createElement('ul');
+					//oTipsUl.className = 'col';
+					oTipsContent.appendChild(oTipsUl);	
+
+					var oTipsLi = document.createElement('li');
+					oTipsLi.className = 'col';
+					oTipsLi.innerHTML = '<b>职位：</b>'+data[this.num]['list'][this.index]['position'];
+					oTipsContent.appendChild(oTipsLi);
+
+					oTipsLi = document.createElement('li');
+					oTipsLi.className = 'col';
+					oTipsLi.innerHTML = '<b>招聘人数：</b>'+data[this.num]['list'][this.index]['recruitingNumbers'];
+					oTipsContent.appendChild(oTipsLi);
+
+					oTipsLi = document.createElement('li');
+					oTipsLi.className = 'col';
+					oTipsLi.innerHTML = '<b>职位：</b>'+data[this.num]['list'][this.index]['workingLocation'];
+					oTipsContent.appendChild(oTipsLi);
+
+					oTipsLi = document.createElement('li');
+					oTipsLi.className = 'col';
+					oTipsLi.innerHTML = '<b>工作地点：</b>'+data[this.num]['list'][this.index]['workExperience'];
+					oTipsContent.appendChild(oTipsLi);
+
+					oTipsLi = document.createElement('li');
+					oTipsLi.className = 'col';
+					oTipsLi.innerHTML = '<b>工作经验：</b>'+data[this.num]['list'][this.index]['workExperience'];
+					oTipsContent.appendChild(oTipsLi);
+
+					oTipsLi = document.createElement('li');
+					oTipsLi.className = 'col';
+					oTipsLi.innerHTML = '<b>学历：</b>'+data[this.num]['list'][this.index]['education'];
+					oTipsContent.appendChild(oTipsLi);
+
+					oTipsLi = document.createElement('li');
+					oTipsLi.className = 'col';
+					oTipsLi.innerHTML = '<b>薪资：</b>'+data[this.num]['list'][this.index]['wage'];
+					oTipsContent.appendChild(oTipsLi);					
+
+					oTipsLi = document.createElement('li');
+					oTipsLi.className = 'col';
+					oTipsLi.innerHTML = '<b>招聘日期：</b>'+data[this.num]['list'][this.index]['addDate'];
+					oTipsContent.appendChild(oTipsLi);					
+
+
+		   		}
+		   		aListCLi[j].onmouseout = function(){
+		   			oTips.style.display = 'none';
+		   		}
+		   	}
+		}
+
+
+	}
+</script>
+</head>
+
+<body>
+	<div id="container">
+		<ul id="header"></ul>
+		<div id="listContent" style=""></div>
+	</div>
+	<div id="tips">
+		<span id="arrow"></span>
+        <div id="tipsContent"></div>
+	</div>
+</body>
+</html>

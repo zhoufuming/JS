@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	/* 函数传递参数
+	参数=JS的数据类型：
+	数字,布尔，字符串，对象，函数，未定义
+	 */
+		// fn1('100','px');
+		// function fn1(a,b){
+		// 	alert(a+b);
+		// };
+		
+		// fn2('miaov');
+		// fn2('妙味课堂');
+		// function fn2(a){
+		// 	alert(a.charAt(2));	//显示参数的第三个子字符串
+		// };
+		
+		// fn3(function(){alert(1);});
+		// function fn3(fn){
+		// 	fn();		//这时候fn为匿名函数的名称
+		// }
+		
+		// fn4(function(a){alert(a);});
+		// function fn4(fn){
+		// 	fn(100);	//以函数作为参数	a的位置与100的位置是一样的，所以100会赋值给a
+		// }
+		
+		fn5(window,document);	//传递对象
+		function fn5(w,d){
+			w.onload=function(){
+				d.body.innerHTML='<img src="../img/1-1.jpg" />';
+			};
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

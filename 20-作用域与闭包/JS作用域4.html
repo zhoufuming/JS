@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload=function(){
+		// var num=0;
+		// function fn1(){
+		// 	num++;
+		// }
+		// function fn2(){
+		// 	num--;
+		// }
+		// fn2();
+		// fn1();
+		// fn2();
+		// alert(num);
+		
+		// 想要获取函数内的值：
+		// 方法一：新建一个全局变量，赋值给全局变量
+			var str='';
+			function fn1(){
+				var a='大鸡腿~';
+				str=a;
+			}
+			fn1();
+			alert(str);
+		//方法二：局部函数变量
+			function fn2(){
+				var a='99999999克拉钻石';
+				fn3(a);
+			}
+			fn2();
+			function fn3(a){
+				alert(a);
+			}
+	}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

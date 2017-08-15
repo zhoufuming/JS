@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript" src="../zhou.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oText = document.getElementById('username');
+			var oLogin = document.getElementById('login');
+			var oDel = document.getElementById('del');
+
+			if (getCookie('username')) {
+				oText.value = getCookie('username');
+			}
+
+			oLogin.onclick = function(){
+				alert('登陆成功');
+				setCookie('username',oText.value,7);
+			}
+
+			oDel.onclick = function(){
+				removeCookie('username');
+				oText.value = '';
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="" value="" id="username">
+	<input type="button" name="" value="登陆" id="login">
+	<input type="button" name="" value="删除" id="del">
+</body>
+</html>

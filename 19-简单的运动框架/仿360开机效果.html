@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            width: 322px;
+            position: fixed;
+            bottom:0;
+            right:0;
+        }
+        span{
+            position: absolute;
+            top:0;
+            right:0;
+            width:30px;
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <span></span>
+    <div class="hd" id="t">
+        <img src="../img/t.jpg" alt=""/>
+    </div>
+    <div class="bd" id="b">
+        <img src="../img/b.jpg" alt=""/>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+
+	var box2 = document.getElementById("b");
+	var closeAd = document.getElementsByTagName("span")[0];
+	closeAd.onclick = function(){
+		animate(box2,{height:0},function(){
+			animate(box2.parentNode,{right:-332});
+		});
+	}
+
+	function animate(obj,json,endFn){
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function(){
+			// 计算步长 动画的原理	盒子本身的位置 + 步长
+			var flag = true;	// 定时器开关
+			// 开始遍历　json
+			for ( var attr in json ){
+				var current = parseInt(getStyle(obj,attr));
+				// attr 属性	json[attr] 属性值
+				var step = ( json[attr] - current )/10;
+				step = step > 0 ? Math.ceil(step) : Math.floor(step);
+				obj.style[attr] = current + step +"px";
+
+				if (current != json[attr]) {	// 只要其中一个不满足条件 就不应该停止定时器 这一句一定要写在遍历里面
+					flag = false;
+				}
+			}
+			if (flag) {
+				clearInterval(obj.timer);
+				endFn && endFn();
+			}
+			
+		},50);
+	}
+
+	function getStyle( obj, attr ){
+		return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle( obj )[attr];
+	}	
+</script>
+</html>

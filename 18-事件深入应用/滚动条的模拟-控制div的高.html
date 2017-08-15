@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#div1{
+			height: 500px;
+			width: 20px;
+			background: red;
+			position: absolute;
+			top: 10px;
+			left: 10px;
+		}
+		#div2{
+			height: 20px;
+			width: 20px;
+			background: black;
+			position: absolute;
+		}
+		#div3{
+			height: 0px;
+			width: 300px;
+			background: aqua;
+			position: absolute;
+			top: 10px;
+			left: 40px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oDiv1 = document.getElementById('div1');
+			var oDiv2 = document.getElementById('div2');
+			var oDiv3 = document.getElementById('div3');
+
+			oDiv2.onmousedown = function(ev){
+
+				var ev = ev || event;
+				var disY = ev.clientY - this.offsetTop;
+				var iMaxTop = oDiv1.offsetHeight - oDiv2.offsetHeight;
+
+				if (oDiv2.setCapture) {
+					oDiv2.setCapture();
+				}
+
+				document.onmousemove = function(ev){
+					var ev = ev || event;
+					var T = ev.clientY - disY;
+
+					if (T < 0) {
+						T = 0;
+					}else if (T > iMaxTop) {
+						T = iMaxTop;
+					}
+
+					oDiv2.style.top = T + 'px';
+
+					var iScale = T / iMaxTop;	// 利用比率来求oDiv3的height值
+					//document.title = iScale;
+					oDiv3.style.height = 500*iScale +'px'; 
+				}
+
+				document.onmouseup = function(){
+					document.onmousemove = document.onmouseup = null;
+
+					if (oDiv2.releaseCapture) {
+						oDiv2.releaseCapture();
+					}
+				}
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2"></div>
+	</div>
+	<div id="div3"></div>
+</body>
+</html>

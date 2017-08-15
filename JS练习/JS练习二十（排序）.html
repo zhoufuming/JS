@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body,ul{
+			padding: 0;margin:0;
+		}
+		#wrap{
+			width: 1265px;margin:0 auto;background: #f1f1f1;height: 600px;
+
+		}
+		input{
+			width: 200px;height: 35px;background: #009999;color: #fff;
+			/*font-size: 12px;*/margin-top: 30px;margin-bottom: 20px;
+		}
+		.btn1{
+			margin-left: 400px;
+		}
+		ul{
+			width: 1208px;margin: 0 auto;position: relative;
+		}
+		li{
+			list-style: none;float: left; width: 280px;height: 222px;
+			padding: 10px;background: #fff;margin-right: 2px;
+			position: absolute;transition: all 500ms ease;
+			opacity: 0.8;
+		}
+		li:hover{
+			opacity: 1;
+		}
+		li:hover span{
+			color: red;
+		}
+		li img{
+			width: 280px;height: 180px;margin:0 auto;
+		}
+		li span{
+			width: 280px;height: 43px;background: #f1f1f1;display: inline-block;
+			text-align: center;font: 18px/43px '黑体';color: #006699;
+		}
+	</style>
+
+	<script type="text/javascript" src="zhou.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oWrap = document.getElementById('wrap');
+			var aBtn = oWrap.getElementsByTagName('input');
+			var aLi = oWrap.getElementsByTagName('li');
+			var aSpan = oWrap.getElementsByTagName('span');
+			var onOff = true;
+			var arr = [];
+			var arrNum = [];
+
+			for (var i = 0; i < aLi.length; i++) {
+
+					if (i < 4) {
+						aLi[i].style.left = i*302+'px';
+					}else{
+						aLi[i].style.left = (i-4)*302+'px';
+						aLi[i].style.top = '242px';
+					}
+
+					arrNum.push(i);
+					arr.push([getStyle(aLi[i],'top'),getStyle(aLi[i],'left')]);
+				}	
+
+			aBtn[0].onclick=function(){
+
+				if (onOff) {
+					aBtn[0].value = '从小到大';					
+				}else{
+					aBtn[0].value = '从大到小';	
+				}
+				onOff = !onOff;
+				arr.reverse();
+
+				for (var i = 0; i < aLi.length; i++) {
+					aLi[i].style.top = arr[i][0];
+					aLi[i].style.left = arr[i][1];
+				}
+			}
+
+			aBtn[1].onclick=function(){
+				
+				arrNum.sort(function(){
+					return Math.random()-0.5
+				});
+				
+				for (var i = 0; i < aLi.length; i++) {
+					aLi[i].style.top = arr[arrNum[i]][0];
+					aLi[i].style.left = arr[arrNum[i]][1];
+				}
+			}		
+		}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+
+		<input type="button" name="" value="从大到小" class="btn1">
+		<input type="button" name="" value="随机排列">
+
+		<ul>
+			<li>
+				<img src="./img/7-1.png">
+				<span>1-温馨办公</span>
+			</li>
+			<li>
+				<img src="./img/7-2.png">
+				<span>2-桌面游戏</span>
+			</li>
+			<li>
+				<img src="./img/7-3.png">
+				<span>3-汽车摇滚</span>
+			</li>
+			<li>
+				<img src="./img/7-4.png">
+				<span>4-狭路相逢</span>
+			</li>
+			<li>
+				<img src="./img/7-5.png">
+				<span>5-棒球小子</span>
+			</li>
+			<li>
+				<img src="./img/7-6.png">
+				<span>6-球鞋动力</span>
+			</li>
+			<li>
+				<img src="./img/7-7.png">
+				<span>7-官网游戏</span>
+			</li>
+			<li>
+				<img src="./img/7-8.png">
+				<span>8-指尖社区</span>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

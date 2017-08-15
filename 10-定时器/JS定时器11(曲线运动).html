@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		body{
+			padding: 0;
+		}
+		#div1{
+			width: 70px;height: 70px;background: red;position: absolute;top: 40px;left: 10px;
+			transition: all 50ms ease;
+		}
+	</style>	
+	<script type="text/javascript">
+/* 
+缓动动画原理：
+
+	  	num+=5;
+		box.style.left = num + "px";
+
+		初级缓动公式：leader = leader  + (target - leader ) / 10
+
+
+
+	    leader 初始 0
+	    target 结束位置  100
+	    leader = 10;   步长  10
+
+	            19          19 */
+
+	window.onload=function(){
+		var oBtn=document.getElementById('btn1');
+		var oDiv=document.getElementById('div1');
+		var timer=null;
+		var leader = 0;
+		var target = 900;
+
+		oBtn.onclick = function(){
+			setInterval(function(){
+				leader = leader + (target - leader)/10;
+				oDiv.style.left = leader + 'px';
+			},30);
+		}		
+	}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="按钮" id="btn1">
+	<div id="div1"></div>
+</body>
+</html>

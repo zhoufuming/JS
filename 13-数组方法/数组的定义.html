@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var arr = [1,2,3];				
+			var arr = new Array(1,2,3);		//跟上面输出的结果一样
+			//alert(arr);		
+
+			var arr1 = new Array(3);		//数字定义为数组的长度
+			alert(arr1.length);
+
+			var arr2 = ['aaa',2,3];
+			alert(arr2.length);				//3
+			arr2.length = 0;				//设长度为n时，数组从第n位开始截掉！！！
+			alert(arr2);
+
+			var str = 'aaaaa';
+
+			str.length = 1;					//然而字符串不可以这样设长度
+			alert(str);
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

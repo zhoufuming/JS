@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var arr = ['img/4-3.jpg','img/4-5.jpg','img/4-6.jpg','img/4-7.jpg','img/4-9.jpg','img/4-10.jpg','img/4-11.jpg'];
+			var aInp = document.getElementsByTagName('input');
+
+			aInp[1].onclick=function(){
+				//alert(aInp[0].value);
+				for (var i = 0; i < arr.length; i++) {
+
+					if (arr[i] == aInp[0].value) {
+						alert(arr[i]+'在数组中的第'+i+'项');
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="" value="">
+	<input type="button" name="" value="查找">
+
+</body>
+</html>

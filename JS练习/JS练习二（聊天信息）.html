@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>信息发送</title>
+	<style type="text/css">
+		#wrap{
+			background: url(img/Bg1.png) no-repeat;width: 289px;height: 511px;padding-top: 83px;
+		}
+		#content{
+			width:237px;height: 419px;border: 4px solid black;margin: 0 auto;position: relative;
+		}
+		#user{
+			width: 22px;height: 26px;border-radius: 20%; border: 1px solid #ded6e7;overflow: hidden;padding: 4px;
+			position: absolute;bottom: 5px;left: 4px;
+		}
+		#msgBox{
+			width: 227px;height: 370px;background: #fff;border-bottom: 1px solid #bdcec6;position: absolute;top: 0;
+			padding: 0 5px;/*word-break: break-all;*/
+		}
+		#text1{
+			width: 139px;height: 34px;position: absolute;bottom: 5px;left: 40px; border-radius: 10px;border: 1px solid #ded6e7;font-size: 12px;
+		}
+		#content a{
+			font-size: 21px;color: #8c8494;position: absolute;bottom: 10px;right: 10px;text-decoration: none;
+		}
+		span{
+			font-size: 16px;color: #fff;height: 24px;
+		}
+		#span1{
+			background: green;
+		}
+		#span2{
+			background: #c0c;
+		}
+		p{
+			 position: absolute;right: 0;margin: 0px;padding-bottom: 20px;word-break: break-all;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oMsgBox=document.getElementById('msgBox');
+			var oUser=document.getElementById('user');
+			var oText1=document.getElementById('text1');
+			var oSend=document.getElementById('send');
+			// var oSpan1=document.getElementById('span1');
+			var onOff=true;
+			oUser.onclick=function(){
+				if (onOff==true) {
+					oUser.innerHTML='<img src="img/ico2.jpg">';
+					onOff=false;
+				}
+				else{
+					oUser.innerHTML='<img src="img/ico1.jpg">';
+					onOff=true;
+				}				
+			}
+			oSend.onclick=function(){
+				if (oText1.value=='') {
+					alert('请输入内容！！！')
+				}
+				else if (onOff==true) {
+					oMsgBox.innerHTML+=oUser.innerHTML+'<span id="span1">'+oText1.value+'</span>' +'<br/>';
+					oText1.value='';
+				} 
+				else  {
+					oMsgBox.innerHTML+='<p>' +'<span id="span2">'+oText1.value+'</span>' +oUser.innerHTML+'</p>'+'<br/>';
+					oText1.value='';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="content">
+			<div id="msgBox"></div>
+			<div id="user"><img src="img/ico1.jpg"></div>
+			<input type="text" name="" id="text1">
+			<a href="javascript:;" id="send">发送</a>
+		</div>
+	</div>
+</body>
+</html>

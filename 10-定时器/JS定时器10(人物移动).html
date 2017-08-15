@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div{
+			position: absolute;width: 100px;height: 50px;background: red;transition: all 100ms ease;
+			top: 500px;
+		}
+		img{
+			position: absolute;transition: all 100ms ease;height: 163px;left: -50px;
+		}
+		.div1{
+			top: 173px;
+		}
+	</style>
+	<script type="text/javascript" src="../zhou.js"></script>
+		
+	<script type="text/javascript">
+		window.onload=function(){
+			var str='';
+			var aDiv=document.getElementsByTagName('div');
+			var oImg=document.getElementsByTagName('img')[0];
+			var num=1;
+			var timer=null;
+			var num1=0;
+			for (var i = 0; i < aDiv.length; i++) {
+				aDiv[i].style.left=i*50+'px';
+			}
+			
+			document.onclick=function (){
+				oImg.src='../img/move1.gif';
+				// for (var i = 0; i < leng; i++) {
+				// 	clearInterval(aDiv[i].timer);
+				// }
+
+				//clearInterval(aDiv[num].timer);	
+
+				setInterval(
+					function(){
+						doMove(aDiv[num],'top',70,173,function(){
+							
+							setInterval(doMove(aDiv[num1],'top',50,500))
+							num1++;
+						});
+						num++;
+						
+						// clearInterval(aDiv[num].timer);
+						// doMove(aDiv[num],'top',500,0);
+				},200);
+
+				doMove(oImg,'left',15,1230);
+				// if (oImg.style.left=='1200px') {
+				// 	oImg.src='../img/move2.png';
+				// }
+				
+
+			};
+		}
+	</script>
+</head>
+<body>
+	<img src="../img/move2.png">
+	<div class="div1"></div>
+	<div class="div1"></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

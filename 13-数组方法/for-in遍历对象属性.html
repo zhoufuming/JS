@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var str = '';
+			var num =0;
+			for (var attr in window){
+				str +=  num+'、'+attr +':'+ window[attr] + '<br/>';	// attr 为属性，[attr] 为属性值
+				num++;
+			}
+			document.body.innerHTML = str; 
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

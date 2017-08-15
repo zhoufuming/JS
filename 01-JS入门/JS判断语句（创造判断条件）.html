@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oImg1=document.getElementById('img1');
+		var onOff=true;
+		//当没有条件时可以通过设置一个开关：布尔值来创造条件
+		
+		oImg1.onclick=function(){
+		if (onOff==true) {
+			oImg1.src='../img/1-2.jpg';
+			onOff=false;
+		}else {
+			oImg1.src='../img/1-1.jpg';
+			onOff=true;
+		}
+	}
+	}
+	</script>
+</head>
+<body>
+	<img src="img/1-1.jpg" id="img1">
+</body>
+</html>

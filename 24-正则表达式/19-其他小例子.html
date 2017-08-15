@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+
+	/\d{3}|[a-z]{4}/;	
+	// 匹配的是要么是三位数，要么是四位小写字母
+
+	/java(script)?/;	
+	// 匹配的是字符串“java”，其后面可以有“script”，也可以没有
+
+	/(ab|cd)+|ef/;	
+	// 匹配的既可以是字符串“ef”,也可以是字符串“ab”,或者是“cd”的一次或多次重复
+
+	/([Jj]ava([Ss]cript))\sis\s(fun\w*)/;
+	// 可以匹配到“javascript is fun”、“JavaScript is funsdfasd”等等
+	</script>
+</head>
+<body>
+
+</body>
+</html>

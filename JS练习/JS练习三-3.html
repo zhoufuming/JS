@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div{
+			width: 50px;height: 50px;font-size: 30px;line-height:50px; color: #fff;background: red;position: absolute;top: 0;left: 0;text-align: center;border: 1px solid #fff;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){	
+			var aDiv=document.getElementsByTagName('div');		
+			var arr='';
+               var l=4;
+			for (var i=0;i<11;i++){
+				arr+='<div>'+i+'</div>';
+			}
+			document.body.innerHTML=arr; 		
+			for (var i=0;i<aDiv.length;i++){				
+                    aDiv[i].style.left=i*50+'px';
+                    aDiv[i].style.top=i*50+'px';
+                    if (i>5) {
+                         aDiv[i].style.top=[l]*50+'px';
+                         l--;
+                    }
+		     }
+              		
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

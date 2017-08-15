@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var str = '妙味课堂是一支独具特色的IT培训团队，妙味反对传统IT教育枯燥乏味的教学模式，妙味提供一种全新的快乐学习方法！';
+			var s = '妙味';
+			var i = 0;
+
+			/* 方法一： */
+			// for(; str.indexOf(s,i)!=-1 ;){		//; ;	是for循环中的判断语句	ture就执行，false就不执行！！！
+			// 	alert(str.indexOf(s,i));
+			// 	i = str.indexOf(s,i) + s.length;
+			// }
+
+			/* 方法二： */
+			while( str.indexOf(s,i)!=-1 ){
+				alert(str.indexOf(s,i));
+				i = str.indexOf(s,i) + s.length;
+			}
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

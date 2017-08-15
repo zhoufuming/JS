@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		function Person(name,age){	// 构造函数(属于一个类) 就是一个普通的函数 为了和普通的函数有区别 第一个字母大写
+			this.name = name;
+			this.age = age;
+			this.showName = function(){
+				alert("我的名字是" + name);
+			}
+			this.showAge = function(){
+				alert("我的年龄是" + age);
+			}
+		}
+		var demo = new Person("刘德华",18);
+		var demo1 = new Person("刘德华",18);
+		console.log(demo.name);	// 提倡用这种方法来调用
+		console.log(demo["name"]);	// 这样也可以调用属性
+		console.log(demo.age);
+		//demo.showName();
+		/*alert(demo.showName);
+		alert(demo1.showName);*/
+		//alert(demo.showName == demo1.showName);	// false
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" name="" value="200">
+	<input type="button" name="" value="800">
+	<div id="div1"></div>
+</body>
+<script type="text/javascript">
+	var btn200 = document.getElementsByTagName('input')[0];
+	var btn800 = document.getElementsByTagName('input')[1];
+	var box = document.getElementById('div1');
+	btn200.onclick = function(){
+		animate(box,200);
+	}
+	btn800.onclick = function(){
+		animate(box,800);
+	}
+
+	// 封装函数
+	function animate(obj,target){
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function(){
+			// 计算步长 动画的原理	盒子本身的位置 + 步长
+			var step = ( target - obj.offsetLeft )/10;
+			step = step > 0 ? Math.ceil(step) : Math.floor(step);
+			obj.style.left = obj.offsetLeft + step + 'px';
+			if (obj.offsetLeft == target) {
+				clearInterval(obj.timer);
+			}
+		},10);
+	}
+</script>
+</html>

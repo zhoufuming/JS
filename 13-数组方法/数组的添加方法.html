@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var arr = [1,2,3];
+			//arr.push(4);				//添加倒数组的后面
+			alert(arr.push(4));			//这样是输出数组新的长度！！！
+			alert(arr);
+
+			var arr1 = [1,2,3];
+			//arr1.unshift(0);			//添加都数组的前面
+			alert(arr1.unshift(0));		
+			//这样也是输出数组新的长度	但ie6 ie7下不支持unshift返回值
+			alert(arr1);
+
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

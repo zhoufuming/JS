@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oText = document.getElementById('text1');
+			var oUl = document.getElementById('list');
+
+			oText.onkeyup = function(ev){	// 这里用onkeyup,用onkeydown的话值没输进去就弹出来了
+				//alert(this.value);
+				var ev = ev || event;
+				if (this.value != '') {
+						
+					if (ev.keyCode == 13 && ev.ctrlKey) {
+						var oLi = document.createElement('li');
+						oLi.innerHTML = this.value;
+
+						if (oUl.children[0]) {
+							oUl.insertBefore(oLi,oUl.children[0]);
+						}else{
+							oUl.appendChild(oLi);
+						}
+					}
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="text1" value="">
+	<ul id="list"></ul>
+</body>
+</html>

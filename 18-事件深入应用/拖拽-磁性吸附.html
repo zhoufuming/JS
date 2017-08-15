@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#div1{
+			height: 100px;
+			width: 100px;
+			background: red;
+			position: absolute;
+		}
+		#pic{
+			width: 100px;
+			position: absolute;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			
+			var oDiv = document.getElementById('div1');
+			var oImg = document.getElementById('pic');
+
+			drag(oDiv);
+			drag(oImg);
+
+			// 限制对象在可视区范围内拖拽
+			function drag(obj){
+					obj.onmousedown = function(ev){
+					var ev = ev || event;
+
+					var disX = ev.clientX - this.offsetLeft;
+					var disY = ev.clientY - this.offsetTop;
+
+					if (obj.setCapture) {
+						obj.setCapture();
+					}
+
+					document.onmousemove = function(ev){
+						var ev = ev || event;
+
+						var L = ev.clientX - disX;
+						var T = ev.clientY - disY;
+
+						// 设置磁性吸附，只需设置L,T值的判断
+						if (L < 100) {	// 当盒子拖拽的窗口左边100px内就会被吸附过来~
+							L = 0;
+						}else if ( L>document.documentElement.clientWidth - obj.offsetWidth ){
+							L = document.documentElement.clientWidth -obj.offsetWidth;
+						}
+
+						if (T < 0) {
+							T = 0;
+						}else if ( T>document.documentElement.clientHeight - obj.offsetHeight ){
+							T = document.documentElement.clientHeight -obj.offsetHeight;
+						}
+
+						obj.style.left = L +'px';
+						obj.style.top = T + 'px'; 
+					}
+
+					document.onmouseup = function(){
+						document.onmousemove = document.onmouseup = null;
+
+						if (obj.releaseCapture) {
+							obj.releaseCapture();
+						}
+					}
+					return false;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	
+	<div id="div1"></div>
+	<img src="../img/123.jpg" id="pic">
+</body>
+</html>

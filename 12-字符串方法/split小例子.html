@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div{
+			width: 300px;height: 300px;border: 10px solid pink;margin-bottom: 10px;
+			overflow: hidden;padding: 10px;
+		}
+		input{
+			height: 25px;line-height: 25px;
+		}
+		span{
+			font-size:50px;margin:4px;width:50px;display: block;float: left;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oBox = document.getElementById('box1');
+			var aInp = document.getElementsByTagName('input');
+			var arrColor = ['red','pink','yellow','blue'];
+
+			aInp[1].onclick=function(){
+
+				var str = aInp[0].value;
+				var arr = str.split('');
+				
+				for (var i = 0; i < str.length; i++) {
+					oBox.innerHTML += '<span style="background:'+arrColor[i%arrColor.length]+';">'+arr[i]+'</span>';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="box1"></div>
+	<input type="text" name="">
+	<input type="button" name="" value="走你~">
+</body>
+</html>

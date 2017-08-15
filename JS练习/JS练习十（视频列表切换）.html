@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#banner{
+			width: 253px;height: 400px;background: #dee7e7;margin: 0 auto;
+			padding: 0 6px;
+		}
+		ul{
+			padding: 0;margin: 0;
+		}
+		li{
+			list-style: none;
+		}
+		h3,h4,h5{
+			font-size: 17px;margin: 0;display: inline-block;text-align: center;
+		}
+		h3{
+			margin: 10px 41px 0 8px;
+		}
+		h4{
+			margin: 0;font-size: 12px;width: 35px;height:24px;border:1px solid #94bdd6;
+			border-bottom:none;line-height: 24px;color: #185273;z-index: 2;
+			position: relative;top: 1px;cursor: pointer;
+		}
+		.active1{
+			background: #fff;color: black;border-left: none;border-right: none;
+		}
+		h5{
+			font-size: 9px;width: 17px;height: 13px;background: #21638c;line-height: 13px;color: #fff;
+			display: block;display: block;float: left;margin-right: 12px;
+		}
+		ul li{
+			/*display: none;*/
+		}
+		ul li ul li{
+			width: 237px;height: 12px;border-bottom: 1px dashed #fff;padding: 8px;
+			transition: background 80ms ease;
+		}
+		p{
+			margin: 0;font-size: 11px;width: 200px;/*float: left;*/overflow: hidden;
+			text-overflow: ellipsis;white-space: nowrap;
+		}
+		ul a{
+			width: 41px;height: 21px;background: #29739c;font-size: 11px;color: #fff;
+			display: none;float: right;/*cursor: pointer;*/text-decoration: none;
+		}
+		.active2{
+			height: 60px;background: #fff;
+		}
+		.active2 p{
+			white-space: normal;width: 100px;
+		}
+		.active2 a{
+			display: block;
+		}
+		.active2 img{
+			display: block;
+		}
+		img{
+			width: 80px;height: 60px;padding: 2px;border:1px solid #94bdd6;margin-right: 8px;
+			float: left;display: none;
+		}
+		.more{
+			font-size: 11px;color: black;text-decoration: none;position: relative;left: 220px;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oBanner=document.getElementById('banner');
+		var aH4=oBanner.getElementsByTagName('h4');
+		var aLi=document.getElementById('list').children;//('list').children 找到ul下的第一个子节点
+
+		for (var i = 0; i < aH4.length; i++) {
+			aLi[i].style.cssText='display:none;';
+			aLi[0].style.cssText='display:block;';
+			aH4[i].index=i;
+
+			aH4[i].onmouseover=function(){
+				for (var i = 0; i < aH4.length; i++) {
+					aH4[i].setAttribute('class','');
+					aLi[i].style.cssText='display:none;';
+				};
+				this.setAttribute('class','active1');
+				aLi[this.index].style.cssText='display:block;';
+			};
+		}
+		
+		for (var i = 0; i < aLi.length; i++) {
+				fn(aLi[i]);
+			}	
+		
+		function fn(oLi){
+			var aListLi=oLi.getElementsByTagName('li');
+			for (var i = 0; i < aListLi.length; i++) {
+				aListLi[i].onmouseover=function(){
+					for (var i = 0; i < aListLi.length; i++) {
+						aListLi[i].setAttribute('class','');
+					};
+					this.setAttribute('class','active2');
+				}
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="banner">
+		<h3>观看排行榜</h3>
+		<h4 class="active1">每日</h4><h4>每周</h4><h4>每月</h4>
+		<ul id="list">
+			<li style="">		
+				<ul>
+					<li style="border-top: 1px solid #94bdd6;" class="active2">
+						<h5>1</h5>	
+						<img src="./img/5-1.jpg">		
+						<p>解密:关于地球与人类的一千零一问...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>2</h5>	
+						<img src="./img/5-1.jpg">		
+						<p>经典传奇:探索全世界重大历史事件。。</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>3</h5>	
+						<img src="./img/5-1.jpg">		
+						<p>眼界:展现普通人的曲折命运和动人。。</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>4</h5>	
+						<img src="./img/5-1.jpg">		
+						<p>档案（BTV）:惊人事件和传奇背后。。</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>5</h5>	
+						<img src="./img/5-1.jpg">		
+						<p>世纪十最:30个震惊世界的Top...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>6</h5>		
+						<img src="./img/5-1.jpg">	
+						<p>身边的毛泽东:警卫员解密毛泽东的秘密...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>7</h5>		
+						<img src="./img/5-1.jpg">	
+						<p>新电影传奇:每一部电影都有自己的...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>8</h5>			
+						<img src="./img/5-1.jpg">
+						<p>档案（上视纪实频道）:解密档案中不为人知...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>9</h5>
+						<img src="./img/5-1.jpg">			
+						<p>探寻传世国宝的千古传奇</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>10</h5>	
+						<img src="./img/5-1.jpg">		
+						<p>纪实系列:讲述社会百态，透视事实真相...</p>
+						<a href="">▶播放</a>
+					</li>
+				</ul>
+			</li>
+			<li>		
+				<ul>
+					<li style="border-top: 1px solid #94bdd6;" class="active2">
+						<h5>1</h5>	
+						<img src="./img/5-2.jpg">		
+						<p>解密:关于地球与人类的一千零一问...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>2</h5>	
+						<img src="./img/5-2.jpg">		
+						<p>经典传奇:探索全世界重大历史事件。。</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>3</h5>	
+						<img src="./img/5-2.jpg">		
+						<p>眼界:展现普通人的曲折命运和动人。。</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>4</h5>	
+						<img src="./img/5-2.jpg">		
+						<p>档案（BTV）:惊人事件和传奇背后。。</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>5</h5>	
+						<img src="./img/5-2.jpg">		
+						<p>世纪十最:30个震惊世界的Top...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>6</h5>		
+						<img src="./img/5-2.jpg">	
+						<p>身边的毛泽东:警卫员解密毛泽东的秘密...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>7</h5>		
+						<img src="./img/5-2.jpg">	
+						<p>新电影传奇:每一部电影都有自己的...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>8</h5>			
+						<img src="./img/5-2.jpg">
+						<p>档案（上视纪实频道）:解密档案中不为人知...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>9</h5>
+						<img src="./img/5-2.jpg">			
+						<p>探寻传世国宝的千古传奇</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>10</h5>	
+						<img src="./img/5-2.jpg">		
+						<p>纪实系列:讲述社会百态，透视事实真相...</p>
+						<a href="">▶播放</a>
+					</li>
+				</ul>
+			</li>
+			<li>		
+				<ul>
+					<li style="border-top: 1px solid #94bdd6;" class="active2">
+						<h5>1</h5>	
+						<img src="./img/5-1.jpg">		
+						<p>解密:关于地球与人类的一千零一问...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>2</h5>	
+						<img src="./img/5-1.jpg">		
+						<p>经典传奇:探索全世界重大历史事件。。</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>3</h5>	
+						<img src="./img/5-1.jpg">		
+						<p>眼界:展现普通人的曲折命运和动人。。</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>4</h5>	
+						<img src="./img/5-1.jpg">		
+						<p>档案（BTV）:惊人事件和传奇背后。。</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>5</h5>	
+						<img src="./img/5-1.jpg">		
+						<p>世纪十最:30个震惊世界的Top...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>6</h5>		
+						<img src="./img/5-1.jpg">	
+						<p>身边的毛泽东:警卫员解密毛泽东的秘密...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>7</h5>		
+						<img src="./img/5-1.jpg">	
+						<p>新电影传奇:每一部电影都有自己的...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>8</h5>			
+						<img src="./img/5-1.jpg">
+						<p>档案（上视纪实频道）:解密档案中不为人知...</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>9</h5>
+						<img src="./img/5-1.jpg">			
+						<p>探寻传世国宝的千古传奇</p>
+						<a href="">▶播放</a>
+					</li>
+					<li>
+						<h5>10</h5>	
+						<img src="./img/5-1.jpg">		
+						<p>纪实系列:讲述社会百态，透视事实真相...</p>
+						<a href="">▶播放</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<a href="" class="more">》更多</a>
+	</div>
+</body>
+</html>

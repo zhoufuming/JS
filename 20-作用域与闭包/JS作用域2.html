@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload=function(){
+		/* 
+			1)预解析：var function 参数......
+				遇到重名的两者会PK：同类型的，后面的会赢;不同类型的，函数会赢;
+				最后就只剩下：	a = function a(){ alert(4); }
+			2）逐行解读：
+				遇到a的表达式会重新赋值给a
+		 */
+		alert(a);		//输出：function a(){alert(4)};
+		var a=1;		//重新赋值
+		alert(a);		//输出：1
+		function a(){	
+			alert(2);
+		}
+		alert(a);		//函数不会赋值，所以还是输出：1
+		var a=3;		//重新赋值
+		alert(a);		//输出：3
+		function a(){	
+			alert(4);
+		}
+		alert(a);		//还是输出：3		
+	}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

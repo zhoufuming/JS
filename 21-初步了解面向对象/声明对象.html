@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		//声明对象有三种方式（这里演示两种）：
+		//1、
+		// var obj = new Object;
+
+		//2、字面量式声明对象	推荐使用
+		var obj = {};
+		obj.name = "刘德华";	// 声明对象的属性
+		obj.age = 55;
+		obj.showName = function(){	// 声明对象的方法
+			alert("俺是刘德华~");
+		}
+		obj.showAge = function(){
+			alert("俺今年18岁了~");
+		}
+
+		console.log(obj.name);	// 调用属性
+		console.log(obj.age);	
+		obj.showName();		// 调用方法
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

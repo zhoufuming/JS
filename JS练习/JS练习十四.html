@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		ul{
+			padding: 0;margin: 0 auto;width: 680px;margin-top: 200px;/*background: red;*/
+			height: 30px;border: 1px solid black; 
+		}
+		li{
+			height: 30px;width: 30px;list-style: none;display: inline-block; position: relative;
+			transition: all 1s ease;
+		}
+	</style>
+	<script type="text/javascript" src="zhou.js"></script>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oUl = document.getElementById('list');
+		var aLi = oUl.getElementsByTagName('li');
+		var num = 0;
+		oUl.onclick=function(){
+			clearInterval(aLi[num].opa);	
+			
+			setInterval(function(){
+				oPacity(aLi[num],0.01,0,function(){
+					
+				});
+				doMove(aLi[num],'top',30,-300);
+				num++;
+
+				if (num===aLi.length) {
+					num=0;
+				}
+
+				clearInterval(aLi[num].opa);
+
+			},200);
+		}
+
+		function oPacity(obj,dir,target,endFn){
+			clearInterval(obj.opa);
+
+			obj.opa=setInterval(function(){
+
+				var speed=0;		
+				obj.style.opacity-=dir;
+
+				if (speed==target) {
+					clearInterval(obj.opa);
+					endFn && endFn();					
+				}
+			},100);		
+		}	
+	}
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+		<li>1+</li>
+	</ul>
+</body>
+</html>

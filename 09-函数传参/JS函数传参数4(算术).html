@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		em,span{
+			width: 50px;display: inline-block;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl=document.getElementById('ul');
+			var aLi=oUl.getElementsByTagName('li');
+			var oP1=document.getElementById('p1');
+			var aSpan=oP1.getElementsByTagName('span');
+			var btn=document.getElementById('btn');
+			var aaStrong=oUl.getElementsByTagName('strong');
+			var aaSpan=oUl.getElementsByTagName('span');			
+			var arrNum1='';
+
+			for (var i = 0; i < aLi.length; i++) {
+				fn1(aLi[i]);
+				/*aSpan[0].innerHTML=sum1;*/
+			};
+
+			function fn1(oLi){
+				var aBtn=oLi.getElementsByTagName('input');
+				var oStrong=oLi.getElementsByTagName('strong')[0];
+				var oEm=oLi.getElementsByTagName('em')[0];
+				var oSpan=oLi.getElementsByTagName('span')[0];
+				//var num=0;	别直接设num为0，最好去动态获取
+				var num1=oStrong.innerHTML;	
+				var num2=parseFloat(oEm.innerHTML);	//12.5元=>12.5
+
+				aBtn[1].onclick=function(){
+					//num+=1;	不能这样写，因为num其实是字符串，结果会等于01，011，0111~~
+					num1++;	//num++ 会进行隐形转换，字符会变成数字 这是我们想要的结果
+					oStrong.innerHTML=num1;
+					oSpan.innerHTML=num1*num2+'元';
+					/*sum1=0;
+					sum1+=parseInt(num1++);
+					aSpan[0].innerHTML=sum1;*/					
+				}
+
+				aBtn[0].onclick=function(){
+					if (num1==0) {
+
+					}else{
+					num1--;
+					oStrong.innerHTML=num1;
+					oSpan.innerHTML=num1*num2+'元';
+					}
+				}
+			};
+			
+			btn.onclick=function(){
+				var sum1=0;
+				var sum2=0;
+				for (var i = 0; i < aaStrong.length; i++) {
+					sum1+=parseInt(aaStrong[i].innerHTML);
+					sum2+=parseFloat(aaSpan[i].innerHTML);
+				}				
+				aSpan[0].innerHTML=sum1+'件';
+				aSpan[1].innerHTML=sum2+'元';
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="ul">
+		<li>
+			<input type="button" name="" value="-">
+			<strong>0</strong>
+			<input type="button" name="" value="+">
+			单价：<em>12.5元</em>
+			小计：<span>0元</span>
+		</li>
+		<li>
+			<input type="button" name="" value="-">
+			<strong>0</strong>
+			<input type="button" name="" value="+">
+			单价：<em>10.5元</em>
+			小计：<span>0元</span>
+		</li>
+		<li>
+			<input type="button" name="" value="-">
+			<strong>0</strong>
+			<input type="button" name="" value="+">
+			单价：<em>8.5元</em>
+			小计：<span>0元</span>
+		</li>
+		<li>
+			<input type="button" name="" value="-">
+			<strong>0</strong>
+			<input type="button" name="" value="+">
+			单价：<em>8元</em>
+			小计：<span>0元</span>
+		</li>
+		<li>
+			<input type="button" name="" value="-">
+			<strong>0</strong>
+			<input type="button" name="" value="+">
+			单价：<em>14.5元</em>
+			小计：<span>0元</span>
+		</li>
+	</ul>
+	<p id="p1">商品合计共：<span>0件</span>共花费了：<span>0元</span></p>
+	<button id="btn">合计</button>
+</body>
+</html>

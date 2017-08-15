@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oBox = document.getElementById('box1');
+
+			/*
+				style.width : 样式宽
+				clientWidth : 可视区宽
+				offsetWidth : 占位宽
+			*/
+
+			//alert(oBox.style.width);	//100
+			//alert(oBox.clientWidth);	//样式宽+padding	120
+			alert(oBox.offsetWidth);	//样式宽+padding+border		122
+		}
+	</script>
+</head>
+<body>
+	<div id="box1" style="width: 100px;height: 100px;border: 1px solid black;padding: 10px;margin: 10px;"></div>
+</body>
+</html>

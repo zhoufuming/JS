@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	body,ul{
+		padding: 0;margin: 0;
+	}
+	li{
+		list-style: none;
+	}
+	#wrap{
+		background: #aaa;width: 500px;height: 500px;position: relative;
+	}
+	a{
+		text-decoration: none;color: #fff;
+	}
+	li a{
+		width: 30px;height: 20px;display:inline-block;margin: 5px;
+	}
+	#CPM{
+		width: 300px;height: 120px;border: 10px solid #000;text-align: center;position: absolute;left: 100px;top: 50%;background: #fff;display: none;
+	}
+	#div1{
+		width: 100px;height: 100px;border: 10px solid black;clear: both;
+		-webkit-transition: all 500ms ease;
+		-moz-transition: all 500ms ease;
+		-ms-transition: all 500ms ease;
+		-o-transition: all 500ms ease;
+		transition: all 500ms ease;
+	}
+	#CPM a:hover{
+		 background: #0c0!important;
+	}
+	strong{
+		float: left;
+	}
+	#click{
+		height: 20px;background: aqua;/*display: block;*/width: 20px;float: left;border-radius: 50%;border: solid #111;
+	}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oWrap = document.getElementById('wrap');
+			var oClick = document.getElementById('click');
+			var oDiv1 = document.getElementById('div1');
+			var oCPM = document.getElementById('CPM');
+			var oBg1 = document.getElementById('bg1');
+			var oBg2 = document.getElementById('bg2');
+			var oBg3 = document.getElementById('bg3');
+			var oWidth1 = document.getElementById('width1');
+			var oWidth2 = document.getElementById('width2');
+			var oWidth3 = document.getElementById('width3');
+			var oHeight1 = document.getElementById('height1');
+			var oHeight2 = document.getElementById('height2');
+			var oHeight3 = document.getElementById('height3');
+			var oOk = document.getElementById('ok');
+			var oReset = document.getElementById('reset');
+			oClick.onclick = onclick1;
+			oBg1.onclick = changeBg1;
+			oBg2.onclick = changeBg2;
+			oBg3.onclick = changeBg3;
+			oWidth1.onclick = width1;
+			oWidth2.onclick = width2;
+			oWidth3.onclick = width3;
+			oHeight1.onclick = height1;
+			oHeight2.onclick = height2;
+			oHeight3.onclick = height3;
+			oOk.onclick = ok;
+			oReset.onclick = reset;
+			
+			function onclick1(){
+				oCPM.style.display='block';
+				oWrap.style.opacity='0.5';
+				oCPM.style.opacity='1';
+			}
+			
+			function changeBg1(){
+				oDiv1.style.backgroundColor='red';
+			}
+			function changeBg2(){
+				oDiv1.style.backgroundColor='blue';
+			}
+			function changeBg3(){
+				oDiv1.style.backgroundColor='yellow';
+			}
+			function width1(){
+				oDiv1.style.width='200px';
+			}
+			function width2(){
+				oDiv1.style.width='300px';
+			}
+			function width3(){
+				oDiv1.style.width='400px';
+			}
+			function height1(){
+				oDiv1.style.height='200px';
+			}
+			function height2(){
+				oDiv1.style.height='300px';
+			}
+			function height3(){
+				oDiv1.style.height='400px';
+			}
+			function ok(){
+				oCPM.style.display='none';
+				oWrap.style.opacity='1';
+			}
+			function reset(){
+				oDiv1.style.background='none';
+				oDiv1.style.height='100px';
+				oDiv1.style.width='100px';
+
+			}
+		};
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<strong style="font-size: 20px">请为下面DIV设置样式:</strong>
+		<a href="javascript:;" id="click"></a>
+		<div id="div1">
+		</div>	
+	</div>
+	<div id="CPM">
+		<ul>
+			<li>
+				<strong>请选择背景颜色：</strong>
+				<a href="javascript:;" style="background: red;" id="bg1">红</a>
+				<a href="javascript:;" style="background: blue;" id="bg2">蓝</a>
+				<a href="javascript:;" style="background: yellow;" id="bg3">黄</a>
+			</li>
+			<li>
+				<strong>请选择宽（PX）：</strong>
+				<a href="javascript:;" style="background: #808080;" id="width1">200</a>
+				<a href="javascript:;" style="background:  #808080;" id="width2">300</a>
+				<a href="javascript:;" style="background:  #808080;" id="width3">400</a>
+			</li>
+			<li>
+				<strong>请选择高（PX）：</strong>
+				<a href="javascript:;" style="background:  #808080;" id="height1">200</a>
+				<a href="javascript:;" style="background:  #808080;" id="height2">300</a>
+				<a href="javascript:;" style="background:  #808080;" id="height3">400</a>
+			</li>
+		</ul>
+		<input type="button" name="" value="确定" id="ok">
+		<input type="button" name="" value="重置" id="reset">
+		</div>
+</body>
+</html>

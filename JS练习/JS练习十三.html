@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		ul{
+			padding: 0;margin: 0;
+		}
+		li{
+			list-style: none;width: 500px;height: 30px;padding-top: 10px;
+			border-bottom: 1px solid #fff;
+
+		}
+		input{
+			float: left;margin: 0 15px;
+		}
+		span{
+			width: 200px;display: block;float: left;
+		}
+		p{
+			margin: 0;float: left;
+		}
+		button{
+			width: 70px;height: 25px;position: relative;top: -5px;margin-left: 10px;
+			
+		}
+		#floot{
+			border-top: 1px solid #ccc;border-bottom: 3px solid black;height: 25px;
+			padding-top: 10px;width: 500px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl=document.getElementById('list');
+			var aLi=oUl.getElementsByTagName('li');
+			var aBtn=oUl.getElementsByTagName('input');
+			var oFloot=document.getElementById('floot');
+			var oFbtn=oFloot.getElementsByTagName('input')[0];
+			var aFbtn=oFloot.getElementsByTagName('button');
+			var arrClolor=['#dcfefd','white'];
+			var str='';
+			var onOff=true;
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].style.background=arrClolor[i%arrClolor.length];
+				aFbtn[i%aFbtn.length].setAttribute('disabled','');
+				//初始化
+				aBtn[i].index=i;
+				aLi[i].onmouseover=function(){
+					str=this.style.background;
+					this.style.background='#ccc';
+				}
+				aLi[i].onmouseout=function(){
+					this.style.background=str;
+				}
+				aBtn[i].onclick=function(){
+					// if (this.checked) {
+					// 	aLi[this.index].style.background='#ccc';
+					// 	this.checked=false;
+						
+					// }
+					// else{
+					// 	this.setAttribute('checked','true');
+					// 	aLi[this.index].style.background=arrClolor[i%arrClolor.length];
+					// }
+					this.checked = !this.checked;
+				}
+
+			}
+			oFbtn.onclick=function(){
+				if (onOff) {
+					for (var i = 0; i < aLi.length; i++) {
+						aLi[i].style.background='#ccc';
+						aBtn[i].setAttribute('checked','true');					
+					}
+					for (var i = 0; i < aFbtn.length; i++) {
+						aFbtn[i].removeAttribute('disabled');
+					}
+					onOff=false;
+				}
+				else{
+					for (var i = 0; i < aLi.length; i++) {
+						aBtn[i].removeAttribute('checked');
+						aLi[i].style.background=arrClolor[i%arrClolor.length];
+
+					}
+					for (var i = 0; i < aFbtn.length; i++) {
+						
+						aFbtn[i].setAttribute('disabled','disabled');
+					}
+					onOff=true;
+				}
+
+			}
+
+			// function fn1(){
+			// 	for (var i = 0; i < aBtn.length; i++) {
+			// 		aBtn.index=i;
+			// 		if (aBtn[i].checked) {
+			// 			aLi[this.index].style.background='#ccc';
+			// 		}
+			// 		else{
+
+			// 		}
+			// 	}
+			// }
+			// alert(aLi.length);
+		}
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li>
+			<input type="checkbox" name=""><span>私奔</span><p>梁博</p>
+		</li>
+		<li>
+			<input type="checkbox" name=""><span>北京北京</span><p>梁博、黄勇</p>
+		</li>
+		<li>
+			<input type="checkbox" name=""><span>我爱你中国</span><p>梁博</p>
+		</li>
+		<li>
+			<input type="checkbox" name=""><span>花火</span><p>梁博</p>
+		</li>
+		<li>
+			<input type="checkbox" name=""><span>回来</span><p>梁博</p>
+		</li>
+		<li>
+			<input type="checkbox" name=""><span>爱要有你才完美</span><p>梁博、那英</p>
+		</li>
+	</ul>
+	<div id="floot">
+		<input type="checkbox" name=""><p>全选</p>
+		<button><img src="./img/list8.png" />&nbsp;收藏</button>
+		<button><img src="./img/list9.png" />&nbsp;添加</button>
+		<button><img src="./img/list10.png" />&nbsp;删除</button>
+	</div>
+</body>
+</html>

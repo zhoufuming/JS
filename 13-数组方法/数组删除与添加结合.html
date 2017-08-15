@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var arr = [1,2,3,4,5];
+			//arr.unshift(arr.pop());			//把数组最后一项扔到第前面来！！！
+			//arr.push(arr.shift());			//把数组第一项扔都最后去！！！
+
+			setInterval(function(){
+				arr.unshift(arr.pop());
+				
+				document.body.innerHTML = arr;
+			},800);
+			
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>123</title>
+	<script type="text/javascript">
+	window.onload=function(){
+		document.title='动态方法2';
+		//document.body.innerHTML=123;
+		var aBtn=document.getElementsByTagName('input');
+
+		document.body.innerHTML='<input type="button" value="按钮"><input type="button" value="按钮"><input type="button" value="按钮">';
+		//如果在这里动态加新的标签，用静态的方法是获取不了的，只能用动态的获取方法
+		alert(aBtn.length);
+		aBtn[0].onclick=function(){
+			alert('我是第一个');
+		}
+		aBtn[1].onclick=function(){
+			alert('我是第二个');
+		}
+		aBtn[2].onclick=function(){
+			alert('我是第三个');
+		}
+	};
+	</script>
+</head>
+<body>
+
+</body>
+</html>

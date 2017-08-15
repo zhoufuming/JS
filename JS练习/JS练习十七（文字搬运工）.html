@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#wrap{
+			width: 850px;height: 300px;border: 10px solid #ccc;margin: 0 auto;
+			padding: 10px;
+		}
+		textarea{
+			height: 278px;width: 328px;background: rgba(14,142,181,0.44);border: 1px solid #aaa;
+			float: left;word-break:break-word;overflow: hidden;resize: none;font-size: 16px;
+			padding: 10px;line-height: 25px;
+		}
+		p{
+			height: 278px;width: 328px;background: rgba(180,137,181,0.86);
+			border: 1px solid #aaa;float: left;margin: 0;padding: 2px;font-size: 16px;
+			padding: 10px;line-height: 25px;overflow: hidden;
+			/*transition: all 1s ease;*/
+		}
+		#move{
+			height: 295px;width: 150px;float: left;padding-top: 5px;
+		}
+		#move div{
+			width: 120px;background: #dc0a0a;margin:  20px auto;height: 40px;line-height: 40px;
+			color: #fff;font-size: 18px;text-align: center;cursor: pointer;
+			/*transition: all 2s ease;*/
+		}
+		#move div:hover{
+			background: red;
+		}
+		#move span{
+			width: 100px;margin-left:20px ;height: 25px;font-size: 20px;display: inline-block;
+		}
+		#move i{
+			width: 40px;height: 25px;display: inline-block;text-align: center;
+		}
+		ul{
+			padding: 0;width: 120px;height: 20px;margin:20px auto;
+		}
+		li{
+			list-style: none;width: 10px;height: 15px;/*background: #fc1;*/float: left;
+			margin-right: 5px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oWrap = document.getElementById('wrap');
+			var	oText = oWrap.getElementsByTagName('textarea')[0];
+			var oP = oWrap.getElementsByTagName('p')[0];
+			var oBtn = oWrap.getElementsByTagName('div')[1];
+			var aLi = oWrap.getElementsByTagName('li');
+			var aI = oWrap.getElementsByTagName('i');
+			var arrStr =[];
+			var arrStr1 =[];
+			var timer = null;
+			var onOff = true;
+
+			oBtn.onclick=function(){
+				if (!oText.innerHTML) {
+					alert('请输入内容！！！');
+					return;
+				}
+
+				if (!onOff) return;		//设置开关只能点击一次有效
+				onOff =!onOff;
+				oBtn.style.cssText = 'opacity:0.3;cursor:text;';
+
+				oP.innerHTML = '';
+
+				clearInterval(oP.timer);
+				var num = 0;
+				var str = oText.value;
+				aI[1].innerHTML = str.length;
+				
+				arrStr = str.split('');						//将字符串分割成数组
+				arrStr1 = str.split('');
+				
+				oP.timer = setInterval( function(){
+					arrStr1.splice(0,1);					//将数组中的第一项删除
+					oText.value = arrStr1.join('');		//再将数组转会字符串赋值
+					oP.innerHTML += arrStr[num];
+					aI[0].innerHTML = num;
+
+					for (var i = 0; i < aLi.length; i++) {
+						aLi[i].style.background = '#fc1';
+					}
+
+					aLi[num%aLi.length].style.background = 'red';
+					num++;
+
+					if (num ===str.length) {					
+						aI[0].innerHTML = num;
+						num = 0;
+						
+						oBtn.style.cssText = 'cursor:pointer;';
+						//oText.innerHTML = str;
+						onOff =!onOff;
+						clearInterval(oP.timer);
+						
+						for (var i = 0; i < aLi.length; i++) {
+							 aLi[i].style.cssText = '';
+
+						}
+					}
+
+				},50);
+			
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+
+		<textarea value="">有“翻版舒淇”之称的模特陈育嬬，因2001年参选华裔小姐为大众所熟知，08年却意外卷入不雅照风波，据媒体透露，早在2001年，陈冠希参与华裔小姐外景拍摄时曾大赞她样貌和身材正点，还曾在推特晒过两人的亲密合影，从而被媒体认定其便是艳照门的女主角之一，艳照门爆发后，陈育嬬不知所踪.
+		</textarea> 
+
+		<div  id="move">
+
+			<div>把文字右移</div>
+			<span><i>0</i>/<i>0</i></span>
+
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+
+		<p></p>
+	</div>
+</body>
+</html>

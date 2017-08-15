@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body,ul{
+			padding: 0;
+		}
+		li{
+			list-style: none;float: left;width: 50px;height: 50px;color: black;font-size: 50px;text-align: center;line-height: 50px;border: 1px solid black;margin-left:10px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oBtn=document.getElementById('btn');
+			var oUl=document.getElementById('list');
+			var aLi=oUl.getElementsByTagName('li');
+			var arr=['red','yellow','blue','green','aqua','#cc00cc','#aaa','#ff00ff','#800000','#00ff00'];
+			var onOff=true;
+			oBtn.onclick=function(){
+			if (onOff) {			
+				for (var i = 0; i < arr.length; i++) {
+				 	oUl.innerHTML+='<li>'+[i]+'</li>'; 
+				 	aLi[i].style.background=arr[i];
+				}
+				onOff=false;
+		}
+		}	
+	}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="自动生成十个li" id="btn">
+	<ul id="list">
+	</ul>
+</body>
+</html>

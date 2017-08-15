@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var str = '妙味课堂是一支独具特色的IT培训团队';
+
+			/* substring与slice都是截取，他们有一些小区别 */
+
+			//alert(str.substring(2));		//从第2为开始往后面截取
+
+			//alert(str.substring(0,2));		//从第0截取到第2位（不包括第2位）！！！
+
+			//alert(str.substring(2,0));		//还是从第0截取到第2位（不包括第2位）	可以利用这个特性比较两个字符串的大小，小的往前扔，大的往后扔
+
+			//alert(str.substring(-3,2));		//负数当成0来处理
+
+			alert(str.slice(2,0));			//当第一个数大于第二个数时，不会交换位置，会弹出空内容
+			alert(str.slice(-4,-2));		//负数从后面倒着往前数~
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

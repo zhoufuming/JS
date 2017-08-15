@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#CPM{
+			width: 530px;height: 450px;margin: 0 auto;
+		}
+		.head{
+			width: 530px;height: 40px;background: url(./img/9-1.png);
+		}
+		#content{
+			width: 370px;height: 410px;float: left;position: relative;
+			overflow: hidden;
+		}
+		.right{
+			width: 150px;height: 410px;background: url(./img/9-2.png);
+			background-size: 100% 100%;
+			float: left;
+		}
+		#content p{
+			width: 370px;height: 250px;margin: 0;
+			font-size: 18px;letter-spacing: 7px;overflow: auto;display: inline-block;
+			word-spacing: 10px;
+		}
+		#content div{
+			width: 360px;height: 25px;background: #deecec;padding-top: 5px;
+			padding-right: 10px;
+
+		}
+		#content ul{
+			padding: 0;margin: 0;position: absolute;display: none;
+			width: 150px;height: 200px;top: 51px;border: 1px solid #bdceef;
+			border-bottom: none;overflow: hidden;
+			transition: height 500ms ease;border-left: none;
+			background: #fff;
+		}
+		#content li{
+			list-style: none;width: 135px;height: 32px;border-bottom: 1px dotted blue;
+			padding-left: 10px;padding-right: 5px;
+		}
+		#content li a{
+			width: 137px;height: 32px;display: block;background:  0px 2px repeat-x;
+			background-size: 17px 15px;line-height: 48px;font-size: 14px;color: #0031ad;
+			letter-spacing: 3px;/*background-image: url(./img/9-7.png);*/			
+		}
+		#content li:last-child{
+			border:none;text-align: center;line-height: 32px;
+		}
+		#content b{
+			cursor: pointer;
+		}
+		#CPM a{
+			text-decoration: none;
+		}
+		.Font{
+			font-size: 25px;color: #317bd6;font-weight: bold;width: 30px;
+			display:inline-block;height: 25px;line-height: 20px;border-radius: 10%;
+			text-align: center;float: left;margin-right: 10px;
+		}
+		.Font:hover{
+			background: #b9e0e0;
+		}
+		#content span{
+			font-size: 16px;line-height: 16px;float: left;color: blue;
+			font-weight: bold;
+		}
+		#content textarea{
+			width: 370px;height: 100px;border: none;resize: none;
+			padding: 0;font-size: 16px;
+		}
+		#content textarea:focus{
+			outline: none;
+		}
+		#contentB{
+			width: 370px;height: 30px;position: relative;top: -3px;
+		}
+		#contentB input{
+			float: right;margin-left: 20px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oCont = document.getElementById('content');
+			var oP = oCont.getElementsByTagName('p')[0];
+			var oUl = oCont.getElementsByTagName('ul')[0];
+			var aLi = oCont.getElementsByTagName('li');
+			var aA = oCont.getElementsByTagName('a');
+			var oFont = oCont.getElementsByClassName('Font')[0];
+			var oSpan = oCont.getElementsByTagName('span')[0];
+			var oText = oCont.getElementsByTagName('textarea')[0];
+			var aBtn = oCont.getElementsByTagName('input');
+			var onOff = true;
+			var arrPic = ['./img/9-3.png','./img/9-4.png','./img/9-5.png','./img/9-6.png','./img/9-7.png',''];
+			var arrText = ['足球字体','爱心表白','悲伤落魄','鲜花字体','砍刀字体','默认字体'];
+			var str = '';
+			var strImg = '';
+			oText.innerHTML = '';		//会有自带的空字符串，要先清一下！！！
+
+			for (var i = 0; i < aA.length; i++) {
+
+				aA[i].style.cssText = 'background-image:url('+arrPic[i]+')';
+				aLi[i].index = i;
+
+				aLi[i].onmouseover=function(){
+
+					oSpan.innerHTML = arrText[this.index];
+					
+				}
+
+				aLi[i].onclick=function(){
+					oUl.style.display = 'none';
+					str = arrPic[this.index];
+					onOff =! onOff;
+				}
+				
+			}
+
+			oFont.onclick=function(){
+
+				if (onOff) {
+					oUl.style.display = 'block';
+				}
+				else{
+					oUl.style.display = 'none';
+				}
+				onOff =!onOff;
+			}
+
+			aBtn[0].onclick=function(){
+
+				if (!oText.value) {
+					alert('空白的？发你个鸡毛啊！');
+					return;
+				}
+
+				if (str == '') {
+					oP.innerHTML += oText.value+'<br/>';
+				}
+				else{
+					strImg = '';
+					for (var i = 0; i < oText.value.length; i++) {
+						strImg += '<img src="'+ str+'"alt="" />';
+					}
+
+					oP.innerHTML += strImg+'<br/>'+oText.value +'<br/>';
+				}
+
+				oText.value = '';
+			}
+
+			aBtn[1].onclick=function(){
+				alert('关不了的，SB？？！');
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="CPM">
+		<div class="head"></div>
+
+		<div id="content">
+			<p></p>
+			<div>
+				<ul>
+					<li>
+						<a href="javascript:;">一起去踢足球吧~</a>
+					</li>
+					<li>
+						<a href="javascript:;">心动表白就要你~</a>
+					</li>
+					<li>
+						<a href="javascript:;">生气失落算什么~</a>
+					</li>
+					<li>
+						<a href="javascript:;">妙味课堂我爱你~</a>
+					</li>
+					<li>
+						<a href="javascript:;">不做练习砍了你！</a>
+					</li>
+					<li>
+						<b>默认字体</b>
+					</li>
+				</ul>
+				<a href="javascript:;" class="Font">A</a>
+				<span>默认字体</span>
+			</div>
+			<textarea value="">
+			</textarea>
+			<div id="contentB">
+				<input type="button" name="" value="发送Ⓢ">
+				<input type="button" name="" value="关闭Ⓒ">
+			</div>
+		</div>
+
+		<div class="right"></div>
+	</div>
+</body>
+</html>

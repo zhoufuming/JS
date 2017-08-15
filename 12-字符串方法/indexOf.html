@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var str = 'www.maiov.com/2016ww';
+
+			/*
+			想要查找字符串中'i'的位置，方法一：
+			*/
+			// for (var i = 0; i < str.length; i++) {
+			// 	if (str.charAt(i) === 'i') {
+			// 		alert(i);
+			// 	}
+			// }
+
+			//方法二：
+			//alert(str.indexOf('i'));
+
+			/* indexOf的小例子 */
+
+			//alert(str.indexOf('m'));			//每次只能找到第一个
+			//alert(str.indexOf('m',6));		//从第6位开始往下找
+			//alert(str.indexOf('X'));			//-1 表示没找到
+			alert(str.indexOf('ww',2));			//从第2位开始往下找'ww'
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

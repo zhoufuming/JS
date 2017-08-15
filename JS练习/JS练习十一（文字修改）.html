@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body,ul,h4{
+			padding: 0;margin: 0;
+		}
+		h4{
+			background: green;height: 25px;line-height: 25px;color: #fff;
+			padding-left: 30px;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;display: none;
+		}
+		#wrap{
+			width: 400px;height: 200px;margin: 0 auto;
+		}
+		img{
+			width: 20px;height: 20px;cursor: pointer;
+		}
+		input{
+			display: none;margin-top: 5px;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oWrap=document.getElementById('wrap');
+		var aLi=oWrap.getElementsByTagName('li');
+		fn(aLi[0]);
+		fn(aLi[1]);
+		function fn(oLi){
+			var oSpan=oLi.getElementsByTagName('span')[0];
+			var oImg=oLi.getElementsByTagName('img')[0];
+			var oText=oLi.getElementsByTagName('input')[0];
+			var aA=oLi.getElementsByTagName('a');
+			oImg.onclick=function(){
+				 oText.value=oSpan.innerHTML;
+				 oText.style.display='inline-block';
+				 oSpan.style.display='none';
+				 oImg.style.display='none';
+				 for (var i = 0; i < aA.length; i++) {
+				 	aA[i].style.display='inline-block';
+				 };
+			}
+			aA[0].onclick=function(){
+				 oSpan.innerHTML=oText.value;
+				 oText.style.display='none';
+				 oSpan.style.display='inline-block';
+				 oImg.style.display='inline-block';
+				 for (var i = 0; i < aA.length; i++) {
+				 	aA[i].style.display='none';
+				 };
+			}
+			aA[1].onclick=function(){
+				 oText.style.display='none';
+				 oSpan.style.display='inline-block';
+				 oImg.style.display='inline-block';
+				 for (var i = 0; i < aA.length; i++) {
+				 	aA[i].style.display='none';
+				 };
+			}
+		};
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<h4>分类名称</h4>
+		<ul>
+			<li>
+				<span>欢迎来到德莱联盟</span>
+				<img src="./img/list3.png">
+				<input type="text" name="">
+				<a href="javascript:;">保存</a>
+				<a href="javascript:;">取消</a>
+			</li>
+			<hr>
+			<li>
+				<span>欢迎来到德莱联盟</span>
+				<img src="./img/list3.png">
+				<input type="text" name="">
+				<a href="javascript:;">保存</a>
+				<a href="javascript:;">取消</a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

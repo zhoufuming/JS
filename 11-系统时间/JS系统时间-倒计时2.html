@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<style>
+			.btn{
+				width: 200px;
+			}
+		</style>
+		<script type="text/javascript" src="../zhou.js"></script>
+		<script type="text/javascript">
+			window.onload=function(){
+				var aText = document.getElementsByClassName('btn');
+				var oP = document.getElementsByTagName('p');
+				var oSub = document.getElementById('sub');
+
+				var iNow = null;
+				var iNew = null;
+				var t = 0;
+				var str = '';
+				var timer= null;
+
+				oSub.onclick=function(){
+					clearInterval(timer);
+					iNew = new Date(aText[0].value);
+			
+					setInterval(function(){
+						iNow = new Date();
+						t = Math.floor((iNew - iNow)/1000);
+						if (t>=0) {
+							str = Math.floor(t/86400)+'天'+Math.floor(t%86400/3600)+'时'+Math.floor(t%86400/3600/60)+'分'+t%60+'秒';
+							aText[1].value=str;
+						}
+						else{
+							clearInterval(timer);
+						}
+						
+					},1000);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		距离：<input type="text" name="" class="btn" value="December,16,2016 11:07:00">
+		还剩：<input type="text" name="" class="btn" value="">
+		<input type="submit" name="" value="开始倒计时吧" id="sub">
+		<p></p>
+	</body>
+</html>

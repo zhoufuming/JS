@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var arr = ['a','b','c','d'];
+			//删除，替换，添加
+			//arr.splice(0,2);			//从第0位开始删去2个
+			//arr.splice(0,1,'A');		//从第0位开始将第1个替换'A'
+			arr.splice(1,0,'1','2','3');//将'1','2','3'添加到第1位的前面去
+
+			alert(arr);
+			alert(arr.splice(0,1));		//但只有删除和替换功能才具有返回值！！！
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

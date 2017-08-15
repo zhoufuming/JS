@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	/*
+		$(function(){
+			$('#btn1').click(function(){
+				$(this).css('background','red');
+			});
+		});
+	*/
+	//用js模拟上面jquery的过程
+		 $(function(){
+		 	$('btn1').onclick=function(){
+		 		$(this).style.background='red';
+		 	};
+		 });
+		 function $(v){
+		 	if (typeof v==='function') {
+		 		window.onload=v;
+		 	}
+		 	else if (typeof v===='string') {
+		 		return document.getElementById(v);
+		 	}
+		 	else if (typeof v==='object') {
+		 		return v;
+		 	}
+		 }
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="按钮" id="btn1">
+</body>
+</html>

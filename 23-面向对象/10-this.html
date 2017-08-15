@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		function Aa(){
+			var _this = this;
+			this.a = 12;
+
+			// 函数被定时器调用后this指向window，要解决这种问题，就要先存一下this，在套一层函数
+			setInterval(function(){
+				_this.show();
+			},1000);
+		}
+		Aa.prototype.show = function(){
+			alert(this.a);
+		}
+		var obj = new Aa();
+	</script>
+</head>
+<body>
+
+</body>
+</html>

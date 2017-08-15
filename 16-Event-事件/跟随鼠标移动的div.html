@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			height: 2000px;
+		}
+		#div1{
+			height: 100px;
+			width: 100px;
+			background: red;
+			position: absolute;
+
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			
+			//onmousemove : 当鼠标在一个元素上面移动的触发
+			//触发频率不是像素，而是间隔时间，在一个指定时间内（很短），如果鼠标的位置和上一次的位置发生了变化，那么就会触发一次
+			
+			var i = 0;
+			
+			var oDiv = document.getElementById('div1');
+			
+			document.onmousemove = function(ev) {	
+			//注意是使用onmousemove事件 而不是 onmouseover事件
+				//document.title = i++;
+				
+				var ev = ev || event;
+				
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				
+				oDiv.style.left = ev.clientX + 'px';
+				oDiv.style.top = ev.clientY  + scrollTop + 'px';	// 要加上滚动条滚动的距离！！！
+				
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

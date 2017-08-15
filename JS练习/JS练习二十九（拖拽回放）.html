@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#pic{
+			width: 100px;
+			position: absolute;
+			left: 1000px;
+			top: 50px;
+			cursor: move;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oBtn = document.getElementById('btn');
+			var oImg = document.getElementById('pic');
+			var timer = null;
+			var arr = [];
+			var onOff = true;
+			var moveOnoff = true;
+
+			playback(oImg);
+
+			// 慢动作回放
+			function playback(obj){
+				obj.onmousedown = function(ev){
+
+					if (!onOff) return;	// 动作未完成不允许拖拽！
+					var ev = ev || event;
+
+					var disX = ev.clientX - this.offsetLeft;
+					var disY = ev.clientY - this.offsetTop;
+
+					if (obj.setCapture) {
+						obj.setCapture();
+					}					
+
+					// 记录轨迹前要先清一下~~
+					clearInterval(timer);
+					arr = [];
+					arr.push([this.offsetLeft,this.offsetTop]);
+
+					document.onmousemove = function(ev){
+						var ev = ev || event;
+
+						var L = ev.clientX - disX;
+						var T = ev.clientY - disY;
+
+						if (L < 0) {
+							L = 0;
+						}else if ( L>document.documentElement.clientWidth - obj.offsetWidth ){
+							L = document.documentElement.clientWidth -obj.offsetWidth;
+						}
+
+						if (T < 0) {
+							T = 0;
+						}else if ( T>document.documentElement.clientHeight - obj.offsetHeight ){
+							T = document.documentElement.clientHeight -obj.offsetHeight;
+						}
+
+						obj.style.left = L +'px';
+						obj.style.top = T + 'px'; 
+
+						// 将盒子移动的轨迹记录下来
+						arr.push([obj.style.left,obj.style.top]);
+					}
+
+					document.onmouseup = function(){
+
+						document.onmousemove = document.onmouseup = null;
+
+						if (obj.releaseCapture) {
+							obj.releaseCapture();
+						}
+					}
+					return false;
+				}
+
+			}
+
+			oBtn.onclick = function(){
+
+				// 设置开关，动作未完成再次点击无效！
+				if ( !onOff) return;
+				onOff = !onOff;
+				var num = arr.length-1;	//记得减一啊~
+
+				timer = setInterval(function(){
+					oImg.style.left = arr[num][0];
+					oImg.style.top = arr[num][1];
+					num--;
+
+					if (num < 0) {
+						num = 0;
+						onOff = !onOff;
+						clearInterval(timer);
+
+					}
+				},50);
+
+			}
+			
+
+		}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="动作回放" id="btn">
+	<img src="img/move1.gif" id="pic">
+</body>
+</html>

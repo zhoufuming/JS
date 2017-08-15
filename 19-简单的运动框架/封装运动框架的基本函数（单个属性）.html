@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" name="" value="200">
+	<input type="button" name="" value="800">
+	<div id="div1"></div>
+</body>
+<script type="text/javascript">
+	var btn200 = document.getElementsByTagName('input')[0];
+	var btn800 = document.getElementsByTagName('input')[1];
+	var box = document.getElementById('div1');
+	btn200.onclick = function(){
+		animate(box,"height",200);
+		
+	}
+	btn800.onclick = function(){
+		animate(box,"left",800);
+	}
+
+	// 封装单个属性函数
+	function animate(obj,attr,target){
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function(){
+			// 计算步长 动画的原理	盒子本身的位置 + 步长
+			// 先得到当前的样式，然后 用target减去 就可以	除以10	计算步长
+			var current = parseInt(getStyle(obj,attr));	//	得到当前的值 别忘了去掉px
+			var step = ( target - current )/10;
+			step = step > 0 ? Math.ceil(step) : Math.floor(step);
+			obj.style[attr] = current + step + "px";
+			if (current == target) {
+				clearInterval(obj.timer);
+			}
+		},10);
+	}
+
+
+	function getStyle( obj, attr ){
+		return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle( obj )[attr];
+	}
+</script>
+</html>

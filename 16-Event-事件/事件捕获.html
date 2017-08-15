@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			padding: 50px;
+		}
+		#div1{
+			background: red;
+		}
+		#div2{
+			background: pink;
+		}
+		#div3{
+			background: yellow;
+			position:absolute;
+			top: 250px;
+			
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+
+			var oBox1 = document.getElementById('div1');
+			var oBox2 = document.getElementById('div2');
+			var oBox3 = document.getElementById('div3');
+
+			function fn1(){
+				alert(this.id);
+			}
+
+			/*oBox1.onclick = fn1;
+			oBox2.onclick = fn1;
+			oBox3.onclick = fn1;*/
+
+			// false = 冒泡
+
+			// 冒泡： 告诉div1,如果有一个出去的是事件触发了你，你就去执行fn1这个函数
+			/*oBox1.addEventListener('click',fn1,false);
+			oBox2.addEventListener('click',fn1,false);
+			oBox3.addEventListener('click',fn1,false);*/
+
+			// 捕获：告诉div1,如果有一个进去的是事件触发了你，你就去执行fn1这个函数
+			/*oBox1.addEventListener('click',fn1,true);
+			oBox2.addEventListener('click',fn1,true);
+			oBox3.addEventListener('click',fn1,true);*/
+
+			// 弹出 3，2，1
+			oBox1.addEventListener('click',function(){
+				alert(1);
+			},false);
+			oBox1.addEventListener('click',function(){
+				alert(3);
+			},true);
+			oBox3.addEventListener('click',function(){
+				alert(2);
+			},false);
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2">
+			<div id="div3"></div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var arr = [1,2,2,3,4,2];	//想把重复的数组项去掉？
+
+			for (var i = 0; i < arr.length; i++) {
+				for (var j = i+1; j <arr.length;j++){
+					if (arr[i] == arr[j]) {
+						arr.splice(j,1);	//这里会改变数组的长度
+						j--;				//所以j要减1
+					}
+				}
+			}
+			alert(arr);
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

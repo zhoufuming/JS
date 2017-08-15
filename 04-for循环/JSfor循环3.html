@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload=function(){
+		//方法一：
+		// for(var i=0;i<1000;i++){
+		// 	document.body.innerHTML+='<input type="button" value="按钮" />'
+		// }
+		//方法二：
+		var arr='';
+		for (var i=0;i<1000;i++){
+			arr+='<input type="button" value="按钮" />';
+		}
+		document.body.innerHTML=arr;
+		//方法二先定义一个变量，再将所有的input加进去，最后再赋值给body，这样就不用多次访问文档；--优化性能
+	};
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		* {padding: 0;margin: 0;}
+		li {list-style: none;}
+		ul {
+			width: 400px;
+			height: 30px;
+			position: relative;
+			margin: 100px auto 0;
+			overflow: hidden;
+		}
+		li {
+			float: left;
+			width: 98px;
+			line-height: 28px;
+			border: 1px solid #ccc;
+			text-align: center;
+			z-index: 2;
+			position: relative;
+			cursor: pointer;
+		}
+		.bg {
+			width: 100px;
+			height: 5px;
+			overflow: hidden;
+			background: red;
+			border: none;
+			top: -5px;
+		}
+	</style>
+	<script type="text/javascript">
+
+		window.onload=function(){
+			var oUl = document.getElementById("ul1");
+			var aLi = oUl.getElementsByTagName("li");
+			var oBg = aLi[aLi.length-1];
+
+			for (var i = 0; i < aLi.length-1; i++) {
+
+				aLi[i].addEventListener("mouseenter",function(){
+					startMove(oBg,this.offsetLeft);
+				});
+			}
+		}
+
+		var iSpeed = 0;
+		var left = 0;
+		function startMove(obj,iTarget){
+			clearInterval(obj.timer);
+
+			obj.timer = setInterval(function(){
+				iSpeed += (iTarget-obj.offsetLeft)/5;
+				iSpeed *= 0.7;
+
+				// iSpeed = iSpeed>0 ? Math.ceil(iSpeed) : Math.floor(iSpeed); // 加这个的话，物体会不停的抖动~~
+				left += iSpeed;
+
+				if (Math.abs(iSpeed)<1 && Math.abs(left-iTarget)<1) {	// 速度绝对值小于1并且于目标点的距离的绝对值也小于1
+					clearInterval(obj.timer);
+					obj.style.left = iTarget + "px";
+				}
+				else{
+					obj.style.left = left +"px";
+				}
+
+			},30);
+		}
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li>首页</li>
+		<li>关于我们</li>
+		<li>产品</li>
+		<li>联系方式</li>
+		<li class="bg"></li>
+	</ul>
+</body>
+</html>

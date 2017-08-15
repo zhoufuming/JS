@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		var str = "12,87 76 -sda sdf 654 as 2";
+		/* 把字符串中的所有数字找出来 */
+		// 一般的方法：
+		var arr = [];
+		var tmp = "";
+		var i = 0;
+		for (var i = 0; i < str.length;i++) {
+			if (str.charAt(i)>="0" && str.charAt(i)<="9") {
+				tmp+=str.charAt(i);
+			}
+			else {
+				if (tmp) {
+					arr.push(tmp);
+					tmp="";
+				}
+			}
+		}
+		if (tmp) {
+			arr.push(tmp);
+			tmp = "";
+		}
+		alert(arr);
+
+		// 正则的方法：
+		var re = /\d+/g;
+		alert(str.match(re));
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

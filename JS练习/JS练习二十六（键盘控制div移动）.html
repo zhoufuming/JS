@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#list li{
+			list-style: none;
+			height: 10px;
+			width: 10px;
+			background: red;
+			position: absolute;
+			transition: all 50ms ease;
+		}
+		#listHead{
+			background: #bf2502;
+		}
+		#div2{
+			height: 10px;
+			width: 10px;
+			background: black;
+			position: absolute;
+			left: 100px;
+		}
+	</style>
+	<!-- <script type="text/javascript" src="zhou.js"></script> -->
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl = document.getElementById('list');
+			var oListHead = document.getElementById('listHead');
+			var aLi  = oUl.getElementsByTagName('li');
+			//var oBox = document.getElementById('div1');
+			var oBox2 = document.getElementById('div2');
+			var timer = null;
+			var timer1 = null;
+			var num = null;
+
+			document.onkeydown = function(ev){
+				num = ev.keyCode;
+				var ev = ev || event;
+				var leng = aLi.length;
+				var num1 = 0;
+				detection();
+				clearInterval(timer1);
+
+				switch(ev.keyCode){
+					case 37 : 
+						num1 = 0;
+						timer1 = setInterval(function(){
+							doMove(aLi[num1],'left',10,0);
+							num1++;
+							if (num1 == leng) {
+								clearInterval(timer1);
+								num1 = 0;
+							}
+						},50);
+					;
+						break;
+					case 38 : 
+						num1 = 0;						
+						timer1 = setInterval(function(){
+							doMove(aLi[num1],'top',10,0);
+							num1++;
+							if (num1 == leng) {
+								clearInterval(timer1);
+								num1 = 0;
+							}
+						},50);
+					;
+						break;
+					case 39 : 
+						num1 = 0;		
+						timer1 = setInterval(function(){
+							doMove(aLi[num1],'left',10,1300);
+							num1++;
+							if (num1 == leng) {
+								clearInterval(timer1);
+								num1 = 0;
+							}
+						},50);			
+					;
+						break;
+					case 40 : /*doMove(oListHead,'top',1,document.documentElement.clientHeight-parseInt(getStyle(oListHead,'width')))*/
+						num1 = 0;						
+						timer1 = setInterval(function(){
+							doMove(aLi[num1],'top',10,610);
+							num1++;
+							if (num1 == leng) {
+								clearInterval(timer1);
+								num1 = 0;
+							}
+						},50);
+					;
+						break;
+				}		
+			}
+
+			function detection(){
+				timer = setInterval(function(){
+					if ( oListHead.offsetLeft >= oBox2.offsetLeft-8
+					 && oListHead.offsetLeft <= oBox2.offsetLeft+8
+					 && oListHead.offsetTop >= oBox2.offsetTop-8 
+					 && oListHead.offsetTop <= oBox2.offsetTop+8) {	
+
+						var oLi = document.createElement('li');
+						oLi.style.top = oBox2.offsetTop + 'px';
+						oLi.style.left = oBox2.offsetLeft + 'px';
+						oUl.appendChild( oLi );
+						
+					switch(num){
+						case 37 : 
+							for (var i = 0; i < aLi.length; i++) {
+								doMove(aLi[i],'left',10,0);
+							}
+						;
+							break;
+						case 38 : 
+							for (var i = 0; i < aLi.length; i++) {
+								doMove(aLi[i],'top',10,0);
+							}
+						;
+							break;
+						case 39 : 
+							for (var i = 0; i < aLi.length; i++) {
+								doMove(aLi[i],'left',10,1300);
+							}
+						;
+							break;
+						case 40 :
+							for (var i = 0; i < aLi.length; i++) {
+								doMove(aLi[i],'top',10,610);
+							}
+						;
+							break;
+					}	
+
+						oBox2.style.left = Math.round(Math.random()*1200) + 'px';
+						oBox2.style.top = Math.round(Math.random()*600) + 'px';
+
+						//oUl.innerHTML += '<li></li>';
+						//alert(1);
+					}
+				},10);
+			}
+
+			function getStyle( obj, attr ){
+				return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle( obj )[attr];
+			}
+
+			function doMove(obj,attr,dir,target,endFn){	
+
+				clearInterval(obj.timer);
+				
+				dir = parseInt(getStyle( obj, attr )) < target ? dir : -dir;	
+
+				obj.timer=setInterval(function (){
+					var speed = parseInt(getStyle( obj, attr )) + dir;	
+				
+					if ( speed < target && dir < 0 || speed > target && dir > 0 ) {		
+						speed = target;
+					}
+					obj.style[attr] = speed + 'px';	
+
+					if (speed == target) {
+					clearInterval(obj.timer);
+
+					endFn && endFn();	
+				}
+				},50);
+				
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li id="listHead"></li>
+	</ul>
+	<div id="div2"></div>
+
+</body>
+</html>

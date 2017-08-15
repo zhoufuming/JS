@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+	/*
+		定时器：时间概念
+		var timer=setInterval(函数，毫秒);	重复执行
+		clearInterval(timer);				清除
+
+		var timer=setTimeout(函数，毫秒)l;	只执行一次
+		clearTimeout(timer)					清除
+	 */
+	var i=0;
+
+	function fn1(){
+		document.title=i;	//让网页标题只增变化
+		i++;
+	}
+	
+	setInterval(fn1,1000);	//定时器也可以调用函数~~
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oP = document.getElementById('p1');
+		var oBtn1 = document.getElementById('btn1');
+		oBtn1.onclick=function(){
+			var arr = oP.innerHTML.split(',');
+			arr.push(arr[0]);
+			//arr.splice(0,1);	//删除数组的中第一项，方法一
+			arr.shift();		//删除数组的中第一项，方法二
+			oP.innerHTML = arr;
+		}
+	}
+	</script>
+</head>
+<body>
+	<p id="p1" style="font-size: 20px;">1,2,3,4</p>
+	<input type="button" name="" value="切换" id="btn1">
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		div{
+			width: 100px;height: 100px;background: red;position: absolute;top: 100;left: 50;
+			/*transition: opacity 3s ease;*/
+		}
+	</style>
+	<script type="text/javascript" src="../zhou.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oDiv = document.getElementsByTagName('div')[0];		
+
+			oDiv.onclick=function(){
+				//doMove(oDiv,'left',10,900);
+
+				// timer=setInterval(function(){
+				// 	var speed = parseInt(getStyle(oDiv,'opacity')*100)/100-0.1;	
+				// 	//不能直接减小数，要先乘100取整再除以100！！！
+				// 	oDiv.style.opacity=speed;
+				// 	if (speed <= 0) {
+				// 		speed=0;
+				// 	}
+				// 	//alert(speed);
+				// },200);
+				
+				oPacity(oDiv,0.1,0);
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

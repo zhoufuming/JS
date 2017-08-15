@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		var arr1 = []; // 数组一
+		arr1.run = function(){	// 自定义方法
+			alert("酸辣土豆丝");
+		}
+		//arr1.run();
+		var arr2 = [];	// 数组二
+		//arr2.run();	// 不可用 会报错
+
+		// 只要是数组 我们能不能都有run 这个方法呢
+		// 这个时候我们可以把 prototype	原型
+		Array.prototype.run = function(){	// 只要是数组都可以调用这个方法(利用了面向原型的继承的特点)
+			alert("酸辣土豆丝~~~");
+		}
+		var demo1 = [];
+		demo1.run();
+		var demo2 = [];
+		demo2.run();
+	</script>
+</head>
+<body>
+
+</body>
+</html>

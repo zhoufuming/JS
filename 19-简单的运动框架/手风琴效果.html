@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+
+		div {
+			list-style: none;
+			width: 1000px;
+			height: 460px;
+			margin: 50px auto;
+			overflow: hidden;
+			
+		}
+		ul {
+			width: 1500px;
+			height: 460px;
+		}
+		li {
+			width: 200px;
+			height: 460px;
+			float: left;
+			overflow: hidden;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var aLi = document.getElementsByTagName("li");
+
+			for (var i = 0; i < aLi.length; i++) {
+
+				aLi[i].onmouseover = function (){
+
+					this.index = i;
+					// 解决bug，最后一个li宽度减小时有问题,那就不让它宽度减小了
+					for (var i = 0; i < aLi.length-1; i++) {
+
+						animate(aLi[i],{width:100});
+					}
+					animate(this,{width:600});
+
+				}
+				aLi[i].onmouseout = function(){
+					for (var i = 0; i < aLi.length-1; i++) {
+						animate(aLi[i],{width:200});
+					}
+				}
+
+			}
+		}
+
+		// 封装多个属性函数
+		function animate(obj,json,endFn){
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				// 计算步长 动画的原理	盒子本身的位置 + 步长
+				var flag = true;	// 定时器开关
+				// 开始遍历　json
+				for ( var attr in json ){
+
+
+					var current = 0;
+					if (attr=="opacity") {
+						current = getStyle(obj,attr)*100;
+
+					}
+					else if(attr == "zIndex"){
+						obj.style.zIndex = json[attr];
+					}
+					else{
+						current = parseInt(getStyle(obj,attr));
+					}
+
+					// attr 属性	json[attr] 属性值
+					var step = ( json[attr] - current )/10;
+					step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+					// 判断透明度
+					if (attr == "opacity") {
+
+						if ("opacity" in obj.style) {// 判断浏览器是否支持opacity
+							obj.style.opacity = ( current + step )/100;
+						}
+						else{
+							obj.style.filter = "alpha(opacity="+(current + step)+")";
+
+						}
+					}
+					else{
+						obj.style[attr] = current + step +"px";
+					}
+
+					
+
+					if (current != json[attr]) {	// 只要其中一个不满足条件 就不应该停止定时器 这一句一定要写在遍历里面
+						flag = false;
+					}
+				}
+				if (flag) {
+					clearInterval(obj.timer);
+					endFn && endFn();
+				}
+				
+			},10);
+		}
+
+		function getStyle( obj, attr ){
+			return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle( obj )[attr];
+		}
+	</script>
+</head>
+<body>
+	<div>	
+		<ul>
+			<li><img src="../img/13-1.jpg"></li>
+			<li><img src="../img/13-2.jpg"></li>
+			<li><img src="../img/13-3.jpg"></li>
+			<li><img src="../img/13-4.jpg"></li>
+			<li style="width: 600px;"><img src="../img/13-5.jpg"></li>
+		</ul>
+	</div>
+</body>
+</html>

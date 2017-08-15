@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div{
+			position: absolute;width: 50px;height: 50px;background: red;transition: all 100ms ease;
+			
+		}
+	</style>
+	<script type="text/javascript" src="../zhou.js"></script>
+		
+	<script type="text/javascript">
+		window.onload=function(){
+			var str='';
+			var leng=20;
+			var aDiv=document.getElementsByTagName('div');
+			var num=0;
+			var onOff = true;
+
+			for (var i = 0; i < leng; i++) {
+				str+='<div style="left:'+(i*60)+'px;">'+'</div>'
+			}
+
+			document.body.innerHTML+=str;
+		
+			document.onclick=function (){
+				clearInterval(aDiv[num].timer);	
+				if (!onOff) return;		//设置开关只执行一次有效点击！！！
+				onOff =!onOff;
+
+				setInterval(
+					function(){
+						doMove(aDiv[num],'top',30,500);
+						num++;
+						if (num === leng) {
+							num=0;
+							onOff =!onOff;
+						}
+						clearInterval(aDiv[num].timer);
+						doMove(aDiv[num],'top',60,0);
+				},100);
+
+			};
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

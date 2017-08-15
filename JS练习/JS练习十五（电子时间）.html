@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		ul{
+			padding: 0; width: 1120px;height: 200px;margin: 0 auto;
+		}
+		li{
+			list-style: none;width: 140px;height: 200px;/*background: black;*/float: left;
+			overflow: hidden;
+		}
+		img{
+			width: 140px;height: 200px;position: relative;float: left;/*transition: all 500ms ease;*/
+		}
+	</style>
+	<script type="text/javascript" src="zhou.js"></script>
+	<script type="text/javascript">
+	window.onload=function(){
+
+		var oUl = document.getElementById('list');
+		var aLi = oUl.getElementsByTagName('li');
+		var aImg =  oUl.getElementsByTagName('img');
+		var arrImg = [];
+		
+		flash(2);
+		flash(5);
+
+
+		function flash(a){
+			var onOff = true;
+			setInterval(function(){
+				if (onOff) {
+					aImg[a].src='img/colon2.jpg';
+					onOff=false;
+				}
+				else{
+					aImg[a].src='img/colon.jpg';
+					onOff=true;
+				}
+			},500);		
+		}
+
+		for (var i = 0; i < aImg.length; i++) {
+			arrImg.push(aImg[i]);
+		}
+		arrImg.splice(2,1);		//splice 删除数组中的某个值!!!
+		arrImg.splice(4,1);
+		fnTime();				//一打开网页就先运行一次该函数，修复网页打开的空白期间~~
+		setInterval(fnTime,1000);
+		
+		function fnTime(){
+			var myTime = new Date();
+			var iHours = myTime.getHours();
+			var iMin = myTime.getMinutes();
+			var iSec = myTime.getSeconds();
+			var str = toTwo(iHours)+toTwo(iMin)+toTwo(iSec);
+
+			for (var i = 0; i < str.length; i++) {
+				arrImg[i].src='img/6-'+str[i]+'.jpg';	
+			}
+		};
+	}
+
+	function toTwo(n){
+			return n < 10 ? '0'+n : ''+n;
+		}
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li><img src="img/6-0.jpg"></li>
+		<li><img src="img/6-0.jpg"></li>
+		<li><img src="img/colon.jpg"></li>
+		<li><img src="img/6-0.jpg"></li>
+		<li><img src="img/6-0.jpg">></li>
+		<li><img src="img/colon.jpg"></li>
+		<li><img src="img/6-0.jpg"></li>
+		<li><img src="img/6-0.jpg"></li>
+	</ul>
+</body>
+</html>

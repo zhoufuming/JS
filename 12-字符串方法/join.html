@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var arr = ['aa','bb','cc'];
+
+			alert(arr.join());				
+			//join可以将数组合并成字符串,与split的作用刚好相反	-->'aa,bb,cc'
+
+			alert(arr.join(''));	// --> 'aabbcc'	
+
+			alert(arr.join('-'));	// --> 'aa-bb-cc'				
+
+			alert(typeof arr.join().split(','));	
+			//先通过join将将数组合并成字符串，再通过split分割成数组
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

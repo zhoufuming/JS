@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var aBtn=document.getElementsByTagName('input');
+				for (var i = 0; i < aBtn.length; i++) {
+					aBtn[i].index=i;					//自定义属性（索引）
+					aBtn[i].onclick=function(){			//格式书写
+						alert(this.index);
+					}
+				}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="btn1">
+	<input type="button" name="" value="btn2">
+	<input type="button" name="" value="btn3">
+</body>
+</html>

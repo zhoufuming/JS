@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	// 用new + 原型(pototype)的方法来构造对象
+		function CreatePerson(name,sex){ 
+
+			this.name = name;
+			this.sex = sex;
+		}
+
+		CreatePerson.prototype.showName = function(){
+			alert("我的名字："+this.name);
+		}
+		CreatePerson.prototype.showSex = function(){
+			alert("我是"+this.sex+"的");
+		}
+
+		var p1 = new CreatePerson("zhou","男");
+		var p2 = new CreatePerson("ying","女");
+
+		p1.showName();
+		p1.showSex();
+		p2.showName();
+		p2.showSex();
+
+		alert(p1.showName == p2.showName);// true 因为他们调用的方法一模一样，这样代码重复使用的效率高！！！
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{padding: 0;margin: 0;}
+		ul{list-style: none;}
+		img{vertical-align: top;}
+		#list{
+			padding: 0;
+			width: 1120px;
+			height: 200px;
+			margin: 0 auto;
+		}
+		#list>li{
+			width: 140px;
+			height: 200px;
+			float: left;
+			overflow: hidden;
+			position: relative;
+		}
+		#list ul {
+			width: 100%;
+			height: 200%;
+			position: absolute;
+			top: 0;
+			overflow: hidden;
+			/*transition: all 500ms ease;*/
+		}
+		img{
+			width: 140px;
+			height: 200px;
+			position: relative;
+		}
+	</style>
+	<script type="text/javascript" src="zhou.js"></script>
+	<script type="text/javascript">
+	window.onload=function(){
+
+		var oUl = document.getElementById('list');
+		var aLi = oUl.children;	// 第一代li
+		
+		//var aImg =  oUl.getElementsByTagName('img');
+		var arrLi = [];
+		var timer = null;
+		
+		flash(aLi[2].children[0]);
+		flash(aLi[5].children[0]);
+
+
+		function flash(obj){
+			var onOff = true;
+			setInterval(function(){
+				if (onOff) {
+					obj.src='img/colon2.jpg';
+					onOff=false;
+				}
+				else{
+					obj.src='img/colon.jpg';
+					onOff=true;
+				}
+			},500);		
+		}
+
+		for (var i = 0; i < aLi.length; i++) {
+			arrLi.push(aLi[i]);
+		}
+
+		fnTime();				//一打开网页就先运行一次该函数，修复网页打开的空白期间~~
+		setInterval(fnTime,1000);
+		
+		function fnTime(){
+			var myTime = new Date();
+			var iHours = myTime.getHours();
+			var iMin = myTime.getMinutes();
+			var iSec = myTime.getSeconds();
+			var str = toTwo(iHours)+toTwo(iMin)+toTwo(iSec);
+			var ii = 0;
+			var leader = 0;
+
+			for (var i = 0; i < aLi.length; i++) {
+
+				this.index = i;
+				if (i==2 || i==5) {continue;}	// 跳过aLi[2]和aLi[5]
+				
+
+				/*timer = setInterval(function(){
+
+					leader=leader + 10;
+
+					// leader = leader + (target-leader)/5;
+					aLi[7].children[0].style.top = -leader+"px";
+					
+				},100);
+
+				if (leader >= 200) {
+					alert(0);
+					clearInterval(timer);
+					leader = 0;
+					aLi[7].children[0].style.top = "0px";
+				}*/
+
+
+
+				aLi[i].children[0].children[0].children[0].src='img/6-'+str[ii]+'.jpg';
+				ii++;
+
+				
+
+			}
+		};
+	}
+
+	function toTwo(n){
+			return n < 10 ? '0'+n : ''+n;
+		}
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li>
+			<ul>
+				<li><img src="img/6-0.jpg"></li>
+				<li><img src="img/6-0.jpg"></li>
+			</ul>
+		</li>
+		<li>	
+			<ul>
+				<li><img src="img/6-0.jpg"></li>
+				<li><img src="img/6-0.jpg"></li>
+			</ul>
+		</li>
+		<li><img src="img/colon.jpg"></li>
+		<li>	
+			<ul>
+				<li><img src="img/6-0.jpg"></li>
+				<li><img src="img/6-0.jpg"></li>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li><img src="img/6-0.jpg"></li>
+				<li><img src="img/6-0.jpg"></li>
+			</ul>
+		</li>
+		<li><img src="img/colon.jpg"></li>
+		<li>
+			<ul>
+				<li><img src="img/6-0.jpg"></li>
+				<li><img src="img/6-0.jpg"></li>
+			</ul>
+		</li>
+		<li>
+			<ul>
+				<li><img src="img/6-0.jpg"></li>
+				<li><img src="img/6-0.jpg"></li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>

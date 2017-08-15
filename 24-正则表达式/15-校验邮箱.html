@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	// 邮箱:1391653205@qq.com
+	// 1391653205	@	qq	.	com
+	//一串字母、数字、下划线 @ 一串英文、数字 . 一串英文（长度是2-4位）
+	//	\w+		@	[0-9a-z]+	\.	[a-z]{2,4}
+	//	\w+@[0-9a-z]+\.[a-z]{2,4}
+
+		window.onload=function(){
+			var oText = document.getElementById("text1");
+			var oBtn = document.getElementById("btn1");
+			//var re = /\w+@[0-9a-z]+\.[a-z]{2,4}/i;
+			// 字符串中有某一段符合条件就会通过
+
+			var re = /^\w+@[0-9a-z]+\.[a-z]{2,4}$/i;
+			//	^ $ 表示行首 行尾	字符串中从行首到行尾的所有字符符合条件才会通过
+			// 一般写这种校验的程序都是要加行首行尾的！！！
+			
+			oBtn.addEventListener("click",function(){
+
+				// 写法一：
+				//if (oText.value.match(re)) 
+				// 写法二：
+				if (re.test(oText.value))
+				{
+					alert("这是正确的邮箱喔！");
+				}
+				else {
+					alert("这是错误的邮箱喔~");
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+	<input id="text1" type="text" name="">
+	<input id="btn1" type="button" name="" value="校验">
+</body>
+</html>

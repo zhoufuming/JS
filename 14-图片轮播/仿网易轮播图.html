@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="wy-slider.css">
+	<script type="text/javascript" src="../zhou.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			function $(id) { return document.getElementById(id) }
+			var js_slider = $("js_slider"); 
+			var slider_main_block = $("slider_main_block");
+			var imgs = slider_main_block.children;
+			var slider_ctrl = $("slider_ctrl");
+
+			for (var i = 0; i < imgs.length; i++) {
+				var span = document.createElement("span");
+				span.className = "slider-ctrl-con";
+				span.innerHTML = i+1;
+				slider_ctrl.insertBefore(span,slider_ctrl.children[i+1]);
+			}
+
+			var spans = slider_ctrl.children;
+			spans[1].setAttribute("class","slider-ctrl-con current");
+
+			// 得到大盒子的宽度 也就是后面动画要走的距离
+			var scrollWidth = js_slider.clientWidth;
+			// 刚开始是， 第一张图片显示，其余的隐藏在右侧
+
+			for (var i=1;i<imgs.length;i++){
+				imgs[i].style.left = scrollWidth + "px";
+			}
+
+			// 遍历三种按钮		左、右、底部 
+			var iNow = 0;	// 用来控制播放的是那张图片
+			for(var k in spans ){	// k 是索引号	spans[k]	spans[0] 是第一个span
+				spans[k].onclick = function(){
+					if (this.className == "slider-ctrl-prev") {
+
+						animate(imgs[iNow],{left:scrollWidth});
+
+						/*iNow--;
+						if (iNow < 0) {
+							iNow=imgs.length-1; 
+						}*/
+						// 简写上面的代码 	++iNow  先自加 后运算
+						--iNow < 0 ? iNow=imgs.length-1 : iNow;
+
+						imgs[iNow].style.left = -scrollWidth + "px";
+						animate(imgs[iNow],{left:0});
+						setSquare();
+
+					}
+					else if (this.className == "slider-ctrl-next") {
+						/*animate(imgs[iNow],{left:-scrollWidth});		
+						
+						++iNow > imgs.length-1 ? iNow=0 : iNow;
+
+						imgs[iNow].style.left = scrollWidth + "px";
+						animate(imgs[iNow],{left:0});
+
+						setSquare();*/
+						autoPlay();
+					}
+					else {
+						// 首先我们要知道点击的是第几张图片 -- 获得当前索引号
+						var that = this.innerHTML-1;
+						if (that > iNow) {
+							// 做法等同与右侧按钮
+							animate(imgs[iNow],{left:-scrollWidth});
+							imgs[that].style.left = scrollWidth + "px";
+							// animate(imgs[that],{left:0});
+						}
+						else if(that < iNow){
+
+							animate(imgs[iNow],{left:scrollWidth});
+							imgs[that].style.left = -scrollWidth + "px";
+							// animate(imgs[that],{left:0});
+						}
+
+						iNow = that;	// 给当前的索引号
+						animate(imgs[iNow],{left:0});
+						setSquare();
+					}
+				}
+			}
+
+			// 可以控制 播放span的函数
+			function setSquare(){
+				for (var i = 1; i < spans.length-1; i++) {
+					spans[i].className = "slider-ctrl-con";
+				}
+				spans[iNow+1].className = "slider-ctrl-con current";
+			}
+
+			// 定时器开始	相当于重复执行右侧按钮
+			var timer = null;
+			timer = setInterval(autoPlay,3000);
+
+			function autoPlay(){
+
+				animate(imgs[iNow],{left:-scrollWidth});
+				++iNow > imgs.length-1 ? iNow=0 : iNow;
+
+				imgs[iNow].style.left = scrollWidth + "px";
+				animate(imgs[iNow],{left:0});
+
+				setSquare();
+			}
+
+			// 鼠标经过清除定时器
+			js_slider.onmouseover = function(){
+				clearInterval(timer);
+			}
+			js_slider.onmouseout = function(){
+				timer = setInterval(autoPlay,3000);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="w-slider" id="js_slider">
+
+		<div class="slider">
+			<div class="slider-main" id="slider_main_block">
+				<div class="slider-main-img">
+					<a href="#"><img src="wy-images/1.jpg" alt=""></a>
+				</div>
+				<div class="slider-main-img">
+					<a href="#"><img src="wy-images/2.jpg" alt=""></a>
+				</div>
+				<div class="slider-main-img">
+					<a href="#"><img src="wy-images/3.jpg" alt=""></a>
+				</div>
+				<div class="slider-main-img">
+					<a href="#"><img src="wy-images/4.jpg" alt=""></a>
+				</div>
+				<div class="slider-main-img">
+					<a href="#"><img src="wy-images/5.jpg" alt=""></a>
+				</div>
+				<div class="slider-main-img">
+					<a href="#"><img src="wy-images/6.jpg" alt=""></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="slider-ctrl" id="slider_ctrl">
+			<span class="slider-ctrl-prev"></span>
+			<!-- <span class="slider-ctrl-con current"></span>
+			<span class="slider-ctrl-con"></span>
+			<span class="slider-ctrl-con"></span>
+			<span class="slider-ctrl-con"></span>
+			<span class="slider-ctrl-con"></span>
+			<span class="slider-ctrl-con"></span>
+			<span class="slider-ctrl-con"></span> -->
+			<span class="slider-ctrl-next"></span>
+		</div>
+	</div>
+</body>
+</html>

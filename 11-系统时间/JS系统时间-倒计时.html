@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>倒计时</title>
+		<meta charset="utf-8">
+		<script type="text/javascript">
+			window.onload=function(){
+				//设定的时间点（不变）
+				//现在的时间点（在变）
+
+				var iNow = new Date();
+				//var iNew = new Date(2016,11,17,23,0,0);				//数字形式    数字形式 月份要减一！！！
+				var iNew = new Date('December,17,2016 11:00:00');		//字符串形式
+				var t = Math.floor((iNew - iNow)/1000);	//毫秒->秒
+				var str=Math.floor(t/86400)+'天'+Math.floor(t%86400/3600)+'时'+Math.floor(t%86400/3600/60)+'分'+Math.floor(t%60)+'秒';
+				alert(str);
+
+
+				//天：Math.floor(t/86400)
+				//时：Math.floor(t/86400/3600)
+				//分：Math.floor(t/86400/3600/60)
+				//秒：t%60
+
+				//数字形式：new Date(2016,11,16,23,07,0);			数字形式 月份要减一！！！
+				//字符串形式：new Date('December,16,2016 11:07:00');
+				
+				//January、February、March、April、May、June、July、August、September、October、November、Deceber
+			}
+		</script>
+	</head>
+	<body></body>
+</html>

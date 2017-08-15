@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#div1{
+			width: 100px;height: 100px;background: red;
+		}
+	</style>
+	<script type="text/javascript" src="miaov.js"></script>
+	<script type="text/javascript" >
+	$(function(){
+		$('btn1').onclick=function(){
+			//alert($('div1').id);	//输出div1的id
+			
+			//alert($('div1').style.width);	//只能得到div1行间里面的宽，样式表里面的是找不到的
+			//alert(getComputedStyle($('div1')).width);	//可以获取计算机（浏览器）计算后的样式，不过ie6,ie7,ie8下不兼容！！！
+			//alert($('div1').currentStyle.width);	//标准浏览器不兼容，只有旧的浏览器才兼用！！！
+			
+			//解决的方案：
+			//1）属性判断法
+			// if ($('div1').currentStyle) {
+			// 	alert($('div1').currentStyle.width);
+			// }
+			// else{
+			// 	alert(getComputedStyle($('div1')).width);
+			// }
+			alert(getStyle($('div1'),'width'));	//调用下面封装的函数~~
+			alert(getStyle($('div1'),'height'));
+			//alert(getStyle($('div1'),'background'));	//bakcground => bakcground:url() red ....	,其实它是复合样式，所有会弹出一堆东西，所以不可以这样写~~
+			alert(getStyle($('div1'),'backgroundColor'));
+			/* 
+			注意事项：1.不要有空格，会弹出undefined;2.不要获取复合样式;
+			3.不要获取未设置的样式，会有兼容性的问题
+			*/
+		}
+	});
+
+	//封装上面属性判断的方法~~
+	function getStyle(obj,attr){	//将封装好的函数存到miaov.js里面去，需要的时候就可以引用~~
+		
+		//用if(){}else{}的写法
+		// if (obj.currentStyle) {
+		// 		return (obj.currentStyle[attr]);
+		// 	}
+		// 	else{
+		// 		return (getComputedStyle(obj)[attr]);
+		// 	}	
+			
+		//用三目运算的写法
+		return obj.currentStyle ? (obj.currentStyle[attr]) : (getComputedStyle(obj)[attr]);
+	}
+	</script>
+</head>
+<body>
+	<input id="btn1" type="button" name="" value="按钮">
+	<div id="div1" style="width: 150px;"></div>
+</body>
+</html>

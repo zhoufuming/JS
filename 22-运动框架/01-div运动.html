@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+	<title>无标题文档</title>
+	<style type="text/css">
+		div {
+			width:100px;
+			height:100px;
+			background:red;
+			position: absolute;
+			left:0;
+			top:50px;
+		}
+	</style>	
+	<script type="text/javascript">
+		window.addEventListener("load",function(){
+			var oDiv = document.getElementById("div1");
+			var oBtn = document.getElementsByTagName("input")[0];
+			var timer = null;
+			var iSpeed = 1;
+			
+			oBtn.onclick = function startMove(){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					iSpeed ++;
+					if(oDiv.offsetLeft >= 500){
+						clearInterval(timer);
+					}
+					else {// 一定要将div运动的代码写在else里面，否则就算到达了终点，每次点击之后还是会div移动一下，因为定时器停止只是停止下一次，而这一次的程序不会停止！！！
+						oDiv.style.left = oDiv.offsetLeft + iSpeed + "px";
+					}
+				},30);
+			}
+		});
+	</script>
+</head>
+
+<body>
+	<input type="button" value="开始运动" />
+	<div id="div1"></div>
+</body>
+</html>

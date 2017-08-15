@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		body{
+			padding: 0;
+		}
+		input{
+			position: absolute;
+		}
+		#div1{
+			width: 70px;height: 70px;background: red;position: absolute;top: 60px;left: 10px;
+			transition: all 50ms ease;
+		}
+		#btn1{
+			left: 60px;top: 30px;
+		}
+		#btn2{
+			left: 0px;top: 30px;
+		}
+		#btn3{
+			left: 30px;top: 0px;
+		}
+		#btn4{
+			left: 30px;top: 30px;
+		}
+	</style>	
+	<script type="text/javascript">
+	window.onload=function(){
+		var oBtn1=document.getElementById('btn1');
+		var oBtn2=document.getElementById('btn2');
+		var oBtn3=document.getElementById('btn3');
+		var oBtn4=document.getElementById('btn4');
+		var oDiv=document.getElementById('div1');
+
+		oBtn1.onclick=function(){
+				doMove(oDiv,'left',10,900);
+		}
+
+		oBtn2.onclick=function(){
+				doMove(oDiv,'left',10,0);
+		}
+		oBtn3.onclick=function(){
+				doMove(oDiv,'top',10,60);
+		}
+		oBtn4.onclick=function(){
+				doMove(oDiv,'top',10,800);
+		}
+		function doMove(obj,attr,dir,target){	//obj代表需要移动的对象，attr代表方向，dir代表步长（不用分正负了~~），target代表目的地
+			clearInterval(obj.timer);
+			
+			dir = parseInt(getStyle( obj, attr )) < target ? dir : -dir;	//比较当前位置与目标点的大小，来判断dir的正负！！！
+
+			obj.timer=setInterval(function (){
+				var speed = parseInt(getStyle( obj, attr )) + dir;	
+
+				/*
+				if ( speed > target && dir > 0 ) {		//可以将这两个if合并起来~~
+					speed = target;
+				}
+		
+				if ( speed < target && dir < 0 ) {		
+					speed = target;
+				}	
+				*/
+			
+				if ( speed < target && dir < 0 || speed > target && dir > 0 ) {		
+					speed = target;
+				}
+				obj.style[attr] = speed + 'px';	
+
+				if (speed == target) {
+				clearInterval(obj.timer);
+				//alert('当前位置为'+speed);
+			}
+
+			},50);
+			
+		}
+
+		function getStyle(obj,attr){
+			return obj.currentStyle ? obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+		}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="⇨" id="btn1">
+	<input type="button" name="" value="⇦" id="btn2">
+	<input type="button" name="" value="⇧" id="btn3">
+	<input type="button" name="" value="⇩" id="btn4">
+	<div id="div1"></div>
+</body>
+</html>

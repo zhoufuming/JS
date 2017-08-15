@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			/*
+				元素.parentNode : 只读 属性 当前节点的父级节点
+			*/
+
+			var aA = document.getElementsByTagName('a');
+
+			for (var i = 0; i < aA.length; i++) {
+				aA[i].onclick=function(){
+					this.parentNode.style.display = 'none';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li>111<a href="javascript:;">隐藏</a></li>
+		<li>222<a href="javascript:;">隐藏</a></li>
+		<li>333<a href="javascript:;">隐藏</a></li>
+		<li>444<a href="javascript:;">隐藏</a></li>
+	</ul>
+</body>
+</html>

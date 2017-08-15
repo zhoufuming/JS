@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		var str = "1b2 abc 1c2 ee";
+
+		//var re = /1a2|1b2|1c2/;
+		// 表示1和2之间可以出现a或者b或者c其中一个就可以了
+		//可以简写成：
+		var re = /1[abc]2/g;	// []里面都表示或者的意思
+		alert(str.match(re));	//	1b2，1c2
+
+		// [0-9] 表示所有数字中的一个数字 相当于 \d
+		// [a-zA-Z] 表示所有字母中的一个字母
+		// [0-9a-zA-Z] 表示所有的数字和字母的其中一个
+		// [^a]	表示除了a之外的所有字符
+		// [^0-9a-zA-Z] 表示所有的数字和字母之外的其他字符
+		// . 表示所有的字符
+	</script>
+</head>
+<body>
+
+</body>
+</html>

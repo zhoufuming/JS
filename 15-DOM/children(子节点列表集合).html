@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oUl = document.getElementById('uli');
+
+			/*
+				元素.children : 只读 属性 子节点列表集合
+
+					标准下: 只包含元素类型的节点
+					非标准下：只包含元素类型的节点
+			*/
+
+			//alert( oUl.children.length );
+
+			for (var i = 0; i < oUl.children.length; i++) {
+				oUl.children[i].style.background = 'red';
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="uli" style="border: 1px solid black;">
+		<li>111<span>span</span></li>
+		<li>222</li>
+		<li>333</li>
+		<li>444</li>
+		<p>p</p>
+	</ul>
+</body>
+</html>

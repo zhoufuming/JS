@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var json = {name:'zhou',age:21};	
+			//alert(json.name);
+
+			var arrPic=['../img/1-1.jpg','../img/1-2.jpg','../img/1-3.jpg','../img/1-4.jpg'];
+			var arrText=['风情万种','极致诱惑','一笑倾人城','再笑倾人国'];
+
+			var imgData = {
+				arrPic:['../img/1-1.jpg','../img/1-2.jpg','../img/1-3.jpg','../img/1-4.jpg'],
+				arrText:['风情万种','极致诱惑','一笑倾人城','再笑倾人国']		//结束不需要加';'
+			}
+
+			//alert(imgData.arrPic);			//输出全部arrPic数组
+			//alert(imgData.arrPic[0]);			//输出arrPic数组的第一项
+
+			var json1 = {name:'zhou'};			//创建json写法一
+			var json2 = {'name':'zhou'};		//创建json写法二（推荐使用，字符串格式js库解析更加方便，安全性高）
+
+			json2.name = '周';					//更改json写法一
+			json2['name'] = '周';				//更改json写法二
+
+			alert(json2.name);					//引用json写法一		
+			alert(json2['name']);				//引用json写法二	
+
+			var json3 = {abc:123,xyz:''};		//json里面可以放数字，字符，数组等
+												//同样数组里面也可以放json
+			var arr = [{'name':'TM','age':23},{'name':'zhou','age':'21'}];
+			alert(arr[0].name+'今年有'+arr[1]['age']);	
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

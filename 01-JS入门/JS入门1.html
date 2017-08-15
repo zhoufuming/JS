@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	div{
+		width: 200px;height: 200px;display:none;background: red;
+	}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oShowBtn = document.getElementById('showBtn');
+			var oHideBtn = document.getElementById('hideBtn');
+			var oDiv = document.getElementById('Div');
+			var oStrong = document.getElementById('strong');
+				oShowBtn.onclick=show;
+				oHideBtn.onclick=hide;
+				oStrong.onclick=show;
+				function show(){
+					oDiv.style.display='block';
+				}
+				function hide(){
+					oDiv.style.display='none';
+				}
+				// function show1(){
+				// 	oDiv.style.display='block';
+				// }
+		}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="显示" id="showBtn">
+	<input type="button" name="" value="隐藏" id="hideBtn">
+	<strong id="strong">我也可以显示</strong>
+	<div id="Div"></div>
+</body>
+</html>

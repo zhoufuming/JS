@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		var arr = [1,2,3,4,5];	// 数组也是一个对象
+
+		var a = 12;		// 变量a与属性a其实是很相同的，不过变量a是自由的（或者说变量a是window的一个属性），属性a是属于一个对象
+		arr.a = 5;
+
+		function show(){	// 这是一个函数
+			alert(1);
+		}
+
+		arr.fn = function(){	// 这是一个方法
+			alert(1);
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

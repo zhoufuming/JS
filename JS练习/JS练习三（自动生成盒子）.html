@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#divList{
+			position: relative;
+		}
+		#divList div{
+			width: 50px;height: 50px;font-size: 30px;line-height:50px; color: #fff;background: red;position: absolute;top: 0;left: 0;text-align: center;border: 1px solid #fff;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){	
+			var oDivList=document.getElementById('divList');
+			var aDiv=oDivList.getElementsByTagName('div');	
+			var oBtn=document.getElementById('btn');	
+			var arr='';
+			var onOff=true;
+			var arrBg=['red','yellow','blue','green','aqua','#cc00cc','#aaa','#ff00ff','#800000','#00ff00','red','yellow','blue','green','red','yellow','blue','green','red','yellow','blue','green','red','yellow','blue','green','red','yellow','blue','green','red','yellow','blue','green','red','yellow','blue','green','red','yellow','aqua','#cc00cc','#aaa','#ff00ff','#800000','#00ff00','green','red','aqua','#cc00cc','#aaa','#ff00ff','#800000','#00ff00','blue','aqua','#cc00cc','#aaa','#ff00ff','#800000','#00ff00','red','yellow','blue','green','red','yellow','blue','green','red','yellow','blue','green','red','yellow','blue','aqua','#cc00cc','#aaa','#ff00ff','#800000','#00ff00','red','yellow','blue','green','aqua','#cc00cc','#aaa','#ff00ff','#800000','#00ff00','yellow','blue','green','red','yellow','blue','green','red'];
+			oBtn.onclick=function(){
+				if (onOff) {
+				onOff=false;
+					for (var i=0;i<100;i++){
+						arr+='<div>'+i+'</div>';
+
+					}
+					oDivList.innerHTML=arr; 
+					 //注意赋值给body时的位置（数组加完标签后就马上赋值给body，样式在后面加）
+					//出现错误时：如果语法没错，浏览器上也没显示错误提示，很可能是位置放错了~~~			
+					for (var i=0;i<aDiv.length;i++){
+						aDiv[i].style.background=arrBg[i];				
+		          		if (i<10 ) {
+		          			aDiv[i].style.top=0*50+'px';
+		          			aDiv[i].style.left=i*50+'px';
+		          		}
+		          		else if (i<10*2) {
+		          			aDiv[i].style.top=1*50+'px';
+		          			aDiv[i].style.left=(i-10)*50+'px';
+		          		}
+		          		else if (i<10*3) {       			
+		          			aDiv[i].style.top=2*50+'px';
+		          			aDiv[i].style.left=(i-10*2)*50+'px';
+		          		}
+		          		else if (i<10*4) {
+		          			aDiv[i].style.top=3*50+'px';
+		          			aDiv[i].style.left=(i-10*3)*50+'px';
+		          		}
+		          		else if (i<10*5) {
+		          			aDiv[i].style.top=4*50+'px';
+		          			aDiv[i].style.left=(i-10*4)*50+'px';
+		          		}
+		          		else if (i<10*6) {
+		          			aDiv[i].style.top=5*50+'px';
+		          			aDiv[i].style.left=(i-10*5)*50+'px';
+		          		}
+		          		else if (i<10*7) {
+		          			aDiv[i].style.top=6*50+'px';
+		          			aDiv[i].style.left=(i-10*6)*50+'px';
+		          		}
+		          		else if (i<10*8) {
+		          			aDiv[i].style.top=7*50+'px';
+		          			aDiv[i].style.left=(i-10*7)*50+'px';
+		          		}
+		          		else if (i<10*9) {
+		          			aDiv[i].style.top=8*50+'px';
+		          			aDiv[i].style.left=(i-10*8)*50+'px';
+		          		}
+		          		else {
+		          			aDiv[i].style.top=9*50+'px';
+		          			aDiv[i].style.left=(i-10*9)*50+'px';
+		          		}
+				}
+			}
+			}		
+		}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="自动生成100个div" id="btn">
+	<div id="divList"></div>
+</body>
+</html>

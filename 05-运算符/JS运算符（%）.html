@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		li{
+			display: block;height: 20px;margin-bottom: 5px;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var aLi=document.getElementsByTagName('li');
+		var arr=['red','yellow','aqua'];
+		for (var i = 0; i < aLi.length; i++) {
+			aLi[i].index=i;
+			aLi[i].style.background=arr[i%arr.length];	//模运算： %   这里会循环获得0,1,2
+			aLi[i].onmouseover=function(){
+				this.style.background='black';
+			}
+			aLi[i].onmouseout=function(){
+				this.style.background=arr[this.index%arr.length];
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

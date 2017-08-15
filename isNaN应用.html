@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oBtn1=document.getElementById('btn1');
+			var oBtn2=document.getElementById('btn2');
+			var str='';		
+			//HTML中拿到的内容，类型都是字符串
+			//alert(typeof str);   //所以不能判断是否是数字类型
+			oBtn2.onclick=function(){
+				str=oBtn1.value;
+
+				if (!str) {
+					alert('请输入内容！');	
+					return;
+				}
+				
+				if (isNaN(str)) {
+					alert(str+'不是数字');
+				}
+				else{
+					alert(str+'是数字');
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="btn1">
+	<input type="button" name="" value="判断输入的数值是不是一个数字" id="btn2">
+</body>
+</html>

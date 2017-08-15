@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	/*
+		BOM : Browser Object Model 浏览器对象模型
+	*/
+		window.onload=function(){
+			var aInput = document.getElementsByTagName('input');
+			var opener = null;
+			/*
+				window.open(页面的地址url,打开的方式)方法  打开一个新的窗口（页面）
+					如果url为空，则默认打开一个空白的页面
+					如果打开方式为空，默认为新窗口方式打开
+					在js中如果前面是window,可以省略不写
+
+				返回值：返回新打开的窗口的window对象
+			*/
+			aInput[0].onclick = function(){
+				//open('http://www.baidu.com','_self');	//_self 本窗口	_blank	新窗口
+
+				opener = window.open();
+				//alert(openr == window);	//判断一下返回值是否是当前窗口，false
+			}
+
+			/*
+				close()方法	 关闭窗口
+			*/
+			aInput[1].onclick = function(){
+				window.close();	//不推荐使用
+				/*
+					fiefox : 默认无法关闭
+					chrome : 默认直接关闭
+					ie : 询问用户
+				*/
+			}
+
+			aInput[2].onclick = function(){
+				opener.close();
+				// 可以关闭在本窗口通过js方法打开的新窗口
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="打开新窗口" id="btn">
+	<input type="button" name="" value="关闭窗口">
+	<input type="button" name="" value="关闭新窗口">
+</body>
+</html>

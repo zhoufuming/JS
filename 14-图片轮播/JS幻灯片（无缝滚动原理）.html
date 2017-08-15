@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		* {margin: 0;padding: 0;}
+		ul {list-style: none;}
+		img {vertical-align: top;}	/* 去掉图片底部3像素的距离,也可以用display: block;来去掉 */
+		#box {
+			width: 600px;
+			height: 200px;
+			margin: 100px auto;
+			background-color: pink;
+			overflow: hidden;
+			position: relative;
+			border: 5px solid black;
+		}
+		#box ul li {
+			float: left;
+		}
+		#box ul {
+			width: 400%;
+			position: absolute;
+
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oBox = document.getElementById('box');
+			var ul = oBox.children[0];
+			var num = 0;	// 控制left值
+			var tiemr = null;
+
+			// 因为我们要做无缝滚动，所以要克隆重复的图片到后面去
+			ul.appendChild(ul.children[0].cloneNode(true));
+			ul.appendChild(ul.children[1].cloneNode(true));
+
+			timer = setInterval(autoPlay,10);
+
+			oBox.onmouseover = function(){
+				clearInterval(timer);
+			}
+			oBox.onmouseout = function(){
+				timer = setInterval(autoPlay,10);
+			}
+		
+			function autoPlay(){
+				num--;
+				/*
+				if (num <= -1200) {	// 当走完第四张的时候，在从头开始走
+					num=0;
+				} */
+				num <= -1200 ? num = 0 : num;
+
+				ul.style.left = num +'px';
+				
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li><img src="../img/12-1.jpg" alt=""></li>
+			<li><img src="../img/12-2.jpg" alt=""></li>
+			<li><img src="../img/12-3.jpg" alt=""></li>
+			<li><img src="../img/12-4.jpg" alt=""></li>
+			<!-- 最好别直接添加，要用JS来克隆第一第二张图片 -->
+			<!-- <li><img src="../img/12-1.jpg" alt=""></li>
+			<li><img src="../img/12-2.jpg" alt=""></li> -->
+		</ul>
+	</div>
+</body>
+</html>

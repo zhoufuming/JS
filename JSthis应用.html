@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		li{
+			width: 50px;height: 50px;background: red;position: relative;float: left;margin: 100px;
+			list-style:none;
+		}
+		div{
+			width: 100px;height: 100px;background: aqua;position: absolute;left: 50px;display: none;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oUl=document.getElementById('list');
+		var aLi=oUl.getElementsByTagName('li');
+		for (var i = 0; i < aLi.length; i++) {
+			aLi[i].onmouseover=function(){
+				this.getElementsByTagName('div')[0].style.display='block';
+			}
+			aLi[i].onmouseout=function(){
+				this.getElementsByTagName('div')[0].style.display='none';
+			}
+		}
+		// alert(1);
+	}
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li><div></div></li>
+		<li><div></div></li>
+		<li><div></div></li>
+		<li><div></div></li>
+	</ul>
+</body>
+</html>

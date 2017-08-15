@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#text1{
+			width: 200px;
+			border: 1px solid #fc1;
+			font-size: 18px;
+		}
+		#list{
+			padding: 0;
+			margin: 0;
+			border: 1px solid #fc1;
+			width: 200px;
+			border-top: none;
+			height: 180px;
+			display: none;
+		}
+		#list li{
+			list-style: none;
+			width: 200px;
+			height: 30px;
+			line-height: 30px;
+		}
+		#list li:hover{
+			color: white;
+			background: orange;
+		}
+		li.selected{
+			color: white;
+			background: orange;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oText = document.getElementById('text1');
+			var oUl = document.getElementById('list');
+			var aLi = oUl.getElementsByTagName('li');
+
+			oText.onclick = function(ev){
+
+				var ev = ev || event;
+				ev.cancelBubble = true;
+
+				oUl.style.display = 'block';
+			}
+
+			for (var i = 0; i < aLi.length; i++) {
+
+				aLi[i].onclick = function(ev){
+
+					var ev = ev || event;
+					ev.cancelBubble = true;				
+
+					// 如果字体已经存在，再次点击就把该字体清除掉
+					if (oText.value.indexOf(this.innerHTML,0) != -1) {
+
+						// 判断是否有',' 有就要把','也删掉
+						if (oText.value.indexOf(',',0) != -1) {
+
+							// 在判断','是在前面还是在后面','
+							if (oText.value.indexOf(this.innerHTML,0) == 0) {
+								oText.value = oText.value.split(this.innerHTML+',').join('');
+							}else{
+								oText.value = oText.value.split(','+this.innerHTML).join('');
+							}
+											
+						}else{
+							oText.value = oText.value.split(this.innerHTML).join('');
+						}
+
+						this.className = null;
+						return;
+
+					}
+
+					if (ev.ctrlKey) {
+
+						this.className = 'selected';
+
+						// 三目运算，如果文本框的内容不为空的话就在加上','
+						oText.value ?  oText.value += ',' + this.innerHTML
+							: oText.value += this.innerHTML;
+
+							
+
+					}else{
+
+						for (var i = 0; i < aLi.length; i++) {
+							aLi[i].className = null;
+						}
+
+						this.className = 'selected';
+						oText.value = this.innerHTML;
+
+					}
+				}
+			}
+
+			document.onclick = function(){
+				oUl.style.display = 'none';
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="text1">
+	<ul id="list">
+		<li>宋体</li>
+		<li>楷体</li>
+		<li>隶书</li>
+		<li>微软黑体</li>
+		<li>幼圆字体</li>
+		<li>仿宋</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#demo {
+			width: 100px;
+			height: 100px;
+			background: aqua;
+		}
+	</style>
+	<script type="text/javascript">
+		// 这样可以写多个入口函数，不会被覆盖掉！！！
+		window.addEventListener('load',function(){
+
+
+			var box1 = document.getElementById("demo");
+			// 可以重复绑定多个事件,与JQ的on、bind作用一样 （以后都要用这种方式来绑定事件！！！）
+			box1.addEventListener("click",function(){
+				alert(1);
+			});
+			box1.addEventListener("click",function(){
+				alert(2);
+			});
+		});
+		window.addEventListener('load',function(){
+			var box1 = document.getElementById("demo");
+			box1.addEventListener("click",function(){
+				alert(3);
+			});
+			box1.addEventListener("click",function(){
+				alert(4);
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="demo"></div>
+</body>
+</html>

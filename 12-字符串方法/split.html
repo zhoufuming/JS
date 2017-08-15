@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		var str = 'www.baidu.com';
+		//alert(str.split('.'));		//通过'.'来分割字符串，变成数组 --> ['www','baidu','com']
+
+		var str1 = 'leo';
+		//alert(str1.split());			//()里面不写就会将整个字符串分割成数组中的一个项 --> ['leo']
+		//alert(str1.split(''));		//通过''来分割字符串 --> ['l','e','o']
+		
+		var str2 = '妙味课堂';
+		//alert(str2.split('味'));		// --> ['妙','课堂']
+
+		var str3 = '/maiov.com/';
+		alert(str3.split('/'));			// -->	[,'maiov.com',]	
+
+		var str4 = '2016-12-20-18-50'
+		alert(str4.split('-',3));		//只保留前三段 --> ['2016','12','20']
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var aBtn=document.getElementsByTagName('input');
+			var aP=document.getElementsByTagName('p');
+
+			//想建立“匹配”“对应”关系，就用索引~~
+			//经常使用的喔~~
+			var arr=['剑豪','剑圣','剑姬']
+				for (var i = 0; i < aBtn.length; i++) {
+					aBtn[i].index=i;
+						
+					aBtn[i].onclick=function(){	
+						this.value=arr[this.index];
+						aP[this.index].innerHTML=arr[this.index];
+					}
+				}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="btn1">
+	<input type="button" name="" value="btn2">
+	<input type="button" name="" value="btn3">
+	<p>a</p>
+	<p>b</p>
+	<p>c</p>
+</body>
+</html>

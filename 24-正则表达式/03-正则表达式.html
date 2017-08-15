@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		var str = "abcdef";
+		var re1 = new RegExp("A");
+
+		alert(re1.test(str));//false 正则默认是区分大小写的
+
+		var re2 = new RegExp("A","i");// i -> ignore 加"i"之后可以忽略大小写
+		alert(re2.test(str));
+	</script>
+</head>
+<body>
+
+</body>
+</html>

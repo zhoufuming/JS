@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body,ul{
+			padding: 0;
+		}
+		#wrap{
+			width: 525px;height: 220px;padding-left: 10px;margin: 100px auto 0;/*background: blue;*/
+		}
+		ul{
+			
+		}
+		li{
+			list-style: none; width: 56px;height: 83px;margin: 0 10px 7px 19px;float: left;
+			background: url(img/css精灵Bg1.png) no-repeat;/*background-position: 0 0;*/
+		}
+		li img{
+			position: relative;top: -130px;left: 20px;display: none;
+		}
+
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oUl=document.getElementById('list');
+		var aLi=oUl.getElementsByTagName('li');
+		for (var i = 0; i < aLi.length; i++) {
+			aLi[i].innerHTML='<img src="img/2-1.png" />';
+			if (i<6) {
+			aLi[i].style.backgroundPosition=-86*(i)+'px'+' 0';
+			}
+			else{
+			aLi[i].style.backgroundPosition=-86*(i-6)+'px'+' -90px';
+			}	
+			aLi[i].onmouseover=function(){
+				this.getElementsByTagName('img')[0].style.display='block';
+			}	
+			aLi[i].onmouseout=function(){
+				this.getElementsByTagName('img')[0].style.display='none';
+			}	
+		}
+		// alert(1);
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<h3>最新上线</h3>
+		<hr/>
+		<ul id="list">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+</html>

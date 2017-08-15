@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <head>
+    	<meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+        <title>
+            弹性十足的横向弹出菜单特效代码_阿里西西特效
+        </title>
+        <style>
+            *{ 
+                margin:0px; padding:0px;
+            } 
+            body { 
+                background:#fff;
+            } 
+            .naver{
+                list-style-type:none; width:700px; overflow:hidden; margin:100px auto 0;
+            } 
+            .naver li{ 
+                width:100px;height:50px; overflow:hidden; font-size:16px; text-align:center; cursor:
+            pointer; 
+            } 
+            .naver li a{
+            display: block;width:100px; height:50px;line-height: 50px; color:#FFF; text-decoration: none;
+            transition: all 1s ease;
+             } 
+             .co1{
+              background:#649e37;
+            }
+            .co2{ 
+            background:#028fbc;
+            }
+            /* .naver li a:hover{
+            background: aqua;width: 250px;
+             }   */ 
+        </style>
+        <script type="text/javascript">
+            window.onload = function() {
+                var oUl1 = document.getElementById("nav");
+                var aLi1 = oUl1.getElementsByTagName("li");
+                var i = 0;
+                for (i = 0; i < aLi1.length; i++) {
+                    aLi1[i].timer = null;
+                    aLi1[i].speed = 0;
+                    aLi1[i].onmouseover = function() {
+                        startMove(this, 250);
+                    };
+                    aLi1[i].onmouseout = function() {
+                        startMove2(this, 100);
+                    };
+                }
+            };
+
+            function startMove(obj, iTarget) {
+                if (obj.timer) {
+                    clearInterval(obj.timer);
+                }
+                obj.timer = setInterval(function() {
+                    doMove(obj, iTarget);
+                }, 30)
+            };
+
+            function doMove(obj, iTarget) {
+                obj.speed += 3;
+                if (Math.abs(iTarget - obj.offsetWidth) < 1 && Math.abs(obj.speed) < 1) {
+                    clearInterval(obj.timer);
+                    obj.timer = null;
+                }
+                else {
+                    if (obj.offsetWidth + obj.speed >= iTarget) {
+                        obj.speed *= -0.7;
+                        obj.style.width = iTarget + "px";
+                    }
+                    else {
+                        obj.style.width = obj.offsetWidth + obj.speed + "px";
+                    }
+                }
+            };
+
+            function startMove2(obj, iTarget) {
+                if (obj.timer) {
+                    clearInterval(obj.timer);
+                }
+                obj.timer = setInterval(function() {
+                    doMove2(obj, iTarget);
+                }, 30)
+            };
+
+            function doMove2(obj, iTarget) {
+                obj.speed -= 3;
+                if (Math.abs(iTarget - obj.offsetWidth) < 1 && Math.abs(obj.speed) < 1) {
+                    clearInterval(obj.timer);
+                    obj.timer = null;
+                }
+                else {
+                    if (obj.offsetWidth + obj.speed <= iTarget) {
+                        obj.speed *= -0.7;
+                        obj.style.width = iTarget + "px";
+                    }
+                    else {
+                        obj.style.width = obj.offsetWidth + obj.speed + "px";
+                    }
+                }
+            };
+        </script>
+    </head>
+    
+    <body>
+        <ul id="nav" class="naver">
+            <li class="co1">
+                <a href="http://www.alixixi.com" style="float: left;">首页</a>
+                <a href="" style="float: left;width: 80px;">返回首页</a>
+            </li>
+            <li class="co2">
+                <a href="http://www.alixixi.cn" style="float: left;">素材</a>
+                <a href="" style="float: left;width: 80px;">查找素材</a>
+            </li>
+            <li class="co1">
+                <a href="http://js.alixixi.com">特效</a>
+            </li>
+            <li class="co2">
+                <a href="http://down.alixixi.com">源码</a>
+            </li>
+            <li class="co1">
+                <a href="http://www.alixixi.cn/dvd/">光盘</a>
+            </li>
+        </ul>
+    </body>
+
+</html>

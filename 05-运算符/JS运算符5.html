@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+	window.onload=function(){
+		var alnp=document.getElementsByTagName('input');
+		//	alnp[1].checked=false;
+		//	alnp[2].checked=true;
+			alnp[0].onclick=function(){
+				for (var i = 1; i < alnp.length; i++) {
+				//方法一：
+					/*
+					 if (alnp[i].checked) {
+						alnp[i].checked=false;
+					}
+					else{
+						alnp[i].checked=true;
+					}
+					*/
+				//方法二：
+					alnp[i].checked = !alnp[i].checked;
+				}
+			}
+	}
+	</script>
+</head>
+<body>
+	<input type="button" name="" value="反选">
+	<ul>
+		<li><input type="checkbox" name="" checked=""></li>
+		<li><input type="checkbox" name=""></li>
+		<li><input type="checkbox" name="" checked=""></li>
+		<li><input type="checkbox" name=""></li>
+		<li><input type="checkbox" name=""></li>
+		<li><input type="checkbox" name=""></li>
+	</ul>
+</body>
+</html>

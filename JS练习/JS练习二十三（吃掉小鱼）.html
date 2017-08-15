@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body { 
+			background:url(./img/10-18.png) no-repeat; font-family:微软雅黑; font-size:16px; user-select: none;background-size: 100% 100%;
+			 }
+		#box { 
+			width:800px; height:450px; border:5px solid #066;/* background:#bef1f9; */
+			margin:20px auto 0; position:relative; top:0; left:0; 
+			transition: background 500ms ease;
+		}
+		#box img{
+			position: absolute;top: 0;left: 0;width: 40px;
+		}
+		input{
+			background: url(./img/10-15.png) no-repeat;height: 50px;width: 120px;
+			background-size: 100% 100%;font-size: 16px;color: #fff;
+			border: none;cursor: pointer;
+		}
+		#fraction { 
+			width:130px; border:1px solid #066; position:relative; top:-5px; left:-155px; background:#28eff2; padding:10px; color: #fff;font-weight: bold;
+		}
+		#fraction p {
+			margin:0; font-family:微软雅黑; font-size:16px; line-height:30px;
+		  }
+		#alert {
+			text-align:center; 
+		}
+	</style>
+
+	<script type="text/javascript" src="zhougame1.js"></script>
+</head>
+<body>
+	<div id="alert">
+		<h2>你是一条大鲨鱼，看你能吃掉多少条小鱼？</h2>
+	  <p>游戏说明：点击“开始游戏”，随机出现小鱼，吃掉它，千万别让它掉下去！！</p>
+	  <input type="button" value="开始游戏" />
+	</div>
+
+	<div id="box">
+		<div id="fraction">
+	  		<p>吃掉小鱼：0 条</p>
+	  	</div>
+	  	<div id="qq">
+	  		<img src="./img/11-10.png">
+	  	</div>
+	</div>
+</body>
+</html>

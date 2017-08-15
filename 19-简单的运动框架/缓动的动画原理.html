@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			
+		}
+	</style>
+</head>
+<body>
+	<input type="button" name="" value="按钮" id="btn">
+	<div id="div1"></div>
+</body>
+	<script type="text/javascript">
+		var btn = document.getElementById("btn");
+		var box = document.getElementById("div1");
+		var target = 1000;
+		var timer = null;
+		btn.onclick = function(){
+			timer = setInterval(function(){
+				// 盒子本身位置 + 步长 （不断变化）
+				var step = (target-box.offsetLeft)/10;	// 步长
+
+				// 要向上或者向下取整，不然，只能无限接近target,不会等于target
+
+				step =  step > 0 ? Math.ceil(step) : Math.floor(step);
+
+				box.style.left = box.offsetLeft + step + "px";
+				
+				if (box.offsetLeft == target) {
+					clearInterval(timer);
+				}
+			},30);
+		}
+	</script> 
+</html>

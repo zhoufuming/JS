@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			height: 2000px;
+		}
+		div{
+			height: 100px;
+			width: 100px;
+			position: absolute;
+			top: 200px;
+			right: 0;
+			background: red;
+			transition: all 500ms ease;
+		}
+	</style>
+	<script type="text/javascript">		
+		window.onload=function(){
+			var oBox = document.getElementsByTagName('div')[0];
+
+			window.onscroll = function(){
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				oBox.style.top = scrollTop+200+'px';
+				var t = scrollTop+(document.documentElement.clientHeight-oDiv.offsetHeight)/2;
+				startMove(parseInt(t));
+			}
+			// ie下不支持，想要兼用旧版ie的话，要用 JS固定广告（上下滑动的侧边栏）.html 这个网页
+			var timer = null;
+			function startMove(iTarget){
+				var oBox = document.getElementsByTagName('div')[0];
+				clearInterval(timer);
+				timer = setInterval(function(){
+					var iSpeed = (iTarget-oBox.offsetTop)/8;
+					iSpeed = iSpeed>0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+
+					if (oDiv.offsetTop == iTarget) {
+						clearInterval(timer);
+					}
+					else {
+						oBox.style.top = oDiv.offsetTop + iSpeed + "px";
+					}
+				},30);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		window.onload=function(){
+			var aInp = document.getElementsByTagName('input');
+			var oBox = document.getElementsByTagName('div')[0];
+
+			aInp[1].onclick=function(){
+
+				var str = aInp[0].value;
+				var str1 = '';
+
+				//alert(str.charCodeAt(0));
+				for (var i = 0; i < str.length; i++) {
+
+					str1 += String.fromCharCode(str.charCodeAt(i)-1000);	
+					//将字符转成字符编码再进行减法加密，最后再转成字符！！！
+
+				}
+				oBox.innerHTML = str1;
+			};
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="">
+	<input type="button" name="" value="加密">
+	<div>加密... </div>
+</body>
+</html>

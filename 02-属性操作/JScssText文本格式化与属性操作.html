@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div{
+			border: 1px solid red;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oDiv=document.getElementById('div1');
+		var oBtn=document.getElementById('btn');
+		oDiv.onclick=function(){
+			oDiv.style.cssText='width:100px;height:100px;';//cssText里面设置样式很方便喔~~
+		}
+		oBtn.onclick=function(){
+			oDiv.style.cssText='width:100px;';//cssText会先清除前面自己设置的样式，在输入加上当前的设置的样式，标签的style设置的样式不会清除，但如果属性一样，会覆盖style的样式，因为cssText级别比style高；
+
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="div1">123</div>
+	<input type="button" name="" value="按钮" id="btn">
+</body>
+</html>

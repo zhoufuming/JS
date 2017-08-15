@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#list{
+			width: 200px;margin: 0 auto;background: #edf6fa;text-indent: 20px;cursor: pointer;
+		}
+		li{
+			list-style: none;
+		}
+		#list li li{
+			border-bottom: 1px solid #bcbbbb;
+		}
+		ul{
+			padding: 0;
+		}
+		h2{
+			margin: 0;/*border: 1px solid #bcbbbb;*/
+		}
+		#list .partner{
+			margin: 0;border: 1px solid #bcbbbb;
+		}
+		#list ul{
+			display: none;
+		}
+		#list h2{
+			width: 198px;background: blue;background: url(../img/list1.png) no-repeat 5px 5px #d6f0fc;
+			padding: 0;
+		}
+		#list .active{
+			background: url(../img/list2.png) no-repeat 5px 5px #9f64f7;
+		}
+		#list .hover{
+			background: #e2f76e;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oList=document.getElementById('list');
+			var apartner=oList.getElementsByClassName('partner');
+			var aH2=oList.getElementsByTagName('h2');
+			var aUl=oList.getElementsByTagName('ul');
+			//如何将ul中的li的li找出来？？
+			//通过for套for把每一个li中的li保存在变量aLi里面，再把所有的aLi存到数组arrLi中；
+			var aLi='';
+			var arrLi=[];
+			var onOff=true;
+			for (var i = 0; i < aH2.length; i++) {
+
+				aH2[i].index=i;
+				aH2[i].onclick=function(){
+					
+					if (this.className=='') {
+						aUl[this.index].style.display='block';
+						this.className='active';
+						this.style.backgroundUrl='../img/list2.png';
+					}
+					else{
+						aUl[this.index].style.display='none';
+						this.className='';
+					}
+
+				}
+			}
+
+			for (var i = 0; i < aUl.length; i++) {
+				aLi= aUl[i].getElementsByTagName('li');
+				for (var j = 0; j < aLi.length; j++) {
+					arrLi.push(aLi[j]);	//把所有aLi存到数组里面
+				}
+			}
+
+			for (var i = 0; i < arrLi.length; i++) {
+				arrLi[i].onclick=function(){
+					if (this.className=='') {
+						for (var i = 0; i < arrLi.length; i++) {
+							arrLi[i].className='';
+							}
+
+						this.className='hover';	
+					}
+					else{
+						for (var i = 0; i < arrLi.length; i++) {
+							arrLi[i].className='';
+							}
+					}
+
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li class="partner">
+			<h2 >我的好友</h2>
+			<ul>
+				<li>王麻子</li>
+				<li>李狗蛋</li>
+				<li>张二丫</li>
+				<li>曾寡妇</li>
+			</ul>
+		</li>
+		<li class="partner">
+			<h2>我的战友</h2>
+			<ul>
+				<li>拉克丝</li>
+				<li>雷恩加尔</li>
+				<li>李青</li>
+				<li>诺克萨斯之手</li>
+			</ul>
+		</li>
+		<li class="partner">
+			<h2>我的黑名单</h2>
+			<ul>
+				<li>玛德</li>
+				<li>智障</li>
+			</ul>
+		</li>
+	</ul>
+</body>
+</html>

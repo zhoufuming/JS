@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div {
+			padding: 50px;
+		}
+		#div1{
+			background: red;
+		}
+		#div2{
+			background: pink;
+		}
+		#div3{
+			background: yellow;
+			position:absolute;
+			top: 250px;
+
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+
+			/*
+				事件冒泡：当一个元素接收到事件的时候，会把他接收到的所有事件传播给他的父级，一直到顶层window,事件冒泡机制
+			*/
+
+			var oBox1 = document.getElementById('div1');
+			var oBox2 = document.getElementById('div2');
+			var oBox3 = document.getElementById('div3');
+
+			function fn1(){
+				alert(this.id);
+			}
+
+			//oBox1.onclick = fn1;	给元素加事件处理函数
+			// 事件函数绑定
+			oBox1.onclick = fn1;	//告诉div1,如果他接收到一个点击事件，那么他就会执行fn1
+			//oBox2.onclick = fn1;
+			oBox3.onclick = fn1;
+
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2">
+			<div id="div3"></div>
+		</div>
+	</div>
+</body>
+</html>

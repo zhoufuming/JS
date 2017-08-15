@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>	
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#div1{
+			height: 100px;
+			width: 100px;
+			background: red;
+			position: absolute;
+			top: 200px;
+			left: 500px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+
+			var oDiv = document.getElementById('div1');
+			drag(oDiv);
+
+			function drag(obj){
+
+				obj.onmousedown = function(ev){
+					var ev = ev || event;
+					var disW = this.offsetWidth;
+					//var disH = this.offsetHeight;
+					var disX = ev.clientX;
+					var disL = this.offsetLeft;
+					var b = '';
+
+					if (disX > disL + disW - 10) {
+						//alert('right');
+						b = 'right';						
+					}
+					if (disX < disL + 10) {
+						//alert('left');
+						b = 'left';
+					}
+
+					if (obj.setCapture) {
+						obj.setCapture();
+					}
+
+					document.onmousemove = function(ev){
+						var ev = ev || event;
+
+						switch (b){
+							case 'right':
+								oDiv.style.width = disW + (ev.clientX - disX) + 'px';
+							break;
+							case 'left':
+								oDiv.style.width = disW - (ev.clientX - disX) + 'px';
+								oDiv.style.left = disL + (ev.clientX - disX) + 'px';
+							break;
+						}
+					}
+
+					document.onmouseup = function(){
+						document.onmousemove = document.onmouseup = null;
+
+						if (oDiv.releaseCapture) {
+							oDiv.releaseCapture();
+						}
+
+					}
+					return false;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

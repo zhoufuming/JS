@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+
+		window.onload=function(){
+			var oList=document.getElementById('list');  //静态的获取方法 只能找一个；getElementById前面只能写document,而动态前面可以写document,也可以写定义的变量名
+			var aLi=oList.getElementsByTagName('li');	//动态的获取方法  可以找多个(一个元素的集合)，也可以只找其中一个（加：[0]）
+			
+		};
+	</script>
+</head>
+<body>
+	<ul id="list">
+		<li>100</li>
+		<li>200</li>
+		<li>300</li>
+	</ul>
+</body>
+</html>

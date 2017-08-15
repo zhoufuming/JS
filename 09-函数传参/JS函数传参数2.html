@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		fn1(100);
+		fn1('miaov');
+		fn1(function(){alert(1);});
+		
+		function fn1(a){
+			if (typeof a==='number' &&a===a) {	
+			//这是加&&a===a的原因，是把NaN这个特殊类型排除，以后判断数字类型都要加上去~~
+				alert(a+20);
+			}
+			else if (typeof a==='string') {
+				alert(a.charAt(2));
+			}
+			else if (typeof a==='function') {
+				a();
+			}
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>
